@@ -1,0 +1,28 @@
+<h1>Listing labels</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Labelcategory</th>
+    <th>Labeldetails</th>
+    <th>Labelnumber</th>
+    <th>Remarks</th>
+  </tr>
+
+<% @labels.each do |label| %>
+  <tr>
+    <td><%=h label.id %></td>
+    <td><%=h label.labelcategory %></td>
+    <td><%=h label.labeldetails %></td>
+    <td><%=h label.labelnumber %></td>
+    <td><%=h label.remarks %></td>
+    <td><%= link_to 'Show', label %></td>
+    <td><%= link_to 'Edit', edit_label_path(label) %></td>
+    <td><%= link_to 'Destroy', label, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New label', new_label_path %>

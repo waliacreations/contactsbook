@@ -1,0 +1,160 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<%=javascript_include_tag :defaults %>
+<%=javascript_include_tag "prototype"%>
+<title><h3>Listing contacts</h3></title>
+<%headid=(params[:id]).to_i%>
+<%if headid<0.01%>
+<%headid=1%>
+<%end%>
+<h1> Listing contacts for CONTACT : <%=headid%></h1>
+</head>
+
+<body>
+<a href="javascript: window.print()">Print</a> <a href="javascript: window.close()">Close</a>
+<table cellspacing="5">
+<tr>
+<td colspan="30"><strong><u>Label</td>
+<td colspan="60"><strong><u>        Labeldetails</td>
+<td colspan="50"><strong><u>     Time      </td>
+<td colspan="20"><strong><u> Contactid </td>
+
+</strong>
+</u>
+</tr>
+</table>
+
+<%@c=Contact.find(:first,
+			 :order=>"contactid")%>
+<%if @c.nil?%>
+<h1> No RECORDS EXIST</h1>
+<%else%>
+
+
+
+  <table>
+<%num1=0%>
+<% for contact in @contacts %>
+
+<%num1=contact.labelnumber%>
+
+<%@label=Label.find(:first, :conditions=>"labelnumber=#{num1}")%>
+<% if @label.nil?%>
+	<%name1=" NULL"%>
+	<%else%>
+	
+<%name1=@label.labeldetails%>
+   <%end%>
+  <tr>
+	<td colspan="30"><%=name1%></td>
+	<td colspan="30"><%=contact.labeldetails%></td>
+	<td colspan="30"><%=contact.created_at%></td>
+	<td colspan="30"><%=contact.contactid%></td>	
+   
+    <td><%= link_to 'Edit', :action => 'edit', :id => contact %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => contact , :cid=>contact.contactid}, :confirm => 'Are you sure?', :post => true %></td>
+  </tr>
+<% end %>
+<%end%>
+</table>
+<li>
+==============================================================
+<br/>
+<% for contact in @contacts%>
+<%var1=contact.labelnumber%>
+<% case var1 
+when 921 then%>
+<br/>
+
+<% h(val2=truncate(contact.labeldetails,7))%>
+
+
+
+<% if (contact.labeldetails).to_i>0.01%>
+<%@picture=Picture.find(contact.labeldetails)%>
+<img width="350" height="300" src="<%=url_for(:action=> "picture",:id=>contact.labeldetails) %>"/>
+  <h6><%=@picture.comment%></h6><%="' New picture id is #{@picture.id}  .'"%>
+<%else%>
+<%=image_tag(contact.labeldetails, :size=>"350x300") %>
+<%=truncate(contact.labeldetails,43)%>
+<%end%>
+
+
+<%when 922%>
+
+<%=contact.labeldetails%>
+<p>
+
+---------------------------------------------------------------<br/>
+<%when 923%>
+<br/>
+
+<% val2=truncate(contact.labeldetails,7)%>
+<br/>
+<% if (contact.labeldetails).to_i>0.01%>
+<img width="350" height="300" src="<%=url_for(:action=> "picture",:id=>contact.labeldetails) %>"/>
+  <h6><%=@picture.comment%></h6><%= "' New picture id is #{@picture.id}  .'"%>
+<%else%>
+<%=image_tag(contact.labeldetails, :size=>"350x300") %>
+<%=truncate(contact.labeldetails,43)%>
+<%end%>
+
+<%when 924%>
+<br/>
+<%=contact.labeldetails%>
+<p>
+--------------------------------------------------------------<br/>
+<%when 925%>
+<br/>
+
+<%val2=truncate(contact.labeldetails,7)%>
+
+<% if (contact.labeldetails).to_i>0.01%>
+<img width="350" height="300" src="<%=url_for(:action=> "picture",:id=>contact.labeldetails) %>"/>
+  <h6><%=@picture.comment%></h6><%="' New picture id is #{@picture.id}  .'"%>
+<%else%>
+<%=image_tag(contact.labeldetails, :size=>"350x300") %>
+<%=truncate(contact.labeldetails,43)%>
+<%end%>
+<br/>
+<%when 926%>
+<br/>
+<%=contact.labeldetails%>
+
+<%end%>
+<%end%>
+</li>
+
+<%#= link_to 'Previous page', { :page => @contact_pages.current.previous } if @contact_pages.current.previous %>
+<%#= link_to 'Next page', { :page => @contact_pages.current.next } if @contact_pages.current.next %> 
+
+<br />
+<%= link_to 'New contact', :action => 'quickentry' %>
+<br />
+
+<%#=render :partial =>"selectview"%>
+
+
+=====================================================
+<%#form_tag :action=>"deletepicture"   do%>
+<br/>
+<table>
+<br/>
+<%#@pictures=Picture.find(:all, :conditions=> "entityid='#{contact.contactid}' and category='contacts' ")%>
+<%#@pictures.each do |@picture|%>
+
+<tr>
+<td><li>Contactid:<%#=@picture.entityid%></td></li>
+<td>    <li>Pictureid:<%#=@picture.id%></td></li>
+<td>    <li>COMMENT:<%#=@picture.comment%></td></li>
+<td> <img width="350" height="300" src="<%#=url_for(:action=> "picture", :id=>@picture.id) %>"/></td>
+<td><%#=check_box("to_be_deleted",@picture.id,{},"yes","no")%>delete</td>
+</tr>
+<%#end%>
+
+</table>
+<%#=submit_tag ("             Delete Pictures           ")%>
+  </b>
+<%# end %>
+</body>

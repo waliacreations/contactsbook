@@ -1,0 +1,196 @@
+<%= error_messages_for 'contact' %>
+<%c=1%>
+<%con=Contact.find(:first,  :order=> "contactid DESC")%>
+<%if con.nil?%>
+	<%c=1%>
+	<%else%>
+	<%c=(con.contactid).to_i%>
+	<%c=c+1%>
+<%end%>
+ <%flash.now[:notice]=" NEW CONTACTS:  New contact id number is :#{sprintf("%2.0f",c)}.It is now #{Time.now}."%>
+<%@labels=Label.find(:all, :conditions=> "labelnumber <300 or labelnumber in (509,511,514,515,516,517,921,9120,9130,9140,9220,9230,9240,9310,9320,9330,11010)", :order=>"labelnumber")%>
+
+<table cellspacing="1" border="0">
+<tr>
+<td colspan="5"><strong><u>No.</td>
+<td colspan="60"><strong><u>       Label</td>
+<td colspan="35"><strong><u>     Details</td>
+</strong>
+</u>
+</tr>
+</table>
+
+<%i=0%>
+<%labelnumber=[]%>
+<%label=[]%>
+<%labeldetails=[]%>
+<%contactid=[]%>
+<%time_at=[]%>
+<%detail=[]%>
+<%category1="a"%>
+<%category2="b"%>
+
+<table cellspacing="1" border="0">
+<%odd_or_even=0%>
+<%@labels.each do |@label|%>
+ <%odd_or_even=1- odd_or_even%>
+<%i+=1%>
+<%category2 =@label.labelcategory%>  
+
+
+<% if category1==category2%>
+
+<%else%>
+<tr >
+     <td class="Listline2"> _</td>
+     <td class="Listline2"> <u><%=@label.labelcategory%>              </td>
+     <td class="Listline2"> -------------------------------</td>
+     <td></td>
+     <td></u></td>
+     
+</tr>
+     <%category1=@label.labelcategory%>
+    
+<%end%>
+ <% var1=@label.labeldetails%>
+<tr>
+<td class="ListLine<%= odd_or_even%>"> <%=i%>. </td>
+<td class="ListLine<%= odd_or_even%>"><%= @label.labeldetails%></td>
+<% case @label.labeldetails 
+when "title" then %>
+<td class="ListLine<%= odd_or_even%>"><%= options=[["Select a title", ""]] + Contact::TITLE_TYPES
+select("labeldetails",i,options) %></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "country" then %>
+<td class="ListLine<%= odd_or_even%>"><%=text_field("labeldetails",i, "size"=>40, "value"=>"India")%></td>
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "A/ctype" then%>
+<td class="ListLine<%= odd_or_even%>"><%= options=[["Select GeneralA/c Type", ""]] + Contact::GENERAL_TYPES
+select("labeldetails",i,options) %></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "A/cStartDate" then %>
+<td class="ListLine<%= odd_or_even%>"><%=text_field("labeldetails",i, "size"=>40, "value"=>Time.now.strftime("%d-%m-%y"))%>
+<input type="hidden" name="date" id="f_date_c" readonly="1" />
+<img src="/images/img.gif" id="f_trigger_c"
+style="cursor: pointer; border: 1px solid red;"
+title="Date selector"
+onmouseover="this.style.background=’red’;"
+onmouseout="this.style.background=’’" /></td>
+<script type="text/javascript">
+Calendar.setup({
+inputField : "labeldetails_4",
+ifFormat : "%B %d, %Y",
+button : "f_trigger_c",
+align : "Tl",
+singleClick : false
+});
+</script>
+</td>
+<td> <%sprintf("%0.0f",c.to_s)%></td>
+<td> <%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+
+<%when "entity category" then%>
+<td class="ListLine<%= odd_or_even%>"><%= options=[["Customer" ,(selected="Customer")]]+[["Select entity relationship", ""]] + Contact::ENTITY_TYPES
+select("labeldetails",i,options) %></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "referencename/id1" then%>
+<td class="ListLine<%= odd_or_even%>">
+<%options=[]%>
+<select name="labeldetails[<%=i%>]" id="labeldetails_<%=i%>">
+<%=option_groups_from_collection_for_select(PARTY_OPTIONS,:options, :type_name, :id, :name, labeldetails[i])%>
+</select>
+<%= link_to 'NEW CONTACT', {:controller=>'contactadmin', :action=>'quickentry'}, :popup=>{'_blank', 'height=300, width=600'}%></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "referencerelation1"%>
+<td class="ListLine<%= odd_or_even%>"><%= options=[["Select reference relationship", ""]] + Contact::RELATION_TYPES
+select("labeldetails",i,options) %></td> 
+<td> <%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "referencename/id2" then%>
+<td class="ListLine<%= odd_or_even%>">
+<%options=[]%>
+<select name="labeldetails[<%=i%>]" id="labeldetails_<%=i%>">
+<%=option_groups_from_collection_for_select(PARTY_OPTIONS,:options, :type_name, :id, :name, labeldetails[i])%>
+</select>
+<%= link_to 'NEW CONTACT', {:controller=>'contactadmin', :action=>'quickentry'}, :popup=>{'_blank', 'height=300, width=600'}%></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "referencerelation2" then%>
+<td class="ListLine<%= odd_or_even%>"><%= options=[["Select reference relationship", ""]] + Contact::RELATION_TYPES
+select("labeldetails",i,options) %></td> 
+<td> <%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+
+
+
+<%when "professional qualification" then %>
+<td class="ListLine<%= odd_or_even%>"><%= options=[["Select a profession", ""]] + Contact::PROFESSION_TYPES
+select("labeldetails",i,options) %></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "city" then %>
+<td class="ListLine<%= odd_or_even%>"><%=text_field("labeldetails",i, "size"=>40, "value"=>"Delhi")%></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "state" then %>
+<td class="ListLine<%= odd_or_even%>"><%= options=[["Select a state", ""]] + Contact::STATE_TYPES
+select("labeldetails",i,options) %></td> 
+<td><%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+
+<%else %>
+<td class="ListLine<%= odd_or_even%>"><%=text_field("labeldetails",i, "size"=>40)%></td>
+<td> <%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%end%>
+
+</tr>
+<%end%>
+</table>
+
+<!--[eoform:contact]-->
+

@@ -1,0 +1,28 @@
+<h1>Listing contacts for WALIA:: CONTACTSBOOK</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Contactid</th>
+    <th>Labelnumber</th>
+    <th>Labeldetails</th>
+    <th>Tags</th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%=h contact.id %></td>
+    <td><%=h contact.contactid %></td>
+    <td><%=h contact.labelnumber %></td>
+    <td><%=h contact.labeldetails %></td>
+    <td><%=h contact.tags %></td>
+    <td><%= link_to 'Show', contact %></td>
+    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New contact', new_contact_path %>

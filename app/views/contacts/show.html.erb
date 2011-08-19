@@ -1,0 +1,28 @@
+<p>
+  <b>Id:</b>
+  <%=h @contact.id %>
+</p>
+
+<p>
+  <b>Contactid:</b>
+  <%=h @contact.contactid %>
+</p>
+
+<p>
+  <b>Labelnumber:</b>
+  <%=h @contact.labelnumber %>
+</p>
+
+<p>
+  <b>Labeldetails:</b>
+  <%=h @contact.labeldetails %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%=h @contact.tags %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

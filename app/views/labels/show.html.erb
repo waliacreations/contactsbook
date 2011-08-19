@@ -1,0 +1,28 @@
+<p>
+  <b>Id:</b>
+  <%=h @label.id %>
+</p>
+
+<p>
+  <b>Labelcategory:</b>
+  <%=h @label.labelcategory %>
+</p>
+
+<p>
+  <b>Labeldetails:</b>
+  <%=h @label.labeldetails %>
+</p>
+
+<p>
+  <b>Labelnumber:</b>
+  <%=h @label.labelnumber %>
+</p>
+
+<p>
+  <b>Remarks:</b>
+  <%=h @label.remarks %>
+</p>
+
+
+<%= link_to 'Edit', edit_label_path(@label) %> |
+<%= link_to 'Back', labels_path %>

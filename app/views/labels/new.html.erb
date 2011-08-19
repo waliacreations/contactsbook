@@ -1,0 +1,53 @@
+<h1>New label</h1>
+
+USE Capital letter for first Letter: <br/>
+<% form_for(@label) do |f| %>
+  <%= f.error_messages %>
+<table cellspacing=5>
+
+<tr>
+<th><b><u> LABEL </b></u>            </th>
+<th><b><u>DETAILS </b></u>           </th>
+</tr>
+<tr>
+<td>_________________</td>
+<td>_______________________</td>
+</tr>
+  <tr>
+    <td><%#= f.label :id %></td>
+   <td> <%= f.hidden_field :id %></td>
+  </tr>
+  <tr>
+   <td align="right"><span style='font-size:11.0pt'><%= f.label :labelcategory %>:<span></td>
+   <td> <%= f.text_field :labelcategory %></td>
+  </tr>
+  <tr>
+  </tr>
+   <tr>
+   <td align="right"><span style='font-size:11.0pt'><%= f.label :labelnumber %>:<span></td>
+   <td><%=@labelnum%><%= f.hidden_field :labelnumber ,:value=>@labelnum%> </td>
+  </tr>
+  <tr>
+  <td align="right"><span style='font-size:11.0pt'><%= f.label :labeldetails %>:</span></td>
+   <td> <%= f.text_field :labeldetails %></td>
+  </tr>
+  <tr>
+   <tr>
+  </tr>
+   <tr>
+  </tr>
+  <td align="right"><span style='font-size:11.0pt'> <%= f.label :remarks %>:<span></td>
+    <td><%= f.text_field :remarks %></td>
+  </tr>
+  </table>
+  
+  <br/>
+  <br/>
+    <%= f.submit 'Create' %>
+  
+<% end %>
+
+  <br/>
+  <br/>
+
+<%= link_to 'Back', labels_path %>

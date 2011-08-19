@@ -1,0 +1,187 @@
+
+ /* HERE STARTS ACTUAL CSS ABOVE ARE ONLY EXAMPLES*/ 
+body, select, input, textarea {  
+    /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */  
+    color: #444;  
+    /* set your base font here, to apply evenly */  
+    /* font-family: Georgia, serif;  */  
+}  
+
+
+/*body { background-color: #fff; color: #333; }*/
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+div.ListTable{text-align: right; padding-bottom: 1em;}
+
+.ListTable{ text-align: right; padding-bottom: 1em;}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: blue; }
+a:visited { color: #666; }
+a:hover { color: red; background-color:gold; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
+.rightalign {padding-right: 5em; font-size:8.0pt;
+ font-family:"Times New Roman", Times, serif; text-align: center; media:screen;} 
+
+.ListTitle { color: #244; font-weight: bold; font-size: larger; }
+.ListActions {  text-align: right; padding-left: 1em; height:1em; }
+
+
+
+
+#banner { background: #FDD017; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
+ color: #B93B8F; text-align: center; font: bold 3em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	}
+
+#banner1 { background: #FDD017; padding-top: 0px; padding-bottom: 5px; border-bottom: 0.5px solid; 
+  color: #B93B8F;font: bold 0.85em  "Arial", serif;   text-align: center;}
+
+#banner2 { background: red; padding-top: 0px; padding-bottom: 0px; border-bottom: 0.5px solid; 
+ font: bold 0.85em  "Arial Narrow", serif;  color:gold ; text-align: center; }
+
+#banner3 {  border: 1.5px solid; border-color: #B93B8F; color: #B93B8F;font: bold 0.85em  "Arial", serif;   text-align: center;}
+
+
+#banner img{float: left;}
+
+#columns { background: #FDD017;}
+#main {margin-left: 15em;
+	padding-top: 4ex;
+	padding-left: 1em;
+	background: white; }
+#side { float: left; padding-top: 1em; padding-left: 1em; padding-bottom: 1em;  width:12em; background: #FDD017;
+ text-align: center;}
+ 
+
+ #side1 { float: left; padding-top: 1em; padding-left: 1em; padding-bottom: 1em;  width:12em; background: #FDD017;
+ text-align: center;}
+
+.ListTitle { color: #244; font-weight: bold; font-size: larger; }
+.ListActions { text-align: right; padding-left: 1em; height:1em; }
+.ListLine0 {background: #999; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+.ListLine1 {background: #998; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+
+navigation_bar1 {display: none} 
+
+<!--//The code to hide objects is: -/>
+
+navigation_bar1 {visibility: hidden}
+
+
+table.widetable { width: 700px; padding-top:2em; padding-right:2em; 	padding-bottom: 1em; padding-left: 2em; 
+font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-after:always; }
+tbody.noborder {border:none;}
+tbody.noborderall{border: 1px;}
+table.wide-table1 { width:60%; font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; }
+tr.noborder {border-top:none; border-bottom:none; background: #F5FAFA;}
+tr.noborder1 {border-top:none; border-bottom:none; background: white;}
+tr.noborder4 {border: 1px; background: white;}
+tr.noborderall {border: 1px; background: white;}
+td.alt {background: #F5FAFA; color: #797268;}
+
+
+td.nobordertop{border-top:none; font-size: 0.85em; border-bottom-width:1px;
+  border-bottom-style:solid;  border-bottom-color:#000000;}
+td.noborderbottom{border-bottom:none;font-size: 0.85em;}	
+td.noborder {border-top:none; border-bottom:none;font-size: 0.85em; }
+td.noborderright {border-top:none; border-bottom:none;font-size: 0.85em;}
+td.nobordersum {border-top-width:1px;  border-top-style:solid;  border-top-color:#000000; 
+padding-left:0px; font-size: 0.85em; font-weight:bold;  border-bottom-width:1px;
+  border-bottom-style:solid;  border-bottom-color:#000000; }
+
+td.noborderall1 {border-top-width:1px;  border-top-style:solid;  border-top-color:#000000;
+border-right-width:1px;  border-right-style:solid;  border-right-color:#330000;
+border-left-width:1px;  border-left-style:solid;  border-left-color:#000000; 
+padding-left:0px; font-size: 0.85em; font-weight:bold;  border-bottom-width:1px;
+  border-bottom-style:solid;  border-bottom-color:#000000; }
+td.noborderall {border-top-width:1px;border-bottom-width:1px; background: white;}
+
+td.nobordersumamt {border-top-width:2px;  border-top-style:solid;  border-top-color:#000000;
+border-right-width:2px;  border-right-style:solid;  border-right-color:#330000;
+border-left-width:2px;  border-left-style:solid;  border-left-color:#000000; 
+padding-left:0px; font-size: 0.85em; font-weight:bold;  border-bottom-width:2px;
+  border-bottom-style:solid;  border-bottom-color:#000000; }
+ 
+table.widetable2 { width: 880px; padding-top:2em; padding-right:2em; 	padding-bottom: 1em; padding-left: 2em; 
+font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; }
+ 
+table.widetable3 { width: 880px; padding-top:2em; padding-right:2em; 	padding-bottom: 1em; padding-left: 2em; 
+font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-after:always; }
+
+table.widetable4 { width: 880px; padding-top:2em; padding-right:2em; 	padding-bottom: 1em; padding-left: 2em; 
+font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-before:always;  }
+
+td.noborder4 {border:none; font-size: 0.6em;}
+
+tr.noborderall{border: 1px;}
+
+
+td.noborder1 {border-bottom:none; font-size: 0.85em;}
+td.cell {display: table-cell;border: 1px solid black;padding: 1em; width: 12.5%;}
+
