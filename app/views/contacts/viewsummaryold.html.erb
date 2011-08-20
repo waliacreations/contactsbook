@@ -44,82 +44,83 @@
 <%e=@cend.contactid%>
 
 
-<%@contactsall.each do |cnum|%>
-
-<%@contacts=Contact.find(:all, :conditions=>"contactid=#{cnum.contactid}")%>
 
 <%for contact in @contacts%>
 	
    <%var1=contact.contactid%>
     <%name1=contact.labelnumber.to_i%>
   
-<%#if i==var1%>
+<%if i==var1%>
   
-<%#if name1>199 and name1<250%>
-<% case contact.labelnumber
-when  199..240 then%>
-<%name+=contact.labeldetails+","%>
+<%if name1>199 and name1<250%>
+<%name=name+contact.labeldetails%>
+<%end%>
+<%if name1>=250 and name1<300 %>
+<%contactnumber+=contact.labeldetails+","%>
+<%end%>
 
-<%when  240..300 then%>
-<%contactnumber+="|  "+contact.labeldetails+"   "%>
-
-
-<%when 21000..25000%>
+<%if name1>=21000%>
 <%contactmsg+=contact.labeldetails+","%>
+<%end%>
 
-<%end%><%#case###%>
+<%else%>
 
-<%#else%>
 
-<%end%><%#for contact in @contacts%>
-<%i=cnum.contactid%>
 <tr>
 	<td colspan="5"><%=a%></td>
 	<td colspan="20"><h20><%=name%></h20></td>
 	<td colspan="40"><h20><%=contactnumber%></h20></td>
 	<td colspan="25"><h20><%=contactmsg%></h20></td>
-	<td colspan="10"><%=i%>  
+	<td colspan="10"><%=i%></td>	
    
-    <%= link_to 'Edit', :action => 'view', :id => i %>
-  <%= link_to 'Delete', { :action => 'delete', :id => i }, :confirm => 'Are you sure? ALL RECORDS FOR THIS CONTACT WILL BE DELETED', :post => true %>
-    <td><%= link_to 'Update', :action => 'append', :id => i %>
-  <%=check_box("to_be_deleted",i,{},"yes","no")%>
-    </td>
+    <td><%= link_to 'Edit', :action => 'view', :id => i %></td>
+    <td><%= link_to 'Delete', { :action => 'delete', :id => i }, :confirm => 'Are you sure? ALL RECORDS FOR THIS CONTACT WILL BE DELETED', :post => true %></td>
+    <td><%= link_to 'Update', :action => 'append', :id => i %></td>
+    <td><%=check_box("to_be_deleted",i,{},"yes","no")%>
     </tr>
-
   
-
-
+<%i=contact.contactid%>
 <%name=""%>
 <%contactnumber=""%>
 <%contactmsg=""%>
 <%a=a+1%>
 
 
-<%end%> 
+
+<%end%>
 
 
 
 
+<%if e==var1%>
 
 
+<%end%>
 
-
-
+<% end %>
+<tr>
+	<td colspan="5"><%=a%></td>
+	<td colspan="20"><%=name%></td>
+	<td colspan="70"><%=contactnumber%></td>
+	<td colspan="10"><%=i%></td>	
+   
+    <td><%= link_to 'Edit', :action => 'view', :id => i %></td>
+    <td><%= link_to 'Delete', { :action => 'delete', :id => i }, :confirm => 'Are you sure? ALL RECORDS FOR THIS CONTACT WILL BE DELETED', :post => true %></td>
+    <td><%= link_to 'Update', :action => 'append', :id => i %></td>
+    <td><%=check_box("to_be_deleted",i,{},"yes","no")%>
+  </tr>
   
    
- <%end%><%#@contactsall.each do |cnum|%> 
- 
- 
-
-
-
+  
 
 </table>
 
+
+
+
 <%a=a+1%>
 
-<%#end%>
+<%end%>
 
 
 

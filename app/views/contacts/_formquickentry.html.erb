@@ -8,7 +8,9 @@
 	<%c=c+1%>
 <%end%>
  <%flash.now[:notice]=" NEW CONTACTS:  New contact id number is :#{sprintf("%2.0f",c)}.It is now #{Time.now}."%>
-<%@labels=Label.find(:all, :conditions=> "labelnumber <300 or labelnumber in (509,511,514,515,516,517,921,9120,9130,9140,9220,9230,9240,9310,9320,9330,11010)", :order=>"labelnumber")%>
+<%#@labels=Label.find(:all, :conditions=> "labelnumber <300 or labelnumber in (509,511,514,515,516,517,921,9120,9130,9140,9220,9230,9240,9310,9320,9330,11010)", :order=>"labelnumber")%>
+
+<%@labels=Label.find(:all, :conditions=> "labelnumber <300 or labelnumber in (509,511,514,515,516,517,921) or labelnumber>21000", :order=>"labelnumber")%>
 
 <table cellspacing="1" border="0">
 <tr>
