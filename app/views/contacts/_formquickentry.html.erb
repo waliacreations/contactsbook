@@ -93,7 +93,7 @@ onmouseout="this.style.background=’’" /></td>
 <script type="text/javascript">
 Calendar.setup({
 inputField : "labeldetails_4",
-ifFormat : "%B %d, %Y",
+ifFormat : "%d-%m-%y",
 button : "f_trigger_c",
 align : "Tl",
 singleClick : false
@@ -104,6 +104,32 @@ singleClick : false
 <td> <%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
 <td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
 <td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+<%when "A/cStartDate1" then %>
+<td class="ListLine<%= odd_or_even%>"><%=text_field("labeldetails",i, "size"=>40, "value"=>Time.now.strftime("%d-%m-%y"))%>
+<input type="hidden" name="date" id="f_date_d1" readonly="1" />
+<img src="/images/img.gif" id="f_trigger_d1"
+style="cursor: pointer; border: 1px solid red;"
+title="Date selector";
+onmouseover="this.style.background=ï¿½redï¿½;"
+onmouseout="this.style.background=ï¿½ï¿½" /></td>
+<script type="text/javascript">
+Calendar.setup({
+inputField : "date1",
+ifFormat : "%Y-%m-%d",
+button : "f_trigger_d1",
+align : "Tl",
+singleClick : false
+});
+</script>
+
+</td>
+<td> <%sprintf("%0.0f",c.to_s)%></td>
+<td> <%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+
+
 
 
 <%when "entity category" then%>
