@@ -2,23 +2,33 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml
   def index
-    @contacts = Contact.all
+    redirect_to :action => 'viewsummary'
+    
+  #  @contacts = Contact.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @contacts }
-    end
+   # respond_to do |format|
+   #   format.html # index.html.erb
+   #   format.xml  { render :xml => @contacts }
+   # end
   end
 
   # GET /contacts/1
   # GET /contacts/1.xml
+ 
   def show
-    @contact = Contact.find(params[:id])
-
-    respond_to do |format|
+    if params[:id]=="viewsummary"
+       @contact=Contact.find(:all, :conditions=>"labelnumber=152")
+    else
+      @cid=params[:id]
+    @contact=Contact.find(@cid)
+   
+    end  
+    
+     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @contact }
     end
+    
   end
 
   # GET /contacts/new

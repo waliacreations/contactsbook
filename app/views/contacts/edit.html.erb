@@ -29,4 +29,7 @@
 <% end %>
 
 <%= link_to 'Show', @contact %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Back', {:action=>'show', :id=>@contact} %>
+
+<br/>
+<%=link_to 'ViewSummary',{:action=>'viewsummary'}%>

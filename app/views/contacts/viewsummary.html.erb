@@ -13,14 +13,15 @@
 <table cellspacing="5">
 <tr>
 <td colspan="5"><strong><u>No.</td>
-<td colspan="20"><strong><u>        Name</td>
-<td colspan="80"><strong><u>        Contact details    </td>
-<td colspan="10"><strong><u>     Contactid </td>
+<td colspan="20"><strong><u>_____Name______</td>
+<td colspan="40"><strong><u>_______ Contact details __________________</td>
+<td colspan="25"><strong><u>________Msg_________</td>
+<td colspan="10"><strong><u>Contactid</td>
 
 </strong>
 </u>
 </tr>
-</table>
+
 <%i=1%>
 <%a=1%>
  <%name=""%>
@@ -38,7 +39,7 @@
 <%i=@c.contactid%> 
 <%e=@cend.contactid%>
 
-<table cellspacing="5">	
+
 
 <%for contact in @contacts%>
 	
@@ -59,7 +60,8 @@
 <tr>
 	<td colspan="5"><%=a%></td>
 	<td colspan="20"><%=name%></td>
-	<td colspan="70"><%=contactnumber%></td>
+	<td colspan="40"><%=contactnumber%></td>
+	<td colspan="25"><%=a%></td>
 	<td colspan="10"><%=i%></td>	
    
     <td><%= link_to 'Edit', :action => 'view', :id => i %></td>

@@ -1,5 +1,21 @@
+
+
+
+
+
+  
+
+
+
+<%if @contact.nil? or @contact.to_s==""%>
+  <%@contactall=Contact.find(:first, :conditions=>"labelnumber=152")%>
+  <%@contact=Contact.find(@contactall.contactid)%> <%# TO PROVIDE FOR @contact at link%>
+<p>h <h5>NO RECORDS FOR THIS ID: </h5> </p>
+
+<%else%>
+
 <p>
-  <b>Id:</b>
+  <b>id:</b>
   <%=h @contact.id %>
 </p>
 
@@ -24,5 +40,13 @@
 </p>
 
 
+
+
+<%end%>
+
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%#= link_to 'Back', contacts_path %>
+
+<br/>
+<%=link_to 'ViewSummary',{:action=>'viewsummary'}%>
+
