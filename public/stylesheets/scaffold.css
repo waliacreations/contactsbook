@@ -127,6 +127,8 @@ div.progressBar div.background {
 .ListActions { text-align: right; padding-left: 1em; height:1em; }
 .ListLine0 {background: #999; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 .ListLine1 {background: #998; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+.ListLineReqd {background: #998; margin-bottom: 0.0ex; border-width:1px;
+  border-style:solid;  border-color:red yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
 navigation_bar1 {display: none} 
 

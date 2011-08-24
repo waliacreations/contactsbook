@@ -201,22 +201,479 @@ class ContactsController < ApplicationController
   end #def appendmultiple 
   
   
+  def validateemail
+    @phrase1=[]
+    @phrase2=[]
+      msg=""
+      msg1=""
+      msg2=""
+      msg3=""
+      msg4=""
+      msg5=""
+      msg6=""
+      msg7=""
+      msgbeg=""
+      msgbeg1=""
+      
+    @results1=""
+    @results2=""
+    @results3=""
+    @emailbegin=[]
+    @emailend=[]
+    @phrase1=params[:labeldetails_13]
+      
+ if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<9
+   msgbeg="ENTER EMAIL!!!"
+   msg+=msgbeg
+  else    
+     msgbeg="ok" 
+    @phrase2=@phrase1.split("@")
+    
+    if @phrase2[1]=="" or @phrase2[1].nil?
+   msgbeg1="NO '@'CHECK EMAIL!!!"
+   msg+=msgbeg1
+    else 
+    msgbeg1="ok"
+    @emailend=@phrase2[1].split(".")
+    
+    
+    
+if @emailend[1].nil? or @emailend[1]==""
+  msg+="check email address after '.' :"
+  @results1=""
+else
+     msg1="ok" 
+  @results2="."+@emailend[1]
+end
+   
+if @emailend[2].nil? or @emailend[2]==""
+  msg2="ok"
+else
+     msg2="ok"   
+      @results2+="."+@emailend[2]
+end
+
+if @emailend[3].nil? or @emailend[3]=="" ##ie..com.com.com
+  msg3="ok"
+else
+     msg+="extra . or words in email:"
+      @results1="" 
+ end 
+ 
+ case @emailend[0].downcase  ##this is after @sign
+when "yahoo"
+  msg4="ok"
+ #@results1="ok"
+ 
+when "gmail"
+msg4="ok"
+#@results1="ok"
+   
+when "hotmail"  
+msg4="ok"
+#@results1="ok" 
+ 
+when "walianet"  
+msg4="ok"
+#@results1="ok" 
+ 
+when "rediff"
+msg4="ok"
+#@results1="ok" 
+
+when "google"
+msg4="ok"
+#@results1="ok" 
+
+else 
+msg4="PLEASE GIVE yahoo,gmail,google,hotmail,walianet EMAIL!!!"  
+msg+=msg4
+@results1=""
+end
   
+case @results2.downcase  ##this is after @sign+. ie..com/.co.in/.info
+when ".co.in"
+  msg5="ok"
+ #@results1="ok"
+ 
+when ".com"
+msg5="ok"
+#@results1="ok"
+   
+else 
+msg5="PLEASE GIVE '.co.in' or '.com' EMAIL!!!" 
+msg+=msg5 
+@results1=""
+end
+
+
+ if @phrase2[0].to_i>0 #if digits before @ is a number 
+  msg6="ONLY Number before '@' Check email: "
+  msg+=msg6
+  @results1=""
+else
+  msg6="ok"
+end  
   
+if @phrase2[0].nil? or @phrase2[0].to_s=="" #if digits before @ is a number 
+  msg7="number only before '@' check email: "
+  @results1=""
+  msg+=msg7
+else
+  msg7="ok"
+end  
+
+ end  #if @phrase2[1]=="" or @phrase2[1].nil?  
+ 
+  end # if @phrase1=="" or @phrase1.nil?
   
+    respond_to do |format|
+      
+        format.js {
+        render :update do |page|
+         
+           _msg=msg
+     
+           if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
+            page.alert("Email Validation:"+_msg)
+            @results1=""
+            page['labeldetails_13'].value=@results1
+            page['labeldetails_13'].focus()  
+            else
+              _msg="OK"
+              page.alert("Email Validation:"+_msg) 
+            end 
+         
+           end #render :update do |page|
+              }
+          end #respond_to do |format|
   
+   end #validateemail
+ 
+   
+   
+    
+def validatewebsite1
+   @phrase1=[]
+   @phrase2=[]
+     msg=""
+     msg1=""
+     msg2=""
+     msg3=""
+     msg4=""
+     msg5=""
+     msg6=""
+     msg7=""
+     msgbeg=""
+     msgbeg1=""
+   @results1=""
+   @results2=""
+   @results3=""
+   @emailbegin=[]
+   @emailend=[]
+   @phrase1=params[:labeldetails_15]
+   
+   
+  if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<7
+     msgbeg="ENTER Website1!!!"
+     msg+=msgbeg
+    else    
+       msgbeg="ok" 
+      @phrase2=@phrase1.split("/")
+      
+      if @phrase2=="" or @phrase2.nil?
+     msgbeg1="CHECK WEBSITE1!!!"
+     msg+=msgbeg1
+      else 
+        msgbeg1="ok"
+        @emailend=@phrase2[0].split(".")   
+   
+if @emailend[0].to_s=="www"   
+   msgbeg="ok"
+else
+   msgbeg="start with www: website1"
+   msg+=msgbeg
+   @results1=""
+end
+if @emailend[1].nil? or @emailend[1]==""
+  msg1="check web address :Incomplete Website1"
+ msg+=msg1
+ @results1=""
+else
+    msg1="check web address :Incomplete Website1" 
+    msg+=msg1
+    msg1="ok"
+    @results1=""
+# @results2="."+@emailend[1]
+ dotlast=""
+end
   
+if @emailend[2].nil? or @emailend[2]==""
+ msg2="ok"
+else
+    msg2="ok" 
+    msg=""   # to remove above comment of  incomplete
+   # msg+=msg2  
+     @results2="."+@emailend[2]
+     dotlast=@emailend[2]
+end
+
+if @emailend[3].nil? or @emailend[3]=="" ##ie..com.com.com
+ msg3="ok"
+else
+    msg3="ok"
+    #msg+=msg3
+    @results2+="."+@emailend[3]
+    dotlast=@emailend[3]
+     @results1="" 
+end 
+
+if @emailend[4].nil? or @emailend[4]=="" ##ie..com.com.com
+ msg4="ok"
+else
+    msg4="extra . or words in website1:"
+    msg+=msg4
+     @results1="" 
+end 
+
+
+ 
+case @results2.downcase  ##this is after @sign+. ie..com/.co.in/.info
+when ".co.in"
+ msg5="ok"
+#@results1="ok"
+
+when ".com"
+msg5="ok"
+#@results1="ok"
   
-  
-  
-  
-  
+  when ".heroku.com"
+  msg5="ok"
+  #@results1="ok"
+
+when ".in"
+msg5="ok"
+
+else 
+msg5="PLEASE GIVE '.co.in' or '.com' or '.in' WEBSITE1!!!" 
+msg+=msg5 
+@results1=""
+end
+
+
+if @phrase2[0].length<1 #if digits before @ is a number 
+ msg6="Check web address1: "
+ msg+=msg6
+ @results1=""
+else
+ msg6="ok"
+end  
+ 
+if @phrase2[0].nil? or @phrase2[0].to_s=="" #if digits before @ is a number 
+ msg7="Check website1 address: "
+ @results1=""
+ msg+=msg7
+else
+ msg7="ok"
+end  
+   
+end  #if @phrase2.nil? or @phrase2==""
+
+end   #if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<7
+
+   respond_to do |format|
+     
+       format.js {
+       render :update do |page|
+        
+          _msg=msg
+    
+        # page.alert(@emailend[length].downcase)
+          
+          if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
+           page.alert("Website1 Validation:"+_msg)
+           @results1=""
+           page['labeldetails_15'].value=@results1
+           page['labeldetails_15'].focus()  
+           else
+             _msg="OK"
+             page.alert("Website1 Validation:"+_msg) 
+           end 
+        
+          end #render :update do |page|
+             }
+         end #respond_to do |format|
+         
+  end #validatwebsite1
   
    
-   def quickentry
+def validatewebsite2
+   @phrase1=[]
+   @phrase2=[]
+     msg=""
+     msg1=""
+     msg2=""
+     msg3=""
+     msg4=""
+     msg5=""
+     msg6=""
+     msg7=""
+     msgbeg=""
+     msgbeg1=""
+   @results1=""
+   @results2=""
+   @results3=""
+   @emailbegin=[]
+   @emailend=[]
+   @phrase1=params[:labeldetails_16]
+   
+   
+  if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<7
+     msgbeg="ENTER Website2!!!"
+     msg+=msgbeg
+    else    
+       msgbeg="ok" 
+      @phrase2=@phrase1.split("/")
+      
+      if @phrase2=="" or @phrase2.nil?
+     msgbeg1="CHECK WEBSITE2!!!"
+     msg+=msgbeg1
+      else 
+        msgbeg1="ok"
+        @emailend=@phrase2[0].split(".")   
+   
+if @emailend[0].to_s=="www"   
+   msgbeg="ok"
+else
+   msgbeg="start with www: website2"
+   msg+=msgbeg
+   @results1=""
+end
+if @emailend[1].nil? or @emailend[1]==""
+  msg1="check web address2 :Incomplete Website2"
+ msg+=msg1
+ @results1=""
+else
+    msg1="check web address2 :Incomplete Website2" 
+    msg+=msg1
+    msg1="ok"
+    @results1=""
+# @results2="."+@emailend[1]
+ dotlast=""
+end
+  
+if @emailend[2].nil? or @emailend[2]==""
+ msg2="ok"
+else
+    msg2="ok" 
+    #msg=""   # to remove above comment of  incomplete
+   # msg+=msg2  
+     @results2="."+@emailend[2]
+     dotlast=@emailend[2]
+end
+
+if @emailend[3].nil? or @emailend[3]=="" ##ie..com.com.com
+ msg3="ok"
+else
+    msg3="ok"
+    #msg+=msg3
+    @results2+="."+@emailend[3]
+    dotlast=@emailend[3]
+     @results1="" 
+end 
+
+if @emailend[4].nil? or @emailend[4]=="" ##ie..com.com.com
+ msg4="ok"
+else
+    msg4="extra . or words in email:"
+    msg+=msg4
+     @results1="" 
+end 
+
+
+ 
+case @results2.downcase  ##this is after @sign+. ie..com/.co.in/.info
+when ".co.in"
+ msg5="ok"
+#@results1="ok"
+
+when ".com"
+msg5="ok"
+#@results1="ok"
+ 
+  when ".heroku.com"
+  msg5="ok"
+  #@results1="ok"
+ 
+when ".in"
+msg5="ok"
+
+else 
+msg5="PLEASE GIVE '.co.in' or '.com' or '.in' WEBSITE2!!!" 
+msg+=msg5 
+@results1=""
+end
+
+
+if @phrase2[0].length<1 #if digits before @ is a number 
+ msg6="Check web address2: "
+ msg+=msg6
+ @results1=""
+else
+ msg6="ok"
+end  
+ 
+if @phrase2[0].nil? or @phrase2[0].to_s=="" #if digits before @ is a number 
+ msg7="Check website2 address: "
+ @results1=""
+ msg+=msg7
+else
+ msg7="ok"
+end  
+   
+end  #if @phrase2.nil? or @phrase2==""
+
+end   #if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<7
+
+   respond_to do |format|
+     
+       format.js {
+       render :update do |page|
+        
+          _msg=msg
+    
+        # page.alert(@emailend[length].downcase)
+          
+          if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
+           page.alert("Website2 Validation:"+_msg)
+           @results1=""
+           page['labeldetails_16'].value=@results1
+           page['labeldetails_16'].focus()  
+           else
+             _msg="OK"
+             page.alert("Website2 Validation:"+_msg) 
+           end 
+        
+          end #render :update do |page|
+             }
+         end #respond_to do |format|
+         
+  end #validatwebsite2
+  
+     
+   
+   
+   
+   
+   
+   
+   
+   
+   
+ def quickentry
   
   @contact=Contact.find(:last)
-  end
+ end
   
   def new
     @contact = Contact.new
@@ -227,6 +684,8 @@ class ContactsController < ApplicationController
     end
   end
 
+  
+  
 def createmultiple
 	
 	cid=params[:id]
@@ -312,7 +771,7 @@ def createmultiple
 			x=x+1
 		else
 	    @contact= Contact.create(
-	      :labelnumber=>item1[x],
+	    :labelnumber=>item1[x],
 		  :labeldetails=>item2[x],
 		  :contactid=>item3[x],
 		  :created_at=>item4[x]

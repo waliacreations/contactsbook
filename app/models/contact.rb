@@ -13,12 +13,34 @@ TITLE_TYPES=[
 	].freeze
 	
 	COMPANY_TYPES=[
-	["SoleProprietorship","SoleProprietorship"],
+	["Proprietorship","Proprietorship"],
 	["PrivateLimited","PrivateLimited"],
 	["Partnership","Partnership"],
-	["PublicCo.","PublicCo."],
+	["PublicLimited","PublicLimited"],
+  ["GovernmentDepartment/Agency","Government"], 
 	["Unregistered","Unregistered"],
 	].freeze
+	
+  PERSONAL_GROUPS=[
+    ["school","school"],
+    ["car-pool","car-pool"],
+    ["locality","locality"],
+    ["networking","networking"],
+    ["college/univ.","college"],
+    ["work","work"], 
+    ["gym","gym"],
+    ["hobby","hobby"],    
+     ].freeze
+	
+  POSTS=[
+    ["OWNER","OWNER"],
+    ["GENERAL MANAGER","GENERAL MANAGER"],
+    ["PRESIDENT","PRESIDENT"],
+    ].freeze
+	
+	
+	
+	
 	
 	GENERAL_TYPES=[
 	["General Customer", "General Customer"],
@@ -69,21 +91,44 @@ TITLE_TYPES=[
 	["Trading a/c","Trading a/c"],	
 	].freeze
 	
-	ENTITY_TYPES=[
-	["Customer", "Customer"],
-	["BankA/c","BankA/c"],
-	["Employee","Employee"],
-	["Shareholder/Partner", "Shareholder/Partner"],
-	["Owner/Proprietor", "Owner/Proprietor"],
-	["Supplier/Service provider", "Supplier"],
-	["Reference/Acquaintance", "Reference"],
+ #friend/relative/acquaintance will be for personal contact
+ #doctor/clinic/hospital/laboratory/chemist/physiotherapy for medical contact
+ #ambulance/fire/police/doctor/relative/lawyer for emergency
+ #bank/business/supplier/govt./employee/supplier/tax/customer/investments/assets for work
+ #gym/spa/saloon/massage for health&beauty
+ #tickets/hotel/inn/guesthouse/b&b for travel
+ #projects/tasks/to-do list/design/mfr./  for project
+	
+	#for shopping&entertainment
+	#restaurant/grocery/superstore/ice-cream/cafe/pizza/  
+	#italian/indian/chineese/continental/buffet/bar/
+	#japaneese/north-east/bengali/malabar/southindian 
+	#movies/circus/theatre/bowling/golf/shoppingmall/highstreet
+  #for shopping&entertainment
+	
+		
+  ENTITY_TYPES=[
 	["Friend", "Friend"],
 	["Relative", "Relative"],
-	["NGO/Organisation", "Organisation"],
-	["Deptt./POS/Branch", "Branch"],
-	["GroupCompany", "GroupCompany"],
-	["FocusGroup","FocusGroup"],
+	["Acquaintance", "Acquaintance"],  
+  ["Mentor","Mentor"],  
+  ["Teacher/Expert","Teacher"],   
+    ].freeze
+	
+	
+	ENTITY_TYPESOLD=[
+	["Customer", "Customer"],
+	["BankA/c","BankA/c"],
+	["Restaurants/Hotels","Restaurants"],
+	["Clubs/Associations","Clubs"],  
+	["Employee","Employee"],
+	["Supplier/Service provider", "Supplier"],
+	["Utilities","Utilities"],
+	["Emergency","Emergency"],    
+	["NGO/Organisation/Association", "Organisation"],
 	["RatingsAgency/Critics/Judges","Critics"],
+	["TestingLab/Weights&Measure","Test"],  
+	["Hospital/Clinic","Hospital"],  
 	["Government/Tax Deptt./LicenceBoard", "Government"],
 	].freeze
 	
@@ -140,6 +185,15 @@ TITLE_TYPES=[
 	["Uttar Pradesh", "Uttar Pradesh"],
 	["Rajasthan", "Rajasthan"],
 	].freeze
+	
+ COUNTRY_TYPES=[
+  ["India", "India"],
+  ["USA", "USA"],
+  ["UK", "UK"],
+  ].freeze
+  	
+	
+	
 	
 	
 	#@labels=Label.find_all

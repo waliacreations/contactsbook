@@ -10,13 +10,116 @@
 <script type="text/javascript" src="/javascripts/combo-box.js"></script>
 
 <title><h3>New Contacts</h3></title>
-<u><h2> New Contacts</h2></u>
 </head>
 
 <body>
-<b><a href="javascript:self.close()">CLOSE WINDOW</a></b>
-<% form_tag :action =>'createmultiple' do -%>
-  <%= render :partial=>"formquickentry" %>
+<% #form_tag :action =>'createmultiple' do -%>
+<%form_tag({:action => "createmultiple"},{ :onsubmit=>'return validate_Form();'}) do%>
+  <%= render :partial=>"formpersonal" %>
+
+<%####### VALIDATE#########%>  
+<script type="text/javascript">
+function validate_Form(){
+alert("Hello Have u checked all values!!!");
+var _first=document.getElementById("labeldetails_83").value;
+if (!_first || isNaN(_first) || _first<0 || _first==0 )
+{
+alert("Check products::Value of total:"+ _first);
+return false;
+};
+
+var _f2=document.getElementById("labeldetails_84").value;
+var _f3=document.getElementById("labeldetails_85").value;
+var _f4=document.getElementById("labeldetails_92").value;
+var _f5=document.getElementById("labeldetails_96").value;
+var _f6=document.getElementById("contact_new").value;
+var _payment=0;
+
+if (isNaN(_f2) || !_f2 || _f2<0)
+{
+_payment+=0;
+}
+else
+{
+_payment+=parseInt(_f2);
+};
+
+if (isNaN(_f3) || !_f3 || _f3<0)
+{
+_payment+=0;
+}
+else
+{
+_payment+=parseInt(_f3);
+};
+
+if (isNaN(_f4) || !_f4 || _f4<0)
+{
+_payment+=0;
+}
+else
+{
+_payment+=parseInt(_f4);
+};
+
+if (isNaN(_f5) || !_f5 || _f5<0)
+{
+_payment+=0;
+}
+else
+{
+_payment+=parseInt(_f5);
+};
+
+
+//_payment=parseInt(_f2)+parseInt(_f3)+parseInt(_f4)+parseInt(_f5);
+
+if (_f2>0||_f3>0||_f4>0||_f5>0)
+{
+}
+else
+{
+alert("CHECK PAYMENT RECEIVED:"+ _payment);
+return false;
+};
+
+
+if (_payment<_first)
+{
+//alert("CHECK PAYMENT RECEIVED:"+ _payment);
+_payment=_first-_payment;
+alert("LESS PAYMENT RECEIVED:"+ _payment);
+return false;
+};
+
+if (_payment>_first)
+{
+//alert("CHECK PAYMENT RECEIVED:"+ _payment);
+_payment=_payment-_first;
+alert("EXTRA PAYMENT RECEIVED:"+ _payment);
+return false;
+};
+
+if (isNaN(_f6) || !_f6 || _f6<0)
+{
+document.getElementById("contact_new").value=15;	
+_payment+=0;
+alert("check customer id : Value is wrong!!!");
+return false;
+};
+
+//alert("Value of total:"+ _first);
+
+};
+</script>
+
+<%#########VALIDATE##########%>
+
+<br/>
+========================================================
+  
+  
+  
     <br/>
     <b>
     <%=submit_tag ("       Create New Multiple Records            ")%>
@@ -24,5 +127,110 @@
   <br />
 =========================================================
 <%end %>
+
+
+
+<form name="frmSample" method="post" action="#" onSubmit="return ValidateForm()">
+                <p>Enter a phone number : 
+                  <input type="text" name="txtPhone">
+                </p>
+                <p> 
+                  <input type="submit" name="Submit" value="Submit">
+                </p>
+              </form>
+
+
+
+
+<script language = "Javascript">
+/**
+ * DHTML phone number validation script. Courtesy of SmartWebby.com (http://www.smartwebby.com/dhtml/)
+ */
+
+// Declaring required variables
+var digits = "0123456789";
+// non-digit characters which are allowed in phone numbers
+var phoneNumberDelimiters = "()- ";
+// characters which are allowed in international phone numbers
+// (a leading + is OK)
+var validWorldPhoneChars = phoneNumberDelimiters + "+";
+// Minimum no of digits in an international phone no.
+var minDigitsInIPhoneNumber = 10;
+
+function isInteger(s)
+{   var i;
+    for (i = 0; i < s.length; i++)
+    {   
+        // Check that current character is number.
+        var c = s.charAt(i);
+        if (((c < "0") || (c > "9"))) return false;
+    }
+    // All characters are numbers.
+    return true;
+}
+function trim(s)
+{   var i;
+    var returnString = "";
+    // Search through string's characters one by one.
+    // If character is not a whitespace, append to returnString.
+    for (i = 0; i < s.length; i++)
+    {   
+        // Check that current character isn't whitespace.
+        var c = s.charAt(i);
+        if (c != " ") returnString += c;
+    }
+    return returnString;
+}
+function stripCharsInBag(s, bag)
+{   var i;
+    var returnString = "";
+    // Search through string's characters one by one.
+    // If character is not in bag, append to returnString.
+    for (i = 0; i < s.length; i++)
+    {   
+        // Check that current character isn't whitespace.
+        var c = s.charAt(i);
+        if (bag.indexOf(c) == -1) returnString += c;
+    }
+    return returnString;
+}
+
+function checkInternationalPhone(strPhone){
+var bracket=3
+strPhone=trim(strPhone)
+if(strPhone.indexOf("+")>1) return false
+if(strPhone.indexOf("-")!=-1)bracket=bracket+1
+if(strPhone.indexOf("(")!=-1 && strPhone.indexOf("(")>bracket)return false
+var brchr=strPhone.indexOf("(")
+if(strPhone.indexOf("(")!=-1 && strPhone.charAt(brchr+2)!=")")return false
+if(strPhone.indexOf("(")==-1 && strPhone.indexOf(")")!=-1)return false
+s=stripCharsInBag(strPhone,validWorldPhoneChars);
+return (isInteger(s) && s.length >= minDigitsInIPhoneNumber);
+}
+
+function ValidateForm(){
+	var Phone=document.frmSample.txtPhone
+	
+	if ((Phone.value==null)||(Phone.value=="")){
+		alert("Please Enter your Phone Number")
+		Phone.focus()
+		return false
+	}
+	if (checkInternationalPhone(Phone.value)==false){
+		alert("Please Enter a Valid Phone Number")
+		Phone.value=""
+		Phone.focus()
+		return false
+	}
+	return true
+ }
+</script>
+
+
+
+
+
+
+
 </body>
 </html>
