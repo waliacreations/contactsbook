@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   #map.resources :contacts
 
-
+map.connect 'home/index', :controller=>'home', :action=>'index'
 
 map.connect 'contacts/view', :controller => 'contacts', :action => 'view' 
 map.connect 'contacts/viewsummary', :controller => 'contacts', :action => 'viewsummary'   
@@ -55,8 +55,8 @@ map.connect 'contacts/quickentry', :controller => 'contacts', :action => 'quicke
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
- # map.root :controller => "home" 
-  map.root  :controller => 'contacts', :action => 'viewsummary'
+ map.root :controller => 'home', :action=>'index'
+ # map.root  :controller => 'contacts', :action => 'viewsummary'
   
    map.connect ":controller/:action.:format"
   
