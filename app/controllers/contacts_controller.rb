@@ -1,7 +1,15 @@
 class ContactsController < ApplicationController
+ #before_filter :cookies_required, :except => ["cookies_test"]
+  
+  #validates_format_of :name, :with => /\A[\w\.\-\+]+\z/  
+  #consist only of alphanumeric characters, dots, + and -
+  
+  before_filter :authorize 
+  
   # GET /contacts
   # GET /contacts.xml
-  def index
+ 
+   def index
     redirect_to :action => 'viewsummary'
     
   #  @contacts = Contact.all
@@ -60,6 +68,7 @@ class ContactsController < ApplicationController
   
   
   def appendmultiple
+    @user_id=params[:uid]
     @billdate3=params[:bill_date]
     @billdate2=@billdate3.to_date
     @billdate1=@billdate2.strftime("%d-%m-%Y")
@@ -77,10 +86,6 @@ class ContactsController < ApplicationController
     end
     status="YES"
     
-    #@Invoices=Invoice.find(:all)
-    #@Invoices=Invoice.find(:first, :order=>"invoiceid DESC")
-    #@labels=OrderLabel.find(:all)
-    #@invoicedate=Contact.find(:first, :conditions=>"labelnumber=156 and contactid=#{conid}")  
     @contacts=Contact.find(:all)
     @labels=Label.find(:all)
      new_contact=Contact.new
@@ -156,7 +161,8 @@ class ContactsController < ApplicationController
           :labelnumber=>item1[x],
         :labeldetails=>item2[x],
         :contactid=>item3[x],
-        :created_at=>item4[x]
+        :created_at=>item4[x],
+        :userid=>@user_id
         )
           @contact.save!
           x=x+1
@@ -341,6 +347,7 @@ end
             page['labeldetails_13'].focus()  
             else
               _msg="OK"
+              
               page.alert("Email Validation:"+_msg) 
             end 
          
@@ -671,7 +678,8 @@ end   #if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.s
    
    
  def quickentry
-  
+   @username=session[:username]
+  @user_id=params[:id]
   @contact=Contact.find(:last)
  end
   
@@ -684,10 +692,11 @@ end   #if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.s
     end
   end
 
+ 
   
   
 def createmultiple
-	
+	@user_id=params[:uid] #user_id
 	cid=params[:id]
 	if cid.nil?
 		else
@@ -774,7 +783,8 @@ def createmultiple
 	    :labelnumber=>item1[x],
 		  :labeldetails=>item2[x],
 		  :contactid=>item3[x],
-		  :created_at=>item4[x]
+		  :created_at=>item4[x],
+		  :userid=>@user_id
 		  )
 	      @contact.save!
 	      x=x+1
@@ -782,11 +792,134 @@ def createmultiple
       end
       end
        #flash.now[:notice] = 'Contact was successfully created.'
-      redirect_to :action => 'view', :id => @contact.contactid
+      redirect_to :action => 'view', :id => @contact.contactid, :uid=>@user_id
 end
 end
 
+
+def validatetitle_1
+   @phrase1=[]
+       @phrase2=[]
+         @msg=""
+         msg1="" 
+         msgbeg=""
+         @sel=[]  #select_tag
+        @phrase1=params[:Tlabeldetails_1] 
+           
+   if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<3 or @phrase1.size>15
+     msgbeg="CHOOSE TITLE!!!"
+     @msg=msgbeg
+     
+    else    
+       msgbeg="ok" 
+       @msg="ok"
+   end   
+   respond_to do |format|
+      
+       
+         format.js {              
+         render :update do |page|            
+            _msg=@msg
+      
+            #if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
+           if msgbeg!="ok"                             
+            page.alert("Title Validation:"+_msg)
+           # end 
+            @results1="Select a Title"  
+            
+            obj1="Select a Title"
+            id1=0
+                 
+            page.alert("choose title")         
+             page<<"$('Tlabeldetails_1').options.selectedIndex=0"
+             
+             page.replace_html 'error_msg', "WRONG"
+             page.replace_html 'ok_msg', ""
+             
+                page.visual_effect :highlight,'error_msg', :duration=>1.5
+             else
+               _msg="OK"
+               page['labeldetails_1'].value=@phrase1
+              page.alert("Title Validation:"+_msg)
+             page.replace_html 'error_msg', ""
+             page.replace_html 'ok_msg', "OK!"
+             #page['labeldetails_4'].value=@results1
+             end 
+          
+            end #render :update do |page|
+               }
+           end #respond_to do |format|
+       
+ end  #validatetitle_1
+
+
+
+
+
+def validatetitle_6
+   @phrase1=[]
+       @phrase2=[]
+         @msg=""
+         msg1="" 
+         msgbeg=""
+         @sel=[]  #select_tag
+        @phrase1=params[:Tlabeldetails_6] 
+           
+   if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<3 or @phrase1.size>15
+     msgbeg="CHOOSE TITLE!!!"
+     @msg=msgbeg
+     
+    else    
+       msgbeg="ok" 
+       @msg="ok"
+   end   
+   respond_to do |format|
+      
+       
+         format.js {              
+         render :update do |page|            
+            _msg=@msg
+      
+            #if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
+           if msgbeg!="ok"                             
+            page.alert("Title Validation:"+_msg)
+           # end 
+            @results1="Select a Title"  
+            
+            obj1="Select a Title"
+            id1=0
+                 
+            page.alert("choose title")         
+             page<<"$('Tlabeldetails_6').options.selectedIndex=0"
+             
+             page.replace_html 'error_msg1', "WRONG"
+             page.replace_html 'ok_msg1', ""
+             
+                page.visual_effect :highlight,'error_msg1', :duration=>1.5
+             else
+               _msg="OK"
+               page['labeldetails_6'].value=@phrase1
+              page.alert("Title Validation:"+_msg)
+             page.replace_html 'error_msg1', ""
+             page.replace_html 'ok_msg1', "OK!"
+             #page['labeldetails_4'].value=@results1
+             end 
+          
+            end #render :update do |page|
+               }
+           end #respond_to do |format|
+       
+ end  #validatetitle_6
+
+
+
+
+
+
+
+
 def deletemultiple
+  @user_id=params[:uid]
 	con=params[:to_be_deleted]
 	  
 	  if con.nil?
@@ -801,12 +934,13 @@ def deletemultiple
 		end
 	end
 	end
-     redirect_to :action => 'viewsummary'
+     redirect_to :action => 'viewsummary', :uid=>@user_id
 end
 
 def view	  
 	 @contact_pages #, @contacts = paginate :contacts, :per_page => 30
-    listid=1
+    @user_id=params[:uid]
+	 listid=1
     listid=params[:id]
  flash.now[:notice] = "#{params[:arg1]}"
     if listid.nil?
@@ -840,27 +974,52 @@ def view
 
  def viewsummary  
 	 @contact_pages #, @contacts = paginate :contacts, :per_page => 30
+  @user_id=0
+	 @user_id=params[:uid]
+	   if @user_id.nil?
+	     if params[:id].nil?
+	     @user_id=0
+	     else
+	     @user_id=params[:id]
+	     end #if params[:id].nil?
+	   end #if user_id.nil?
+	#@msg_login=""
+	 @msg_login=params[:msg1]
+ #  Contact.update(:conditons=>"user_id=#{params[:id]} and labelnumber=130",:labeldetails => 90) 
+  # time_entry=Time.now.strftime("%Y-%m-%d %H:%M:%S")
+	 #  @log_in_change=Contact.find(:first, :conditions=>"userid=#{params[:id]} and labelnumber=130") 
+   #@log_in_change.update_attributes({:labeldetails=>time_entry})
+	  # if @request.cookies["_session_id"].to_s==""
+	  #     render :text=> "<html><body>"+"YOU NEED COOKIES"+"</body></html>"	 
+	 #  end  
+	  if @msg_login=="LOGIN SUCCESSFUL!!!!" 
    
-	@contactsall=Contact.find(:all, :conditions=>"labelnumber=150")  
-	@contacts=Contact.find(:all, 
-				:order=>["contactid, labelnumber"])
+     flash[:notice] = @msg_login
+	  end
+	   
+	  #flash[:message] = "Login Successful1! Welcome to the member area"
+ 
+     @login_time=session[:time]
+    @username=session[:username]  
+	 #get names array from session    
+    unless @names    #if array doesn't exist make one
+     @names=[]  
+    end  
+	   @names=session[:names] 
+   @previous_name=cookies[:name]
+	   
+	@contactsall=Contact.find(:all, :conditions=>"labelnumber=101")  
+	@parent=Contact.find(:all, :conditions=>"contactid=#{@user_id}",
+				:order=>["labelnumber"]) ##only records for login_user
+   @children=Contact.find(:all, :conditions=>"labelnumber=150 and userid=#{@user_id} and contactid<>#{@user_id}",
+           :order=>["labelnumber"]) ##only records for contacts created by login_user			  
 	
 	if @contacts.nil?
 	end
 
 	  @labels=Label.find(:all)
 	  
-end
-
-
-
-
-
-
-
-
-
-
+end  #viewsummary
 
 
   # GET /contacts/1/edit
@@ -913,4 +1072,6 @@ end
       format.xml  { head :ok }
     end
   end
+  
+  
 end

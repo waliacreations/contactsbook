@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Labels: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+<div id = "banner">
+	
+	<b>
+	<%=@page_title || "RELATIONSHIPMANAGER "%>
+	<br />
+	===============================
+	</b>	
+</div>
+<div id = "banner1">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<%=link_to_unless_current "HOME", '/home' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+<b><%=link_to_unless_current "LOGOUT", {:controller=>"home",:action=>"logout"}%></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+	
+	<br />
+</div>
+
+<div id = "notice">
+<%if flash[:notice]%> <%# notice will be red%>
+<p style="color: red; background:yellow"><%= flash[:notice] %></p>
+<%end%>
+<%if flash[:message]%>
+<p style="color: green; background:yellow"><%=flash[:message]%></p>
+<%end%>
+</div>
+
+
+<%= yield %>
+
+</body>
+</html>

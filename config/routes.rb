@@ -2,7 +2,10 @@ ActionController::Routing::Routes.draw do |map|
   #map.resources :contacts
 
 map.connect 'home/index', :controller=>'home', :action=>'index'
-
+  map.connect 'home/login', :controller=>'home', :action=>'login'
+  map.connect 'home/createlogin', :controller => 'home', :action => 'createlogin' 
+ 
+ # map.connect 'contacts/createlogin', :controller => 'contacts', :action => 'createlogin'   
 map.connect 'contacts/view', :controller => 'contacts', :action => 'view' 
 map.connect 'contacts/viewsummary', :controller => 'contacts', :action => 'viewsummary'   
 map.connect 'contacts/quickentry', :controller => 'contacts', :action => 'quickentry'  ###put these before map.resources :contacts

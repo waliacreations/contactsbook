@@ -1,7 +1,11 @@
 class Contact < ActiveRecord::Base
-#using will_paginate plugin
- cattr_reader :per_page
-  @@per_page = 30
+
+##to ensure labeldetails are not blank:
+  validates_presence_of(:labeldetails, :message=>"Do not enter blank values!!")
+  
+  #using will_paginate plugin
+  cattr_reader :per_page
+  @@per_page = 50
 
 
 
@@ -9,7 +13,8 @@ class Contact < ActiveRecord::Base
 TITLE_TYPES=[
 	["Mr.", "Mr."],
 	["Mrs.", "Mrs."],
-	["Miss", "Miss"]
+	["Miss", "Miss"],
+	["Master","Master"]  
 	].freeze
 	
 	COMPANY_TYPES=[
@@ -28,6 +33,7 @@ TITLE_TYPES=[
     ["networking","networking"],
     ["college/univ.","college"],
     ["work","work"], 
+    ["social","social"],  
     ["gym","gym"],
     ["hobby","hobby"],    
      ].freeze

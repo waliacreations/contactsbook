@@ -52,8 +52,8 @@
 	<td colspan="30"><%=contact.created_at%></td>
 	<td colspan="30"><%=contact.contactid%></td>	
    
-    <td><%= link_to 'Edit', :action => 'edit', :id => contact %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => contact , :cid=>contact.contactid}, :confirm => 'Are you sure?', :post => true %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => contact.contactid %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => contact.contactid , :cid=>contact.contactid}, :confirm => 'Are you sure?', :post => true %></td>
   </tr>
 <% end %>
 <%end%>
@@ -61,5 +61,5 @@
 <li>
 ==============================================================
 <br/>
-<%=link_to 'ViewSummary',{:action=>'viewsummary'}%>
+<%=link_to 'ViewSummary',{:action=>'viewsummary',:id=>contact.contactid, :uid=>@user_id}%>
 </body>

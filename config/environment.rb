@@ -11,6 +11,18 @@ Rails::Initializer.run do |config|
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
 
+  ####### HTTPOnly cookiesfor disabling javascript use for sessions
+  #config.action_controller.session = {
+ # :session_key => ‘_session_id’,
+  #:session_http_only => true,       ####### HTTPOnly cookiesfor disabling javascript use for sessions
+  #:secret      => ‘walia’
+  #}
+  
+  # Set to one of [:active_record_store, :drb_store, :mem_cache_store, :cookie_store]  
+ # config.action_controller.session_store = :cookie_store
+  
+  
+  
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 

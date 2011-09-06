@@ -1,4 +1,6 @@
 class LabelsController < ApplicationController
+  #before_filter :authorize
+  
   # GET /labels
   # GET /labels.xml
   def index

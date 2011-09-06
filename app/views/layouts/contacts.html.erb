@@ -8,8 +8,36 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
+<div id = "banner">
+	
+	<b>
+	<%=@page_title || "RELATIONSHIPMANAGER "%> <%#if @page_title is nil? then relationship manager%>
+	<br />
+	===============================
+	</b>	
+</div>
+<div id = "banner1">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<%=link_to_unless_current "HOME", '/home' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+<%=link_to_unless_current "CATEGORIES", '/categories' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+<%=link_to_unless_current "LABELS", '/labels' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
+<%=link_to_unless_current "CONTACTS", '/contacts' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 
-<p style="color: green"><%= flash[:notice] %></p>
+<b><%=link_to_unless_current "ADD NEW CONTACTS", {:action=>"quickentry", :id=>"userid"}%></b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+<b><%=link_to_unless_current "LOGOUT", {:controller=>"home",:action=>"logout"}%></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+	
+	<br />
+</div>
+
+<div id = "notice">
+<%if flash[:notice]%> <%# notice will be red%>
+<p style="color: red; background:yellow"><%= flash[:notice] %></p>
+<%end%>
+<%if flash[:message]%>
+<p style="color: green; background:yellow"><%=flash[:message]%></p>
+<%end%>
+</div>
 
 <%= yield %>
 
