@@ -112,7 +112,30 @@ TITLE_TYPES=[
 	#movies/circus/theatre/bowling/golf/shoppingmall/highstreet
   #for shopping&entertainment
 	
-		
+	PEOPLE_TYPES=[
+   ["Friend", "Friend"],
+   ["Relative/Family", "Relative/Family"],
+    ["Customer","Customer"], 
+    ["Supplier","Supplier"], 
+    ["Employee","Employee"], 
+    ["Student","Student"],   
+    ["BusinessAssociates","BusinessAssociates"],
+    ["Colleagues","Colleagues"],     
+   ["Supplier/Agents", "Supplier/Agents"],  
+   ["Guru/Mentor","Guru/Mentor"],   
+   ].freeze   
+     
+   
+   
+   
+   
+   
+   
+   
+     
+     
+     
+     		
   ENTITY_TYPES=[
 	["Friend", "Friend"],
 	["Relative", "Relative"],
@@ -121,6 +144,12 @@ TITLE_TYPES=[
   ["Teacher/Expert","Teacher"],   
     ].freeze
 	
+    
+    
+    
+  
+    
+    
 	
 	ENTITY_TYPESOLD=[
 	["Customer", "Customer"],
@@ -184,6 +213,14 @@ TITLE_TYPES=[
 	["Real Estate", "Real Estate"],
 	["Chartered Accountant", "Chartered Accountant"],
 	].freeze
+	
+  CITY_TYPES=[
+   ["Delhi", "Delhi"],
+   ["Gurgaon", "Gurgaon"],
+   ["Noida", "Noida"],
+   ["Faridabad", "Faridabad"],
+   ].freeze
+	
 	
 	STATE_TYPES=[
 	["Delhi", "Delhi"],

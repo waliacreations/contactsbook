@@ -1,74 +1,107 @@
-========================================================================<br/>
- 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+	<head> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+		<meta name="keywords" content="Contact Manager, Relationship Manager, walia" /> 
+<link rel="shortcut icon" href="/images/rails.png" /> 
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<%=javascript_include_tag :defaults %>
 
+<%=javascript_include_tag :defaults %> <%#original%>
+<%=javascript_include_tag "prototype"%>
+<%#<script type="text/javascript" src="/javascripts/context-disable.js"></script>%><%#disable rt.click%>
 <style type="text/css">@import url(/javascripts/calendar-win2k-1.css);</style>
 <script type="text/javascript" src="/javascripts/calendar.js"></script>
 <script type="text/javascript" src="/javascripts/lang/calendar-en.js"></script>
 <script type="text/javascript" src="/javascripts/calendar-setup.js"></script>
 <script type="text/javascript" src="/javascripts/combo-box.js"></script>
 
+<%=stylesheet_link_tag 'scaffold'%>
+
 <title>LOGIN: RELATIONSHIPMANAGER:</title>
 </head>
 
 
-<body>
-<h1>HOME:LOGIN PAGE: WELCOME!!! TO  WALIA's RELATIONSHIP MANAGER:!<%=h @name%></h1>
+<%########## to set body onload events and set values to nil on load########%>
+<body onload="cleartext1();">
 
-<%if params[:msg1].nil?%><%else%>MSG1:<%=params[:msg1]%><%end%>.<%=@username_login%>
-LAST LOGIN BY THIS EMAIL/USERNAME:<b> <%#= time_ago_in_words(login.login_at) %> ago</b>
+<%########## to set body onload events and set values to nil on load########%>
+<script type="text/javascript">
+//window.onload=cleartext1();
+function cleartext1(){
+var _second="";
+var _third=0;
 
+document.getElementById("labeldetails_1").value=_second;
+document.getElementById("labeldetails_2").value=_second;
+document.getElementById("labeldetails_3").value=_second;
+document.getElementById("labeldetails_4").value=_second;
+document.getElementById("labeldetails_5").value=_second;
+document.getElementById("labeldetails_6").value=_second;
+document.getElementById("username_1").value=_second;
+document.getElementById("password_1").value=_second;
+document.getElementById('Slabeldetails_4').options.selectedIndex=0;
+return false;
+//alert("CHECK SELECTION!!!");
+};
+</script>
+<%###################%>
+<%############################# %>
+<%#Organize groups & send Automated  Messages to groups:%>
 
-<div id="update1">
-<%form_tag ({:action=>'login', :msg=>params[:username_1], :onsubmit=>'return validate_Form1();'}) do %>
-
-
+<%#<h1><u>WELCOME TO  RELATIONSHIP MANAGER:</u></h1>%><%#=h @name%>
+<%if params[:msg1].nil?%><%else%>MSG1:<%=params[:msg1]%><%end%>
+ <b><span id="last_login"> </span></b>
 
 <p></p>
-
-
 <table cellspacing="5">	
+<div id="update1">
+<%form_tag ({:action=>'login', :msg=>params[:username_1]},{ :onsubmit=>'return validate_Form1();'}) do %>
+
+
 <tr>
 <td colspan="20"></td>
-<td colspan="30"><strong>EMAILID(username):(<u>Email</u> only)</strong></td>
-<td colspan="30"><strong>PASSWORD:(<u>3-15</u> characters)</strong></td>
+<td colspan="60" class="Title"><strong><u>LOGIN:</u></strong></td>
 <td colspan="20"></td>
 </tr>
 <tr>
-<td class="ListLineNew" colspan="20"><b>LOGIN:</b></td>
-<td class="ListLineNew" colspan="30"><%=text_field("username",1, "size"=>40, "value"=>"")%>
-<%=observe_field( :username_1,	:frequency =>6.5, :update=>'username_1',
- :url=> {:action => "validatelogin" },
+<td colspan="20"></td>
+<td colspan="30"><strong>USERNAME:(<u>Email</u> only)<span id="error_msg6"></span><span id="ok_msg6"></span></strong></td>
+<td colspan="30"><strong>PASSWORD:(<u>3-15</u>)<span id="error_msg7"></span><span id="ok_msg7"></span></strong></td>
+<td colspan="20"></td>
+</tr>
+<tr>
+<td class="ListLineNew" colspan="20"><b>SIGNUP:</b></td>
+<td class="ListLineNew" colspan="30"><%=text_field("username",1, "size"=>30, "value"=>"")%>
+<%=observe_field( :username_1,	:frequency =>14.5, :update=>'username_1',
+ :url=> {:action => "validateusername" },
 :with=>"'username_1='+value") %>
 </td>
 <td class="ListLineNew" colspan="30">
-<%=text_field("password",1, "size"=>40, "value"=>"")%> 
-<%#=observe_field( :password_1,	:frequency =>6.5, :update=>'password_1',
+<%=password_field("password",1, "size"=>30, "value"=>"")%> 
+<%=observe_field( :password_1,	:frequency =>7.5, :update=>'password_1',
  :url=> {:action => "validatepassword" },
 :with=>"'password_1='+value") %>
 </td>
-<td colspan="20">
+<td colspan="20" align="center">
 <%#=check_box("remember_me",1,{},"yes","no")%><%#remember-me%>
 <%#to make session persistent%>
+<%=submit_tag ("LOGIN",:class=>"button" )%>
 </td>
 </tr>
 <tr>
 <td colspan="20"></td>
 <td colspan="30"></td>
 <td colspan="30"></td>
-<td colspan="20"></td>
+<td colspan="20" ></td>
 </tr>
 <tr>
 <td colspan="20"></td>
 <td colspan="30"></td>
 <td colspan="30"></td>
-<td colspan="20"><%=submit_tag "LOGIN" %></td>
+<td colspan="20"></td>
 </tr>
-<tr>
+<tr><%###put the lines at bottom%>
 <td class="bottomline" colspan="20"></td>
 <td class="bottomline" colspan="30"></td>
 <td class="bottomline" colspan="30"></td>
@@ -93,10 +126,18 @@ function validate_Form1(){
 alert("Hello Have u checked all values!!!");
 var _first=document.getElementById("username_1").value;
 var _nothing="";
+var _second=document.getElementById("password_1").value;
 if (!_first  || _first==" " || _first=="" || parseInt(_first)>0)
 {
-alert("Check Emailid:"+ _first);
+alert("Check Emailid/Username:"+ _first);
 document.getElementById("username_1").value=_nothing;
+return false;
+}
+
+if (!_second  || _second==" " || _second=="")
+{
+alert("Check Password:"+ _second);
+document.getElementById("password_1").value=_nothing;
 return false;
 }
 };
@@ -109,55 +150,120 @@ return false;
 
 
 <%##################NEW USER REGISTERATION!!!!###############%>
+<%##################NEW USER REGISTERATION!!!!###############%>
 
 <%labeldetails=[]%>
 <%labelnumber=[]%>
 <%i=0%>
-<%i+=1%>
+
 
 <div id="update_new">
 
 <%#form_tag ({:action=>'new', :msg=>params[:username_1], :onsubmit=>'return validate_Form2();'}) do %>
-<%form_tag ({:controller=>"home",:action=>'createlogin'}) do %>
+<%form_tag ({:controller=>"home",:action=>'createlogin'},{:onsubmit=>'return validate_Form2();'}) do %>
 
 
 <tr>
 <td colspan="20"></td>
-<td colspan="30"><strong><u>NEW USER REGISTRATION:</u></strong></td>
-<td colspan="30"></td>
+<td colspan="60" class="Title"><strong><u>NEW USER REGISTRATION:</u></strong></td>
+
 <td colspan="20"></td>
 </tr>
 <tr>
 <td colspan="20"></td>
-<td colspan="30"><strong>EMAILID(username):(<u>Email</u> only)</strong></td>
-<td colspan="30"><strong>PASSWORD:(<u>3-15</u> characters)</strong></td>
-<td colspan="20"><strong>CONFIRM PASSWORD:</strong></td>
+<td colspan="30"><strong>USERNAME:(<u>Email</u> only)<span id="error_msg5"></span><span id="ok_msg5"></span></strong></td>
+<td colspan="30"><strong>PASSWORD:(<u>3-15</u>)<span id="error_msg"></span><span id="ok_msg"></span></strong></td>
+<td colspan="20"><strong>CONFIRM PASSWORD:<span id="error_msg1"></span><span id="ok_msg1"></span></strong></td>
 </tr>
 <tr>
+<%i+=1%>
 <td class="ListLineNew" colspan="20"><b>NEW USER:</b></td>
-<td class="ListLineNew" colspan="30"><%=text_field("labeldetails",i, "size"=>40, "value"=>"")%>
+<td class="ListLineNew" colspan="30"><%=text_field("labeldetails",i, "size"=>30, "value"=>"")%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"101")%>
-<%#=observe_field( :labeldetails_i,	:frequency =>6.5, :update=>'labeldetails_'i,
- :url=> {:action => "validatelogin_"i },
-:with=>"'labeldetails_11='+value") %>
+<%=observe_field( "labeldetails_"+i.to_s,	:frequency =>14.5, :update=>'labeldetails_'+i.to_s,
+ :url=> {:action => "validateusername_"+i.to_s },
+:with=>"'labeldetails_#{i}='+value") %>
+
 </td>
 <%i+=1%>
 <td class="ListLineNew" colspan="30" >
-<%=text_field("labeldetails",i, "size"=>40, "value"=>"")%> 
+<%=password_field("labeldetails",i, "size"=>30, "value"=>"")%> 
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"111")%>
-<%#=observe_field( :labeldetails_12,	:frequency =>6.5, :update=>'labeldetails_12',
- :url=> {:action => "validatepassword_"+i },
-:with=>"'labeldetails_'+i+'='+value") %>
+<%=observe_field( "labeldetails_"+i.to_s,	:frequency =>7.5, :update=>'labeldetails_'+i.to_s,
+:url=> {:action => "validatepassword_"+i.to_s },
+:with=>"'labeldetails_#{i}='+value") %>
 </td>
 <%i+=1%>
 <td class="ListLineNew" colspan="20">
-<%=text_field("labeldetails",i, "size"=>40, "value"=>"")%> 
-<%=hidden_field("labelnumber",i,"size"=>5,"value"=>"111")%>
-<%#=observe_field( :labeldetails_i,	:frequency =>6.5, :update=>'labeldetails_'+i,
- :url=> {:action => "validatepassword_"+i },
-:with=>"'labeldetails_'+i+'='+value") %>
+<%=password_field("labeldetails",i, "size"=>30, "value"=>"")%> 
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>"112")%>
+<%=observe_field( "labeldetails_"+i.to_s,	:frequency =>7.5, :update=>'labeldetails_'+i.to_s,
+ :url=> {:action => "validatepassword_"+i.to_s },
+:with=>"'labeldetails_#{i}='+value") %>
+</td>
+</tr><%#end line 1 of password evaluation###%>
+<tr>
+<td colspan="20"><strong>Title:<span id="error_msg2"></span><span id="ok_msg2"></span></strong></td>
+<td colspan="30"><strong>First&Middle NAME:<span id="error_msg3"></span><span id="ok_msg3"></span></strong></td>
+<td colspan="30"><strong>LAST NAME:<span id="error_msg4"></span><span id="ok_msg4"></span></strong></td>
+<td colspan="20"></td>
+</tr>
+<tr>
+<%i+=1%>
+
+<td class="ListLineReqd" colspan="20">
+
+<%@sel=""%>
+<%=hidden_field("labeldetails",i, "size"=>30, "value"=>"")%>
+
+<%#=select_tag("Slabeldetails_"+i.to_s,options_for_select([["SELECT TITLE:",""]]+Contact::TITLE_TYPES,@sel.to_s),:onClick=>"setTitle1();", :onBlur=>"setTitle2();")%>
+<%=select_tag("Slabeldetails_"+i.to_s,options_for_select([["SELECT TITLE:",""]]+Contact::TITLE_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>"201")%>
+<%=observe_field( "Slabeldetails_"+i.to_s,	:frequency =>3.5, :update=>'labeldetials_4',
+ :url=> {:action => "validatetitle_"+i.to_s },
+:with=>"'Slabeldetails_#{i}='+value") %>
+
+<script type="text/javascript">
+function setTitle1(){
+//var _h=document.getElementById('Slabeldetails_4').options[length].text;
+alert("hello");
+var _y="Mr.";
+document.getElementById('labeldetails_4').value=_y;
+};
+</script>
+
+<script type="text/javascript">
+function setTitle2(){
+
+//var _y=document.getElementById('Slabeldetails_4').options[length].text;
+var _y=document.getElementById('Slabeldetails_4').options[document.getElementById('Slabeldetails_4').selectedIndex].value;
+//alert("hello"+_y);
+document.getElementById('labeldetails_4').value=_y;
+};
+</script>
+</td> 
+
+<%i+=1%>
+<td class="ListLineNew" colspan="30"><%=text_field("labeldetails",i, "size"=>30, "value"=>"")%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>"202")%>
+<%=observe_field( "labeldetails_"+i.to_s,	:frequency =>14.5, :update=>'labeldetails_'+i.to_s,
+ :url=> {:action => "validatename_"+i.to_s },
+:with=>"'labeldetails_#{i}='+value") %>
+
+</td>
+<%i+=1%>
+<td class="ListLineNew" colspan="30" >
+<%=text_field("labeldetails",i, "size"=>30, "value"=>"")%> 
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>"204")%>
+<%=observe_field( "labeldetails_"+i.to_s,	:frequency =>7.5, :update=>'labeldetails_'+i.to_s,
+:url=> {:action => "validatename_"+i.to_s },
+:with=>"'labeldetails_#{i}='+value") %>
+</td>
+
+<td colspan="20" align="center"><%=submit_tag ("NEW REGISTERATION",:class=>"button")%>
 </td>
 </tr>
+<%####end password evaluation######%>
 <tr>
 <td colspan="20"></td>
 <td colspan="30"></td>
@@ -168,28 +274,81 @@ return false;
 <td colspan="20"></td>
 <td colspan="30"></td>
 <td colspan="30"></td>
-<td colspan="20"><%=submit_tag "NEW REGISTERATION" %>(login table)</td>
+<td colspan="20"></td>
 </tr>
-<tr>
+
+<tr><%###put the lines at bottom%>
 <td class="bottomline" colspan="20"></td>
 <td class="bottomline" colspan="30"></td>
 <td class="bottomline" colspan="30"></td>
 <td class="bottomline" colspan="30"></td>
 </tr>
+<%####### VALIDATE#########%>  
+<script type="text/javascript">
+function validate_Form2(){
+alert("Hello Have u checked all values!!!");
+var _nothing="";
+
+var _first=document.getElementById("labeldetails_1").value;
+if (!_first  || _first==" " || _first=="" || parseInt(_first)>0)
+{
+alert("Check Emailid/Username:"+ _first);
+document.getElementById("labeldetails_1").value=_nothing;
+return false;
+}
+
+_first=document.getElementById("labeldetails_2").value;
+if (!_first  || _first==" " || _first=="" )
+{
+alert("Check Password1:"+ _first);
+document.getElementById("labeldetails_2").value=_nothing;
+return false;
+}
+
+_first=document.getElementById("labeldetails_3").value;
+if (!_first  || _first==" " || _first=="" )
+{
+alert("Check Emailid/Username:"+ _first);
+document.getElementById("labeldetails_3").value=_nothing;
+return false;
+}
+
+ _first=document.getElementById("labeldetails_4").value;
+if (!_first  || _first==" " || _first=="" )
+{
+alert("Check Title:"+ _first);
+document.getElementById("labeldetails_4").value=_nothing;
+return false;
+}
+
+ _first=document.getElementById("labeldetails_5").value;
+if (!_first  || _first==" " || _first=="" || parseInt(_first)>0)
+{
+alert("Check First&Middle Name:"+ _first);
+document.getElementById("labeldetails_5").value=_nothing;
+return false;
+}
+
+ _first=document.getElementById("labeldetails_6").value;
+if (!_first  || _first==" " || _first=="" || parseInt(_first)>0)
+{
+alert("Check Last Name:"+ _first);
+document.getElementById("labeldetails_6").value=_nothing;
+return false;
+}
 
 
-</table>
+};
+</script>
 
-
-
-
+<%#########VALIDATE##########%>
 
 
 
 <%end%>
 
 </div>
-
+</table>
 
 
 
@@ -203,12 +362,6 @@ return false;
 
 <%###################################################################################%>
 
-
-
-
-
-
-  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;

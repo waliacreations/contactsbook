@@ -4,36 +4,33 @@
 <%=javascript_include_tag :defaults %>
 <%=javascript_include_tag "prototype"%>
 <title><h3> Contacts  List</h3></title>
-
-
-<h1> WELCOME TO RELATIONSHIP MANAGER:</h1>
-<h3> Listing contacts for <%=@username%>:</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<b><%=link_to_unless_current "ADD NEW CONTACTS", {:action=>"quickentry", :id=>@user_id, :sel=>"Friend"}%></b>
-&nbsp;&nbsp;&nbsp;&nbsp;log_in time: <%=@login_time%>
-
 </head>
 
-<body>
-<br/>===============================================================================<br/>
+<body><div id="banner1">
 <TABLE CELLSPACING="5">
 <tr>
-<td colspan="20"><b>ADD NEW:</b></td>
-<td colspan="20"></td><td colspan="20"></td>
-<td colspan="20"></td><td colspan="20"></td>
+<td colspan="20" >
+<%=button_to "FRIENDS/RELATIVES/SOCIAL", {:action=>"quickentry", :id=>@user_id, :choice=>"PEOPLE"}%></td>
+<td colspan="20">
+<%#=button_to "ESTABLISHMENTS", {:action=>"quickentry", :id=>@user_id, :choice=>"PLACES"}%></td>
+<td colspan="20">
+<%#=button_to "MONEY/WORK", {:action=>"quickentry", :id=>@user_id, :choice=>"PRODUCT"}%></td>
+<td colspan="20">
+<%#=button_to "ACTIVITIES/HOBBY", {:action=>"quickentry", :id=>@user_id,:choice=>"PROCESS"}%></td>
+<td colspan="20">
+<%#=button_to "GROWTH/GOALS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROGRESS"}%></td>
 </tr>
 <tr>
-<td colspan="20">
-<%=button_to "FRIENDS/RELATIVES/SOCIAL", {:action=>"quickentry", :id=>@user_id}%></td>
-<td colspan="20">
-<%=button_to "Business Associates/WORK", {:action=>"quickentry", :id=>@user_id}%></td>
-<td colspan="20">
-<%=button_to "SUPPLIERS/Utility/Bank", {:action=>"quickentry", :id=>@user_id}%></td>
-<td colspan="20">
-<%=button_to "Emergency/Medical/Fire/Police/Helplines", {:action=>"quickentry", :id=>@user_id}%></td>
-<td colspan="20">
-<%=button_to "Assets/Investments/FD", {:action=>"quickentry", :id=>@user_id}%></td>
+<td colspan="20"><b><h20>(PEOPLE)</h20></b></td>
+<td colspan="20"><b><h20>(PLACES)</h20></b></td>
+<td colspan="20"><b><h20>(PRODUCT/SERVICES/ASSETS)</h20></b></td>
+<td colspan="20"><b><h20>(PROJECTS/PROCESS)</h20></b></td>
+<td colspan="20"><b><h20>(PROGRESS)</h20></b></td>
 </tr>
+
 </table>
+</div>
+<h3> Listing contacts for <%=@username%>:</h3>
 ===============================================================================<br/>
 <%if session[:user_id]%>  <%#this will exist only if session is initialized in login%>
 Session is:<%=session.session_id%><br/>
@@ -44,7 +41,7 @@ Session is:<%=session.session_id%><br/>
 <br/>
 
 
-<% form_tag :action=>"deletemultiple", :uid=>@user_id do -%>
+<% form_tag :action=>"deletemultiple", :uid=>@user_id ,:confirm=>"ARE YOU SURE" do -%>
 
 <%name=""%><%email=""%><%details=""%>
 <%@parent.each do |d|%>
@@ -90,21 +87,22 @@ when  201..204 then %>
 <td colspan="20"><strong><%=email%></td>
 <td colspan="40"><%=details%></td>
 <td colspan="25"></td>
-<td colspan="10"><%if params[:uid].nil?%><%i=0%><%else%><%i=params[:uid].to_i%><%end%><%=i%>
-<%= link_to 'Edit', :action => 'view', :id => i %>
+<td colspan="10"><%if params[:uid].nil?%><%i=params[:id]||0%><%else%><%i=params[:uid].to_i||params[:id]%><%end%><%=i%>
+<%= link_to 'Edit', :action => 'view', :id => i, :uid=>i %>
   <%#= link_to 'Delete', { :action => 'delete', :id => i }, :confirm => 'Are you sure? ALL RECORDS FOR THIS CONTACT WILL BE DELETED', :post => true %>
-    <td><%= link_to 'Update', :action => 'append', :id => i %>
+    <td> Update<%#= link_to 'Update', :action => 'append', :id => i, :uid=>i %>
   <%#=check_box("to_be_deleted",i,{},"yes","no")%>
 </td>
 
 </tr>
+<tr>
 <td colspan="5"></td>
 <td colspan="20"></td>
 <td colspan="40" align="center"><b><u>CONTACTS FOR THIS USERNAME:</b></u></td>
 <td colspan="25"></td>
 <td colspan="10"></td>
 </tr>
-</tr>
+<tr>
 <td colspan="5">.</td>
 <td colspan="20">___________</td>
 <td colspan="40">_________________________</td>
@@ -130,7 +128,7 @@ when  201..204 then %>
  <%@c=Contact.find(:first, :conditions=>"userid=#{@user_id} and contactid>#{@user_id.to_i}",
            :order=>["labelnumber"])%>
 <%if @c.nil?%>
-</tr>
+<tr>
 <td colspan="5">.</td>
 <td colspan="20">___________</td>
 <td colspan="40"><h5>NO CONTACT-RECORDS EXIST!!!</h5></td>
@@ -186,13 +184,13 @@ when  199..240 then%>
 	<td colspan="40"><h20><%=contactnumber%><br/><%=contactdetails%><br/><%=contactaddress%></h20></td>
 	<td colspan="25"><h20><%=contactmsg%></h20></td>
 	<td colspan="10"><%=i%>  
-   <%= link_to 'Edit', :action => 'view', :id => i %>
+   <%= link_to 'Edit', :action => 'view', :id => i, :uid=>params[:uid]  %>
   <%#= link_to 'Delete', { :action => 'delete', :id => i }, :confirm => 'Are you sure? ALL RECORDS FOR THIS CONTACT WILL BE DELETED', :post => true %>
-    <td><%= link_to 'Update', :action => 'append', :id => i %>
-  <%=check_box("to_be_deleted",i,{},"yes","no")%>
+    <td><%#= link_to 'Update', :action => 'append', :id => i %>
+ &nbsp;&nbsp;&nbsp; delete<%=check_box("to_be_deleted",i,{},"yes","no")%>
     </td>
     </tr>
-</tr>
+<tr>
 <td colspan="5">.</td>
 <td colspan="20">-----</td>
 <td colspan="40">-----------------------</td>
@@ -200,20 +198,18 @@ when  199..240 then%>
 <td colspan="10">-----</td>
 </tr>
   
-
 <%contactaddress=""%>
 <%name=""%>
 <%contactnumber=""%>
 <%contactdetails=""%>
 <%contactmsg=""%>
 <%a=a+1%>
-
 <%end%> 
+
 <%end%><%#@contactsall.each do |cnum|%> 
 </table>
 
-<%a=a+1%>
-    
+<%a=a+1%>    
 <li>==============================================================</li>
 <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	

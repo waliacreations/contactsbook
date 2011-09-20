@@ -10,8 +10,7 @@ class ContactsController < ApplicationController
   # GET /contacts.xml
  
    def index
-    redirect_to :action => 'viewsummary'
-    
+    redirect_to :action => 'viewsummary'    
   #  @contacts = Contact.all
 
    # respond_to do |format|
@@ -680,6 +679,10 @@ end   #if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.s
  def quickentry
    @username=session[:username]
   @user_id=params[:id]
+  @choice=params[:choice]
+    if @choice.nil?
+      @choice="none"
+    end
   @contact=Contact.find(:last)
  end
   
@@ -797,7 +800,7 @@ end
 end
 
 
-def validatetitle_1
+def validatecategory_1
    @phrase1=[]
        @phrase2=[]
          @msg=""
@@ -823,24 +826,24 @@ def validatetitle_1
       
             #if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
            if msgbeg!="ok"                             
-            page.alert("Title Validation:"+_msg)
+           # page.alert("Title Validation:"+_msg)
            # end 
             @results1="Select a Title"  
             
             obj1="Select a Title"
             id1=0
-                 
-            page.alert("choose title")         
+             _empty=""    
+          #  page.alert("choose title")         
              page<<"$('Tlabeldetails_1').options.selectedIndex=0"
              
              page.replace_html 'error_msg', "WRONG"
              page.replace_html 'ok_msg', ""
-             
-                page.visual_effect :highlight,'error_msg', :duration=>1.5
+             page['labeldetails_1'].value=_empty
+                page.visual_effect :highlight,'error_msg', :duration=>2.5
              else
                _msg="OK"
                page['labeldetails_1'].value=@phrase1
-              page.alert("Title Validation:"+_msg)
+             # page.alert("Title Validation:"+_msg)
              page.replace_html 'error_msg', ""
              page.replace_html 'ok_msg', "OK!"
              #page['labeldetails_4'].value=@results1
@@ -856,16 +859,16 @@ def validatetitle_1
 
 
 
-def validatetitle_6
+def validatetitle_3
    @phrase1=[]
        @phrase2=[]
          @msg=""
          msg1="" 
          msgbeg=""
          @sel=[]  #select_tag
-        @phrase1=params[:Tlabeldetails_6] 
+        @phrase1=params[:Tlabeldetails_3] 
            
-   if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<3 or @phrase1.size>15
+   if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<2 or @phrase1.size>15
      msgbeg="CHOOSE TITLE!!!"
      @msg=msgbeg
      
@@ -882,24 +885,24 @@ def validatetitle_6
       
             #if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
            if msgbeg!="ok"                             
-            page.alert("Title Validation:"+_msg)
+          #  page.alert("Title Validation:"+_msg)
            # end 
             @results1="Select a Title"  
             
             obj1="Select a Title"
             id1=0
                  
-            page.alert("choose title")         
-             page<<"$('Tlabeldetails_6').options.selectedIndex=0"
-             
+          #  page.alert("choose title")         
+             page<<"$('Tlabeldetails_3').options.selectedIndex=0"
+             page['labeldetails_3'].value=""
              page.replace_html 'error_msg1', "WRONG"
              page.replace_html 'ok_msg1', ""
              
                 page.visual_effect :highlight,'error_msg1', :duration=>1.5
              else
                _msg="OK"
-               page['labeldetails_6'].value=@phrase1
-              page.alert("Title Validation:"+_msg)
+               page['labeldetails_3'].value=@phrase1
+             # page.alert("Title Validation:"+_msg)
              page.replace_html 'error_msg1', ""
              page.replace_html 'ok_msg1', "OK!"
              #page['labeldetails_4'].value=@results1
@@ -910,11 +913,6 @@ def validatetitle_6
            end #respond_to do |format|
        
  end  #validatetitle_6
-
-
-
-
-
 
 
 
@@ -939,7 +937,7 @@ end
 
 def view	  
 	 @contact_pages #, @contacts = paginate :contacts, :per_page => 30
-    @user_id=params[:uid]
+    @user_id=params[:uid]||params[:id]
 	 listid=1
     listid=params[:id]
  flash.now[:notice] = "#{params[:arg1]}"
@@ -952,21 +950,19 @@ def view
 	end
 	end
 	@contacts=Contact.find(:all, 
-			:conditions=>"contactid=#{listid}",
+			:conditions=>"contactid=#{listid} and userid=#{@user_id}",
 			:order=>["labelnumber"])
 	if  params[:id].nil?
 		@picture=Picture.find(15)
 	else
 			@c=Contact.find(:first,
-			 :conditions=> "contactid=#{listid} and labelnumber=921")
+			 :conditions=> "contactid=#{listid} and labelnumber=101")
 			 id1=1
 		 if @c.nil?
 			 id1=15
 			else
 			 id1=(@c.labeldetails).to_i 
-			 #if id1>0
-				#@picture=Picture.find(id1)
-			#end
+			 
 		end
 	end		
 			

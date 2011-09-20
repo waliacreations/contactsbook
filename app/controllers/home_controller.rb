@@ -288,13 +288,18 @@ end # if @existingemail.nil?  ##email should not exist
          
     _msg=msg
    if msgbeg!="ok"||msgbeg1!="ok"||msg8!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
-            page.alert("Email Validation:"+_msg)
+            #page.alert("Email Validation:"+_msg)
             @results1=""
-            page['labeldetails_1'].value=@results1
+            #page['labeldetails_1'].value=@results1
+            page.replace_html 'error_msg5', ""+_msg
+            page.replace_html 'ok_msg5', ""  
             #page['labeldetails_1'].focus()  
             else
               _msg="OK"
-             page.alert("Email Validation:"+_msg) 
+            # page.alert("Email Validation:"+_msg) 
+          page.replace_html 'error_msg5', ""
+           page.replace_html 'ok_msg5', ""+_msg
+             
             end 
          
            end #render :update do |page|
@@ -330,24 +335,24 @@ end # if @existingemail.nil?  ##email should not exist
          
                #if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
               if msgbeg!="ok"                             
-               page.alert("Title Validation:"+_msg)
+               #page.alert("Title Validation:"+_msg)
               # end 
-               @results1="Select a Title"  
+               @results1="WRONG!Select a Title"  
                
                obj1="Select a Title"
                id1=0
                     
-               page.alert("choose title")         
+              # page.alert("choose title")         
                 page<<"$('Slabeldetails_4').options.selectedIndex=0"
                 
-                page.replace_html 'error_msg2', "WRONG"
+                page.replace_html 'error_msg2', @results1
                 page.replace_html 'ok_msg2', ""
                 
                    page.visual_effect :highlight,'error_msg2', :duration=>1.5
                 else
                   _msg="OK"
                   page['labeldetails_4'].value=@phrase1
-                 page.alert("Title Validation:"+_msg)
+                # page.alert("Title Validation:"+_msg)
                 page.replace_html 'error_msg2', ""
                 page.replace_html 'ok_msg2', "OK!"
                 #page['labeldetails_4'].value=@results1
@@ -439,10 +444,10 @@ def validatename_5
        
              page.replace_html 'error_msg3', "WRONG"
            page.replace_html 'ok_msg3', ""
-              page.visual_effect :highlight,'error_msg', :duration=>1.5
+              page.visual_effect :highlight,'error_msg3', :duration=>1.5
            else
              _msg="OK"
-            page.alert("FirstName Validation:"+_msg)
+           # page.alert("FirstName Validation:"+_msg)
            page.replace_html 'error_msg3', ""
            page.replace_html 'ok_msg3', "OK!"
            #page['labeldetails_5'].value=@results1
@@ -523,7 +528,7 @@ def validatename_6
         
          #if msgbeg.to_s=="ok"
          
-          page.alert("LASTName Validation:"+_msg)
+        #  page.alert("LASTName Validation:"+_msg)
          # end 
           @results1=""
                
@@ -531,10 +536,10 @@ def validatename_6
        
              page.replace_html 'error_msg4', "WRONG"
            page.replace_html 'ok_msg4', ""
-              page.visual_effect :highlight,'error_msg', :duration=>1.5
+              page.visual_effect :highlight,'error_msg4', :duration=>1.5
            else
              _msg="OK"
-            page.alert("LASTName Validation:"+_msg)
+           # page.alert("LASTName Validation:"+_msg)
            page.replace_html 'error_msg4', ""
            page.replace_html 'ok_msg4', "OK!"
            #page['labeldetails_6'].value=@results1
@@ -615,7 +620,7 @@ def validatepassword_2
         
          #if msgbeg.to_s=="ok"
          
-          page.alert("Password Validation:"+_msg+"! "+@phrase1)
+         # page.alert("Password Validation:"+_msg+"! "+@phrase1)
          # end 
           @results1=""
                
@@ -629,13 +634,13 @@ def validatepassword_2
              #page.insert_html :bottom, 'update_new', '<table></table><p> HEELOOO!!!!</p>'
              page.replace_html 'error_msg', "WRONG"
            page.replace_html 'ok_msg', ""
-              page.visual_effect :highlight,'error_msg', :duration=>1.5
+              page.visual_effect :highlight,'error_msg', :duration=>2.5
            else
              _msg="OK"
-            page.alert("Password Validation:"+_msg+"! "+@phrase1)
+            #page.alert("Password Validation:"+_msg+"! "+@phrase1)
            page.replace_html 'error_msg', ""
            page.replace_html 'ok_msg', "OK!"
-           page['labeldetails_3'].value=@results1
+           #page['labeldetails_3'].value=@results1
            
            end 
         
@@ -691,7 +696,7 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
     
         if msgbeg!="ok"   ##password notcorrect!!!
           
-          page.alert("Password Validation:"+_msg+"! ")
+         # page.alert("Password Validation:"+_msg+"! ")
          # end 
           @results2=""
            page['labeldetails_2'].value=@results2   
@@ -703,7 +708,9 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
              #page.hide['update_new']
              #page.insert_html :bottom, 'update_new', '<table></table><p> HEELOOO!!!!</p>'
              page.replace_html 'error_msg1', "WRONG"
+          page.replace_html 'error_msg', "WRONG"  
            page.replace_html 'ok_msg1', ""
+          page.replace_html 'ok_msg', ""
               page.visual_effect :highlight,'error_msg1', :duration=>1.5
            else
              #passwords match validation
@@ -711,10 +718,10 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
            
             page<< 'var label1=$("labeldetails_2");
                   var opt21=document.getElementById("labeldetails_2").value;
-                  alert("PASSWORD1:"+opt21);
+                 // alert("PASSWORD1:"+opt21);
                     var label2=$("labeldetails_3");
                            var opt22=document.getElementById("labeldetails_3").value;
-                           alert("PASSWORD2:"+opt22);
+                          // alert("PASSWORD2:"+opt22);
                    
                     var opt23="";
                          opt23=opt21+":"+opt22;
@@ -723,16 +730,22 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
                       message="PASSWORDS MATCH";
           
           document.getElementById("error_msg1").innerHTML="";
+          document.getElementById("error_msg").innerHTML="";
           document.getElementById("ok_msg1").innerHTML="DONE!";
+          document.getElementById("ok_msg").innerHTML="DONE!"; 
              
                    }
                      else{
+            var _empty="";
                       message="NOT MATCHING TRY AGAIN";
-         document.getElementById("labeldetails_2").value="";
-         document.getElementById("labeldetails_3").value="";
+         document.getElementById("labeldetails_2").value=_empty;
+         document.getElementById("labeldetails_3").value=_empty;
                       
           document.getElementById("error_msg1").innerHTML="WRONG!!!";
-                    document.getElementById("ok_msg1").innerHTML="RE-DO!";       
+                    document.getElementById("ok_msg1").innerHTML="";   
+          document.getElementById("error_msg").innerHTML="WRONG!!!";
+                              document.getElementById("ok_msg").innerHTML=""; 
+                
                          }
                      //alert("MATCH:"+opt23+message);   
             
@@ -741,16 +754,8 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
          // alert(curStyle.fontWeight);
                  
                 //var optGrps1=label1.getElementsByTagName("optgroup").length; ' 
-                 
-             
-             
-             
-         
-             
-             
-           
-          
-           # page.alert("Password Validation:"+_msg+"! ")
+    
+            # page.alert("Password Validation:"+_msg+"! ")
            #page.replace_html 'error_msg1', ""
            #page.replace_html 'ok_msg1', "DONE!"
            end 
@@ -785,16 +790,16 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
     
     
        if @username_login==@username_password
-         @msg_login="EMAIL OK!!!!"
+         @msg_login="OK!!!!"
          @last_loginarray=Contact.find(:first,:conditions=>"labelnumber=130 and userid=#{@username_match.userid}") 
          @last_login=@last_loginarray.labeldetails
        else
-         @msg_login="WRONG EMAIL! THIS EMAIL NOT REGISTERED!!!" 
+         @msg_login="WRONG EMAIL! NOT REGISTERED!!!" 
            
            if @username_login.blank? or @username_login==""
           @msg_login="" 
            else
-           @msg_login="WRONG EMAIL: RE-ENTER YOUR USERNAME AND PASSWORD!!!"     
+           @msg_login="WRONG:!!!"     
          end #if params[:username].blank?
                     
         end      # if (@username_login.to_s).downcase=="waliacreations@yahoo.com" 
@@ -804,19 +809,26 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
                         format.js {
                         render :update do |page|
                           _empty=""
-                           if  @msg_login=="EMAIL OK!!!!"
-                             page.alert(@msg_login+@username_login)
-                             page.replace_html 'last_login', "PREVIOUS LOGIN -"+@username_login+":"+@last_login+"("+time_ago_in_words(@last_login)+" ago)"
-                             
+                           if  @msg_login=="OK!!!!"
+                            # page.alert(@msg_login+@username_login)
+                             page.replace_html 'last_login', "PREVIOUS LOGIN:"+@username_login+":"+@last_login+"("+time_ago_in_words(@last_login)+" ago)"
+                             page.replace_html 'error_msg6', ""
+                             page.replace_html 'ok_msg6', ""+@msg_login
                            else
                            
                           if @msg_login=="" or @msg_login.blank?
-                            page.alert("blank entry!!!:"+@msg_login)
+                           # page.alert("blank entry!!!:"+@msg_login)
+                            page['username_1'].value=_empty
+                            page.replace_html 'error_msg6', "WRONG blank entry!!!:"
+                            page.replace_html 'ok_msg6', ""
                           else
                          # page.refresh
-                          page.alert(@msg_login)                          
-                        # page['username_1'].value=_empty
+                         # page.alert(@msg_login)                          
+                        page['username_1'].value=_empty
                          # page['username_1'].focus() 
+                            page.replace_html 'error_msg6', @msg_login
+                            page.replace_html 'ok_msg6', ""
+                                             
                                                         
                           end  #if @msg_login=="" or @msg_login.blank?
                           end  # if  @msg_login="LOGIN SUCCESSFUL!!!!"
@@ -911,7 +923,7 @@ def validatepassword  #validate password for login
         
          #if msgbeg.to_s=="ok"
          
-          page.alert("Password Validation:"+_msg+"! "+@phrase1)
+         # page.alert("Password Validation:"+_msg+"! "+@phrase1)
          # end 
           @results1=""
                
