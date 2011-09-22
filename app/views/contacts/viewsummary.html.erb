@@ -6,32 +6,7 @@
 <title><h3> Contacts  List</h3></title>
 </head>
 
-<body><div id="banner1">
-<TABLE CELLSPACING="5">
-<tr>
-<td colspan="20" >
-<%=button_to "FRIENDS/RELATIVES/SOCIAL", {:action=>"quickentry", :id=>@user_id, :choice=>"PEOPLE"}%></td>
-<td colspan="20">
-<%#=button_to "ESTABLISHMENTS", {:action=>"quickentry", :id=>@user_id, :choice=>"PLACES"}%></td>
-<td colspan="20">
-<%#=button_to "MONEY/WORK", {:action=>"quickentry", :id=>@user_id, :choice=>"PRODUCT"}%></td>
-<td colspan="20">
-<%#=button_to "ACTIVITIES/HOBBY", {:action=>"quickentry", :id=>@user_id,:choice=>"PROCESS"}%></td>
-<td colspan="20">
-<%#=button_to "GROWTH/GOALS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROGRESS"}%></td>
-</tr>
-<tr>
-<td colspan="20"><b><h20>(PEOPLE)</h20></b></td>
-<td colspan="20"><b><h20>(PLACES)</h20></b></td>
-<td colspan="20"><b><h20>(PRODUCT/SERVICES/ASSETS)</h20></b></td>
-<td colspan="20"><b><h20>(PROJECTS/PROCESS)</h20></b></td>
-<td colspan="20"><b><h20>(PROGRESS)</h20></b></td>
-</tr>
-
-</table>
-</div>
-<h3> Listing contacts for <%=@username%>:</h3>
-===============================================================================<br/>
+<body>
 <%if session[:user_id]%>  <%#this will exist only if session is initialized in login%>
 Session is:<%=session.session_id%><br/>
 <%end%>
@@ -39,9 +14,7 @@ Session is:<%=session.session_id%><br/>
 <%if params[:msg1].nil?%><%else%><%#=@msg_login=params[:msg1]%><%end%>
 
 <br/>
-
-
-<% form_tag :action=>"deletemultiple", :uid=>@user_id ,:confirm=>"ARE YOU SURE" do -%>
+<%form_tag :action=>"deletemultiple", :uid=>@user_id ,:confirm=>"ARE YOU SURE" do -%>
 
 <%name=""%><%email=""%><%details=""%>
 <%@parent.each do |d|%>
@@ -214,7 +187,8 @@ when  199..240 then%>
 <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-<%=submit_tag("     DELETE CHECKED CONTACTS    ")%>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<%=submit_tag("     DELETE CHECKED CONTACTS    ",:class=>"button")%>
 
 <%end%>    
 <li>==============================================================</li>

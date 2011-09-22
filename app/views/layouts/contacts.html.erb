@@ -10,24 +10,64 @@
 <body>
 <div id = "banner">
 	<b>
-	<%=@page_title||"RELATIONSHIPMANAGER "%> <%#if @page_title is nil? then relationship manager%>
+	<%=@page_title||"iCONTACT"%> <%#if @page_title is nil? then relationship manager%>
 	</b>
 </div>
 <div id = "banner1">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-	
+<TABLE CELLSPACING="2">
+<tr>
+<td colspan="30">
+<span id="left1"><b> Listing contacts for <%=@username%>:</b></span>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td colspan="20"><b>
 <%=link_to_unless_current "HOME", '/home' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+</td>
+<td colspan="20"><b>
 <%=link_to_unless_current "CATEGORIES", '/categories' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+</td>
+<td colspan="30"><b>
 <%if @user_id.to_i==1%>
 <%=link_to_unless_current "LABELS", '/labels' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
-<%=link_to_unless_current "CONTACTS", '/contacts' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<%=link_to_unless_current "CONTACTS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 <%end%>
-<b><%#=link_to_unless_current "ADD NEW CONTACTS", {:action=>"quickentry", :id=>"userid"}%></b>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+
 <b><%=link_to_unless_current "LOGOUT", {:controller=>"home",:action=>"logout"}%></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-	
-	<br />
+</td>
+
+
+</tr>	
+</table>
 </div>
+
+<div id="banner1">
+<TABLE CELLSPACING="2">
+<tr>
+<td colspan="20" >
+<%=button_to "  PEOPLE  ", {:action=>"quickentry", :id=>@user_id, :choice=>"PEOPLE"},:class=>"button"%>
+<h20></h20></td>
+<td colspan="20">
+<%#=button_to "PLACES", {:action=>"quickentry", :id=>@user_id, :choice=>"PLACES"}%>
+<h20>(PLACES)</h20></td>
+<td colspan="20">
+<%#=button_to "PRODUCTS", {:action=>"quickentry", :id=>@user_id, :choice=>"PRODUCT"}%>
+<h20>(PRODUCT/SERVICES/ASSETS)</h20></td>
+<td colspan="20">
+<%#=button_to "PROJECTS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROCESS"}%>
+<h20>(PROJECTS/PROCESS)</h20></td>
+<td colspan="20">
+<%#=button_to "PROGRESS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROGRESS"}%>
+<h20>(PROGRESS)</h20></td>
+</tr>
+
+
+</table>
+</div>
+
+
+
+
+
 
 <div id = "notice">
 <%if flash[:notice]%> <%# notice will be red%>

@@ -251,13 +251,27 @@ color:red;	}
 #bannerold { background: #FDD017; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
  color: #B93B8F;#660066 text-align: center; font: bold 3em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	}
-#banner { background:#660066 ; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
+#bannerold1 { background:#660066 ; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
  color: #FF0000; text-align: center; font: bold 3em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	}
+	
+#left1 {  background: #FDD017; padding-top: 0px; padding-bottom: 2px; border-bottom: 0px solid; 
+  color: #B93B8F; font: bold 1.3em  "Arial", serif;   text-align: left;
+  	}	
+	
+	
+	
+	
+#banner { background:#520052 ; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
+ color: #FF0000; text-align: center; font:bold 3.2em "Georgia", Times, serif;
 	}
 
 
-#banner1 { background: #FDD017; padding-top: 0px; padding-bottom: 5px; border-bottom: 0.5px solid; 
-  color: #B93B8F;font: bold 0.85em  "Arial", serif;   text-align: center;}
+
+
+
+#banner1 { background: #FDD017; padding-top: 0px; padding-bottom: 2px; border-bottom: 0.1px solid; 
+  color: #B93B8F;font: bold 0.95em  "Arial", serif;   text-align: center;}
 
 #banner2 { background: red; padding-top: 0px; padding-bottom: 0px; border-bottom: 0.5px solid; 
  font: bold 0.85em  "Arial Narrow", serif;  color:gold ; text-align: center; }
@@ -283,8 +297,14 @@ color:red;	}
 .ListLine0old {background: #999; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 .ListLine1old {background: #998; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
-.ListLine0 {background:#7D267D; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
-.ListLine1 {background:#660066; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+.ListLine0purple {background:#7D267D; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+.ListLine1purple {background:#660066; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+
+.ListLine0indigo {background:	#3C0068; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+.ListLine1indigo {background:#4B0082; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+
+.ListLine0 {background:#470047; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+.ListLine1 {background:#520052; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
 
 .ListLine0lightblue {background: #AFEEEE; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 .ListLine1darkblue {background: #B0E0E6; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
@@ -293,16 +313,23 @@ color:red;	}
 .ListLine0Whitefontblue {background: #FFFACD; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 .ListLine1Whitefontblue {background: CornSilk; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
-.ListLine0White {background: #FED47A; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
-.ListLine1White {background: #FED680; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+.ListLine0Cream {background: #FED47A; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+.ListLine1Cream {background: #FED680; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+.ListLineReqdCream {background-color:#FED47A ; margin-bottom: 0.0ex; border-width:1px;
+  border-style:solid;  border-color:red yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}	
+	
+.ListLine0White {background:#FFFFC2; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+.ListLine1White {background:#FFFFCC; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+.ListLineReqdWhite {background-color:#FFFFAD; margin-bottom: 0.0ex; border-width:1px;
+  border-style:solid;  border-color:red yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+
 
 .ListLineNew {background:#998; margin-bottom: 0.0ex; border-width:1px;
 border-style:solid;  border-color:yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
 .ListLineReqd {background: #999; margin-bottom: 0.0ex; border-width:1px;
   border-style:solid;  border-color:red yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
-.ListLineReqdWhite {background-color:#FED47A ; margin-bottom: 0.0ex; border-width:1px;
-  border-style:solid;  border-color:red yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
+
 
 .Title{background-color:yellow; text-align: center; font: bold 1.2em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; color:blue;}
 
@@ -369,5 +396,12 @@ tr.noborderall{border: 1px;}
 td.noborder1 {border-bottom:none; font-size: 0.85em;}
 td.cell {display: table-cell;border: 1px solid black;padding: 1em; width: 12.5%;}
 
-.button {background-color:#FDD017; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:Red; height:2em; text-align: center;
+.buttonpurple {background-color:#520052; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
+  font-weight: bold;}
+ .buttonblue {background-color:#191970; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
+  font-weight: bold;} 
+   .button {background-color:Maroon; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:White; height:2em; text-align: center;
+  font-weight: bold;}
+  
+  .buttonblack{background-color:#290014; border:solid, border-width:6px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
   font-weight: bold;}

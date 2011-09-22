@@ -7,14 +7,14 @@
 	<%c=(con.contactid).to_i%>
 	<%c=c+1%>
 <%end%>
-<u><h2> New <u><%=@choice%></u> Contacts for <%=@username%> </h2></u> <%#masterid:%><%#=@user_id%><%#flash.now[:notice]=" New contact id number is :#{sprintf("%2.0f",c)}.It is now #{Time.now}."%>
+
 
 <%#@labels=Label.find(:all, :conditions=> "labelnumber <300 or labelnumber in (509,511,514,515,516,517,921,9120,9130,9140,9220,9230,9240,9310,9320,9330,11010)", :order=>"labelnumber")%>
 
 
 <%case @choice
 when "PEOPLE" then%>
-<%@labels=Label.find(:all, :conditions=> "labelnumber in (150,201,205,212,250,260,270,509,514,516,2001,21050,21190)", :order=>"labelnumber")%>
+<%@labels=Label.find(:all, :conditions=> "labelnumber in (150,201,205,212,250,260,270,509,514,516,2001,21001,21050,21190)", :order=>"labelnumber")%>
 
 <%end%>
 
@@ -78,7 +78,7 @@ City-State
 Pincode/Country
 
 <%when "birthday" then%>
-Birthday(dd-mm-yyyy)
+Birthday(dd-mm-yyyy)/Message
 
 <%when "number&streetname" then%>
 Number-streetname/Locality-district
@@ -92,7 +92,7 @@ Number-streetname/Locality-district
 <%if ["entity category","title","mobilenumber"].include? @label.labeldetails%>*<%end%>
 </td>
 
-<% case @label.labeldetails 
+<%case @label.labeldetails 
 when "entity category" then%><%### try and group entity category with group%>
 <td class="ListLineReqdWhite">
 <%@sel="Friend"%>
@@ -130,7 +130,6 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <td></td>
 <td></td>
 <%###END try and group entity category with group%>
-
 
 <%when "title" then %>
 <td class="ListLineReqdWhite" >
@@ -177,7 +176,7 @@ function CheckFirst() {
 function CheckName()
 {
 
-	}//function CheckName()
+}//function CheckName()
 </script>
 
 </td> 
@@ -185,7 +184,6 @@ function CheckName()
 <td></td>
 <td></td>
 <td></td>
-
 
 <%when "company name" then%>
 <td class="ListLine<%= odd_or_even%>White">
@@ -208,7 +206,6 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <td></td>
 <td></td>
 
-
 <%when "qualification" then %>
 <td class="ListLine<%= odd_or_even%>White"><%= options=[["Select or type new profession/qualification", ""]] + Contact::PROFESSION_TYPES
 select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
@@ -217,7 +214,6 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
 <td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
 <td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
-
 
 <%when "mobilenumber" then %>
 <td class="ListLineReqdWhite"><%=text_field("labeldetails",i, "size"=>40, "value"=>"",:onBlur=>"CheckMobile();")%>
@@ -230,7 +226,6 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <script type="text/javascript">
 function CheckMobile()
 {
-
 }//function CheckMobile()
 </script>
 
@@ -249,7 +244,6 @@ function CheckMobile()
 
 <%when "phone-fax" then %>
 <td class="ListLine<%= odd_or_even%>White"><%=text_field("labeldetails",i, "size"=>12, "value"=>"",:onBlur=>"CheckPhone();")%>
-
 <%sprintf("%0.0f",c.to_s)%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
@@ -319,7 +313,6 @@ document.getElementById("labeldetails_11").focus();
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>280)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
 <%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
-
 </td> 
 <td></td>
 <td></td>
@@ -388,8 +381,8 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <%i+=1%>
 
 /<%= options=[["Selector type new state", ""]] + Contact::STATE_TYPES
-select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %></td>
-<td><%sprintf("%0.0f",c.to_s)%>
+select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
+<%sprintf("%0.0f",c.to_s)%>
 <%sprintf("%0.0f",c.to_s)%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>515)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
@@ -423,13 +416,13 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 
 
 <%when "birthday" then %>
-<td class="ListLineReqdWhite"><%=text_field("labeldetails",i, "size"=>40, "value"=>"")%>
+<td class="ListLineReqdWhite"><%=text_field("labeldetails",i, "size"=>10, "value"=>"")%>
 <input type="hidden" name="date" id="f_date_c" readonly="1" />
 <img src="/images/img.gif" id="f_trigger_c"
 style="cursor: pointer; border: 1px solid red;"
 title="Date selector"
 onmouseover="this.style.background=’red’;"
-onmouseout="this.style.background=’black’" /></td>
+onmouseout="this.style.background=’black’" />
 <script type="text/javascript">
 Calendar.setup({
 inputField : "labeldetails_19",
@@ -439,11 +432,23 @@ align : "Tl",
 singleClick : false
 });
 </script>
-</td>
-<td> <%sprintf("%0.0f",c.to_s)%></td>
-<td> <%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
-<td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
-<td><%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>10,"value"=>Time.now.strftime("%y-%m-%d"))%>
+<%i+=1%>
+&nbsp;&nbsp;&nbsp;
+/<%=text_field("labeldetails",i, "size"=>35, "value"=>"")%>
+
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>2002)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+</td> 
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 
 
 <%else%>
@@ -451,7 +456,12 @@ singleClick : false
 <td> <%sprintf("%0.0f",c.to_s)%></td>
 <td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
 <td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
-<td><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
+<td style="font-size: 10.0pt.; color:Red; height:1em;"><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+
+<%if @label.labeldetails=="Comments"%>
+<%=submit_tag ("  Create New Contact  ",:class=>"button")%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*=REQUIRED<%end%>
+
+</td>
 
 <%end%>
 
@@ -459,8 +469,8 @@ singleClick : false
 <%end%>
 <tr>
 <td></td>
-<td colspan="20" style="font-size: 10.0pt.; color:Red; height:1em;">*=REQUIRED</td>
-<td colspan="20"  ><%=submit_tag ("  Create New Contact  ",:class=>"button")%></td>
+<td colspan="20" style="font-size: 10.0pt.; color:Red; height:1em;"></td>
+<td colspan="20"  ><%#=submit_tag ("  Create New Contact  ",:class=>"button")%></td>
 <td colspan="20"></td>
 <td></td>
 </tr>
