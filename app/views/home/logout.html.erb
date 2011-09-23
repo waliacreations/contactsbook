@@ -58,7 +58,6 @@ return false;
 <div id="update1">
 <%form_tag ({:action=>'login', :msg=>params[:username_1]},{ :onsubmit=>'return validate_Form1();'}) do %>
 
-
 <tr>
 <td colspan="20"></td>
 <td colspan="60" class="Title"><strong><u>LOGIN:</u></strong></td>
@@ -71,13 +70,13 @@ return false;
 <td colspan="20"></td>
 </tr>
 <tr>
-<td class="ListLineNew" colspan="20"><b>SIGNUP:</b></td>
-<td class="ListLineNew" colspan="30"><%=text_field("username",1, "size"=>30, "value"=>"")%>
+<td class="ListLine0" colspan="20"><b>SIGNUP:</b></td>
+<td class="ListLine0" colspan="30"><%=text_field("username",1, "size"=>30, "value"=>"")%>
 <%=observe_field( :username_1,	:frequency =>18.5, :update=>'username_1',
  :url=> {:action => "validateusername" },
 :with=>"'username_1='+value") %>
 </td>
-<td class="ListLineNew" colspan="30">
+<td class="ListLine0" colspan="30">
 <%=password_field("password",1, "size"=>30, "value"=>"")%> 
 <%=observe_field( :password_1,	:frequency =>7.5, :update=>'password_1',
  :url=> {:action => "validatepassword" },
@@ -177,8 +176,8 @@ return false;
 </tr>
 <tr>
 <%i+=1%>
-<td class="ListLineNew" colspan="20"><b>NEW USER:</b></td>
-<td class="ListLineNew" colspan="30"><%=text_field("labeldetails",i, "size"=>30, "value"=>"")%>
+<td class="ListLine0" colspan="20"><b>NEW USER:</b></td>
+<td class="ListLine0" colspan="30"><%=text_field("labeldetails",i, "size"=>30, "value"=>"")%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"101")%>
 <%=observe_field( "labeldetails_"+i.to_s,	:frequency =>14.5, :update=>'labeldetails_'+i.to_s,
  :url=> {:action => "validateusername_"+i.to_s },
@@ -186,7 +185,7 @@ return false;
 
 </td>
 <%i+=1%>
-<td class="ListLineNew" colspan="30" >
+<td class="ListLine0" colspan="30" >
 <%=password_field("labeldetails",i, "size"=>30, "value"=>"")%> 
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"111")%>
 <%=observe_field( "labeldetails_"+i.to_s,	:frequency =>7.5, :update=>'labeldetails_'+i.to_s,
@@ -194,7 +193,7 @@ return false;
 :with=>"'labeldetails_#{i}='+value") %>
 </td>
 <%i+=1%>
-<td class="ListLineNew" colspan="20">
+<td class="ListLine0" colspan="20">
 <%=password_field("labeldetails",i, "size"=>30, "value"=>"")%> 
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"112")%>
 <%=observe_field( "labeldetails_"+i.to_s,	:frequency =>7.5, :update=>'labeldetails_'+i.to_s,
@@ -211,7 +210,7 @@ return false;
 <tr>
 <%i+=1%>
 
-<td class="ListLineReqd" colspan="20">
+<td class="ListLine0" colspan="20">
 
 <%@sel=""%>
 <%=hidden_field("labeldetails",i, "size"=>30, "value"=>"")%>
@@ -244,7 +243,7 @@ document.getElementById('labeldetails_4').value=_y;
 </td> 
 
 <%i+=1%>
-<td class="ListLineNew" colspan="30"><%=text_field("labeldetails",i, "size"=>30, "value"=>"")%>
+<td class="ListLine0" colspan="30"><%=text_field("labeldetails",i, "size"=>30, "value"=>"")%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"202")%>
 <%=observe_field( "labeldetails_"+i.to_s,	:frequency =>14.5, :update=>'labeldetails_'+i.to_s,
  :url=> {:action => "validatename_"+i.to_s },
@@ -252,7 +251,7 @@ document.getElementById('labeldetails_4').value=_y;
 
 </td>
 <%i+=1%>
-<td class="ListLineNew" colspan="30" >
+<td class="ListLine0" colspan="30" >
 <%=text_field("labeldetails",i, "size"=>30, "value"=>"")%> 
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"204")%>
 <%=observe_field( "labeldetails_"+i.to_s,	:frequency =>7.5, :update=>'labeldetails_'+i.to_s,

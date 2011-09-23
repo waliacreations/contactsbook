@@ -27,8 +27,6 @@ body, select, input, textarea {
 }
 
 
-
-
 h20 {font-size:9.0pt;font-family:"Times New Roman";}
 
 /*body { background-color: #fff; color: #333; }*/
@@ -259,16 +257,10 @@ color:red;	}
   color: #B93B8F; font: bold 1.3em  "Arial", serif;   text-align: left;
   	}	
 	
-	
-	
-	
+
 #banner { background:#520052 ; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
  color: #FF0000; text-align: center; font:bold 3.2em "Georgia", Times, serif;
 	}
-
-
-
-
 
 #banner1 { background: #FDD017; padding-top: 0px; padding-bottom: 2px; border-bottom: 0.1px solid; 
   color: #B93B8F;font: bold 0.95em  "Arial", serif;   text-align: center;}
@@ -277,7 +269,6 @@ color:red;	}
  font: bold 0.85em  "Arial Narrow", serif;  color:gold ; text-align: center; }
 
 #banner3 {  border: 1.5px solid; border-color: #B93B8F; color: #B93B8F;font: bold 0.85em  "Arial", serif;   text-align: center;}
-
 
 #banner img{float: left;}
 
@@ -331,7 +322,7 @@ border-style:solid;  border-color:yellow;font: "Arial Narrow"; font-size: 10.0pt
   border-style:solid;  border-color:red yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
 
-.Title{background-color:yellow; text-align: center; font: bold 1.2em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; color:blue;}
+.Title{background-color:yellow; text-align: center; font: bold 1.2em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; color:#520052;}
 
 
 navigation_bar1 {display: none} 
@@ -339,7 +330,6 @@ navigation_bar1 {display: none}
 <!--//The code to hide objects is: -/>
 
 navigation_bar1 {visibility: hidden}
-
 
 table.widetable { width: 700px; padding-top:2em; padding-right:2em; 	padding-bottom: 1em; padding-left: 2em; 
 font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-after:always; }
@@ -352,8 +342,11 @@ tr.noborder4 {border: 1px; background: white;}
 tr.noborderall {border: 1px; background: white;}
 td.alt {background: #F5FAFA; color: #797268;}
 
-td.bottomline{border-top:none; font-size: 0.85em; border-bottom-width:2px;
+td.bottomlineblue{border-top:none; font-size: 0.85em; border-bottom-width:2px;
   border-bottom-style:solid;  border-bottom-color:blue;}
+  
+td.bottomline{border-top:none; font-size: 0.85em; border-bottom-width:2px;
+  border-bottom-style:solid;  border-bottom-color:#520052;}  
 
 td.bottomline1{border-top:none; font-size: 0.85em; border-bottom-width:2px;
   border-bottom-style:solid;  border-bottom-color:#000000;}
@@ -400,7 +393,13 @@ td.cell {display: table-cell;border: 1px solid black;padding: 1em; width: 12.5%;
   font-weight: bold;}
  .buttonblue {background-color:#191970; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
   font-weight: bold;} 
-   .button {background-color:Maroon; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:White; height:2em; text-align: center;
+ 
+.button {background-color:#520052; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:White; height:2em; text-align: center;
+  font-weight: bold;}
+ 
+ 
+ 
+ .buttonred {background-color:Maroon; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:White; height:2em; text-align: center;
   font-weight: bold;}
   
   .buttonblack{background-color:#290014; border:solid, border-width:6px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
