@@ -22,8 +22,30 @@ Rails::Initializer.run do |config|
  # config.action_controller.session_store = :cookie_store
   
  config.action_mailer.delivery_method = :smtp  ### to use gmail or sendgrid
-  config.action_mailer.raise_delivery_errors = true  ### to use gmail or sendgrid
-  config.action_mailer::Base.default_content_type = "text/html"
+   ### to use gmail or sendgrid
+  config.action_mailer.default_content_type = "text/html"
+ 
+  
+  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.smtp_settings = { 
+  :enable_starttls_auto => :true, 
+  :address => "smtp.gmail.com", 
+  :port => 587, 
+  :domain => ENV['GMAIL_SMTP_USER'],
+  :authentication => :plain, 
+  :user_name => ENV['GMAIL_SMTP_USER'],
+  :password => ENV['GMAIL_SMTP_PASSWORD'], 
+  :tls => :true 
+  } 
+  config.action_mailer.perform_deliveries = :true 
+  config.action_mailer.raise_delivery_errors = :true 
+  config.action_mailer.default_charset = "utf-8"
+  
+  
+  
+  
+  
+  
   
   
   # Add additional load paths for your own custom dirs
