@@ -1,5 +1,6 @@
-ActionMailer::Base.smtp_settings = {
-	:address => "smtp.gmail.com",
+#ActionMailer::Base.smtp_settings = {
+config.action_mailer::Base.smtp_settings = {
+:address => "smtp.gmail.com",
 	:port => 587,
 	:authentication => :plain,
 	:domain => ENV['GMAIL_SMTP_USER'],

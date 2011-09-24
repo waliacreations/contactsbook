@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   
  config.action_mailer.delivery_method = :smtp  ### to use gmail or sendgrid
   config.action_mailer.raise_delivery_errors = true  ### to use gmail or sendgrid
-  #ActionMailer::Base.default_content_type = "text/html"
+  config.action_mailer::Base.default_content_type = "text/html"
   
   
   # Add additional load paths for your own custom dirs
