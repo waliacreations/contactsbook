@@ -22,16 +22,31 @@ class UserMailerController < ActionController::Base
    
 
   def sendmail
-    # email = params[:email]
-     recipient = params["recipient"]
+     email_array = params[:email]
+    item1=[]
+       item2=[]
+       item3=[]
+       item4=[]
+         to_create1=params[:email]
+   # if to_create1
+          
+         # to_create1.each do |key, value|
+         # x= key.to_s
+          #flash['notice'] =x
+       #   item1[x.to_s]=value
+          
+        #  end
+  #end
+       
+    recipient = email_array["recipient"]
    # recipient="waliacreations@yahoo.com"
-     subject = params["subject"]
+     subject = email_array["subject"]
       # subject="TEST"
-     message = params["message"]
-    #   message="TEST"
+    message = email_array["message"]
+       #message="TEST"
        UserMailer.deliver_reply(recipient, subject, message)
        return if request.xhr?
-       render :text => 'Message sent successfully'
+       render :text => 'Message sent successfully'+subject+recipient+message
     end
    
    def sendmailold
