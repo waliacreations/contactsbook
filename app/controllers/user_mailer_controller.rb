@@ -12,9 +12,9 @@ class UserMailerController < ActionController::Base
   
   def reply
      @title = "Reply"
-     @sender = ''
-     @subject = ''
-     @message = ''
+     @sender||= ''
+     @subject||= ''
+     @message ||= ''
    end
  
    
