@@ -11,7 +11,7 @@ class UserMailerController < ActionController::Base
   end
   
   def reply
-     @title = "Reply"
+     @title||= "Reply"
      @sender||= ''
      @subject||= ''
      @message ||= ''

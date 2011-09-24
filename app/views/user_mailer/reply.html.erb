@@ -9,7 +9,6 @@
 
 <%=javascript_include_tag :defaults %> <%#original%>
 <%=javascript_include_tag "prototype"%>
-<%#<script type="text/javascript" src="/javascripts/context-disable.js"></script>%><%#disable rt.click%>
 <style type="text/css">@import url(/javascripts/calendar-win2k-1.css);</style>
 <script type="text/javascript" src="/javascripts/calendar.js"></script>
 <script type="text/javascript" src="/javascripts/lang/calendar-en.js"></script>
@@ -18,15 +17,24 @@
 
 <%=stylesheet_link_tag 'scaffold'%>
 
-<title>REPLY MAIL: RELATIONSHIPMANAGER:</title>
+<title><%=@title=REPLY MAIL: RELATIONSHIPMANAGER:%></title>
 </head>
 
 
 
 
 
-    <body id="user_mailer_reply">
-      
+<body id="user_mailer_reply">
+<div id = "banner">
+	
+	<b>
+	<%=@page_title || "iCONTACTSBOOK"%>
+</div>     
+
+
+<h1> GREETINGS FROM iCONTACTSBOOK</h1> 
+
+
 <%=@message%>
             
 
@@ -34,6 +42,6 @@
 
             
      
-    </body>
+</body>
 </html>
 

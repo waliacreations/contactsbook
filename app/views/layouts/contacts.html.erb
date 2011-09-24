@@ -17,7 +17,7 @@
 <TABLE CELLSPACING="2">
 <tr>
 <td colspan="30">
-<span id="left1"><b> Listing contacts for <%=@username%>:</b></span>
+<span id="left1"><b> <%=@username%>:</b></span>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </td>
 <td colspan="20"><b>
@@ -40,22 +40,24 @@
 </table>
 </div>
 
-<div id="banner1">
+<div id="banner4">
 <TABLE CELLSPACING="2">
 <tr>
-<td colspan="20" >
+<td colspan="25"><span id="left1"> <b>ADD NEW :</b></span>
+</td>
+<td colspan="15" >
 <%=button_to "  PEOPLE  ", {:action=>"quickentry", :id=>@user_id, :choice=>"PEOPLE"},:class=>"button"%>
 <h20></h20></td>
-<td colspan="20">
+<td colspan="15">
 <%#=button_to "PLACES", {:action=>"quickentry", :id=>@user_id, :choice=>"PLACES"}%>
 <h20>(PLACES)</h20></td>
-<td colspan="20">
+<td colspan="15">
 <%#=button_to "PRODUCTS", {:action=>"quickentry", :id=>@user_id, :choice=>"PRODUCT"}%>
-<h20>(PRODUCT/SERVICES/ASSETS)</h20></td>
-<td colspan="20">
+<h20>(PRODUCT-SERVICES/ASSETS-EXPENSES)</h20></td>
+<td colspan="15">
 <%#=button_to "PROJECTS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROCESS"}%>
-<h20>(PROJECTS/PROCESS)</h20></td>
-<td colspan="20">
+<h20>(PROJECTS)</h20></td>
+<td colspan="15">
 <%#=button_to "PROGRESS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROGRESS"}%>
 <h20>(PROGRESS)</h20></td>
 </tr>
@@ -71,7 +73,7 @@
 
 <div id = "notice">
 <%if flash[:notice]%> <%# notice will be red%>
-<p style="color: red; background:yellow"><%= flash[:notice] %></p>
+<p style="color: #FF0000; background:yellow"><%= flash[:notice] %></p>
 <%end%>
 <%if flash[:message]%>
 <p style="color: green; background:yellow"><%=flash[:message]%></p>

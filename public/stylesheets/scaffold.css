@@ -47,9 +47,9 @@ pre {
   font-size: 11px;
 }
 
-a { color: blue; }
+a:link { text-decoration: underline;color: #520052; }
 a:visited { color: #666; }
-a:hover { color: red; background-color:gold; }
+a:hover { color:#FF0000; background-color:gold; }
 
 .fieldWithErrors {
   padding: 2px;
@@ -254,7 +254,7 @@ color:red;	}
 	}
 	
 #left1 {  background: #FDD017; padding-top: 0px; padding-bottom: 2px; border-bottom: 0px solid; 
-  color: #B93B8F; font: bold 1.3em  "Arial", serif;   text-align: left;
+  color:#520052; font: bold 1.1em  "Arial", serif;   text-align: left;
   	}	
 	
 
@@ -263,12 +263,14 @@ color:red;	}
 	}
 
 #banner1 { background: #FDD017; padding-top: 0px; padding-bottom: 2px; border-bottom: 0.1px solid; 
-  color: #B93B8F;font: bold 0.95em  "Arial", serif;   text-align: center;}
+  color: #520052;font: bold 0.95em  "Arial", serif;   text-align: center;}
 
 #banner2 { background: red; padding-top: 0px; padding-bottom: 0px; border-bottom: 0.5px solid; 
  font: bold 0.85em  "Arial Narrow", serif;  color:gold ; text-align: center; }
 
 #banner3 {  border: 1.5px solid; border-color: #B93B8F; color: #B93B8F;font: bold 0.85em  "Arial", serif;   text-align: center;}
+
+#banner4 { background: #FDD017; border: 2.5px solid; border-color: #B93B8F; font: bold 0.85em  "Arial", serif; color:#520052;  text-align: center;}
 
 #banner img{float: left;}
 
@@ -397,10 +399,8 @@ td.cell {display: table-cell;border: 1px solid black;padding: 1em; width: 12.5%;
 .button {background-color:#520052; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:White; height:2em; text-align: center;
   font-weight: bold;}
  
- 
- 
- .buttonred {background-color:Maroon; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:White; height:2em; text-align: center;
+.buttonred {background-color:Maroon; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:White; height:2em; text-align: center;
   font-weight: bold;}
   
-  .buttonblack{background-color:#290014; border:solid, border-width:6px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
+.buttonblack{background-color:#290014; border:solid, border-width:6px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
   font-weight: bold;}
