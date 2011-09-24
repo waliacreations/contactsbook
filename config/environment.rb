@@ -21,6 +21,9 @@ Rails::Initializer.run do |config|
   # Set to one of [:active_record_store, :drb_store, :mem_cache_store, :cookie_store]  
  # config.action_controller.session_store = :cookie_store
   
+ config.action_mailer.delivery_method = :smtp  ### to use gmail or sendgrid
+  config.action_mailer.raise_delivery_errors = true  ### to use gmail or sendgrid
+  ActionMailer::Base.default_content_type = "text/html"
   
   
   # Add additional load paths for your own custom dirs

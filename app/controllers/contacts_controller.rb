@@ -22,6 +22,14 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.xml
  
+  
+  
+  
+  
+  
+  
+  
+  
   def show
     if params[:id]=="viewsummary"
        @contact=Contact.find(:all, :conditions=>"labelnumber=152")

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+	<head> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+		<meta name="keywords" content="Contact Manager, Relationship Manager, walia" /> 
+<link rel="shortcut icon" href="/images/rails.png" /> 
+
+
+<%=javascript_include_tag :defaults %> <%#original%>
+<%=javascript_include_tag "prototype"%>
+<%#<script type="text/javascript" src="/javascripts/context-disable.js"></script>%><%#disable rt.click%>
+<style type="text/css">@import url(/javascripts/calendar-win2k-1.css);</style>
+<script type="text/javascript" src="/javascripts/calendar.js"></script>
+<script type="text/javascript" src="/javascripts/lang/calendar-en.js"></script>
+<script type="text/javascript" src="/javascripts/calendar-setup.js"></script>
+<script type="text/javascript" src="/javascripts/combo-box.js"></script>
+
+<%=stylesheet_link_tag 'scaffold'%>
+
+<title>REPLY MAIL: RELATIONSHIPMANAGER:</title>
+</head>
+
+
+
+
+
+    <body id="user_mailer_reply">
+        <div class="container round">
+            <header class="round">
+        <h1>Simple Blog</h1>
+        <ul class="header_links">
+            <li id="home_nav">
+                <a href="/">Home</a>
+            </li>
+            <li id="posts_nav">
+                <a href="/list">Posts</a>
+            </li>
+            <li id="users_nav">
+                <a href="/users">Users</a>
+            </li>
+            <li class="header_right">
+                <form accept-charset="UTF-8" action="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+                    <input id="query" name="query" type="text" />
+                    <input type="submit" value="Search" />
+</form>            </li>
+        </ul>
+</header>
+
+
+            
+
+            <section class="round content">
+                <div class="main round">
+    <h1>Reply</h1>
+    <div class="main_content">
+    <p>
+        You can find me on:
+    </p>
+    <ul>
+        <li>
+            
+        </li>
+        <li>
+           
+        </li>
+    </ul>
+    </div>
+    <h1>Or send me an email:</h1><br/>
+<a name="flash"></a>
+
+
+<form accept-charset="UTF-8" action="/user_mailer/sendmail" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ll16LyG5JoaY4nKB+N15onlNeGVFIMMSANkBEERIwFQ=" /></div>
+   <div class="field">
+        <label for="Your_email">Your email</label>
+        <br />
+        <input id="sender" name="sender" type="text" value="" />
+    </div>
+    <div class="field">
+        <label for="Subject">Subject</label>
+        <br />
+        <input id="subject" name="subject" type="text" value="" />
+    </div>
+    <div class="field">
+        <label for="Message">Message</label>
+        <br />
+        <textarea id="message" name="message"></textarea>
+    </div>
+    <div class="action">
+     <input name="commit" type="submit" value="Send Email" />
+    </div>
+</form>
+
+</div>
+
+
+            </section>
+            <footer class="round">
+    <ul class="footer_links">
+        <li id="contact_nav">
+            <a href="/contact">Contact</a>
+        </li>
+        <li id="about_nav">
+            <a href="/about">About</a>
+        </li>
+    </ul>
+</footer>
+
+
+            
+        </div>
+    </body>
+</html>
+
