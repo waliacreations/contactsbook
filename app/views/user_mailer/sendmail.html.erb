@@ -15,6 +15,9 @@
 <td colspan="30"><b>
 <%if @user_id.to_i==1%>
 <%=link_to_unless_current "LABELS", '/labels' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
+&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;
+<%=link_to_unless_current "EMAIL", {:controller=>"user_mailer", :action=>"index", :id=>params[:id], :uid=>params[:uid]} %>
+&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;
 <%=link_to_unless_current "CONTACTS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 <%end%>
 

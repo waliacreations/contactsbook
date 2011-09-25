@@ -18,8 +18,10 @@
 <%if @user_id.to_i==1%>
 <%=link_to_unless_current "LABELS", '/labels' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
 <%=link_to_unless_current "CONTACTS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;
+<%=link_to_unless_current "EMAIL", {:controller=>"user_mailer", :action=>"index", :id=>params[:id], :uid=>params[:uid]} %>
 <%end%>
-
+&nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;
 <b><%=link_to_unless_current "LOGOUT", {:controller=>"home",:action=>"logout"}%></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 </td>
 

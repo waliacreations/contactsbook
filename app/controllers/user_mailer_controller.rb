@@ -6,7 +6,16 @@ class UserMailerController < ActionController::Base
   
   
   def index
-    
+    @user_id=0
+          @user_id=params[:uid]
+            if @user_id.nil?
+              if params[:id].nil?
+              @user_id=0
+              else
+              @user_id=params[:id]
+              end #if params[:id].nil?
+            end #if user_id.nil?
+            
     
   end
   
@@ -22,24 +31,23 @@ class UserMailerController < ActionController::Base
    
 
   def sendmail
+    @user_id=0
+          @user_id=params[:uid]
+            if @user_id.nil?
+              if params[:id].nil?
+              @user_id=0
+              else
+              @user_id=params[:id]
+              end #if params[:id].nil?
+            end #if user_id.nil?
+            
      email_array = params[:email]
-    item1=[]
+     item1=[]
        item2=[]
        item3=[]
        item4=[]
          to_create1=params[:email]
-           
-          
-   # if to_create1
-          
-         # to_create1.each do |key, value|
-         # x= key.to_s
-          #flash['notice'] =x
-       #   item1[x.to_s]=value
-          
-        #  end
-  #end
-       
+                 
     recipient = email_array["recipient"]
    # recipient="waliacreations@yahoo.com"
      subject = email_array["subject"]
@@ -47,7 +55,7 @@ class UserMailerController < ActionController::Base
     message = email_array["message"]
        #message="TEST"
        UserMailer.deliver_reply(recipient, subject, message)
-       #return if request.xhr?
+      return if request.xhr?
        
        redirect_to :controller=>'user_mailer', :action=>'show', :id=>params[:id], :uid=>params[:uid], :email=>'Message sent successfully. '+" TO: "+recipient+" Subject: "+subject+" Message: "+message
        #render :text => 'Message sent successfully'+subject+recipient+message
