@@ -1,5 +1,36 @@
+
+
+
+<div id = "banner1">
+<TABLE CELLSPACING="2">
+<tr>
+<td colspan="30">
+<span id="left1"><b> <%=@username%>:</b></span>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td colspan="20"><b>
+<%=link_to_unless_current "HOME", '/home' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+</td>
+<td colspan="20"><b>
+<%=link_to_unless_current "CATEGORIES", '/categories' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+</td>
+<td colspan="30"><b>
+<%if @user_id.to_i==1%>
+<%=link_to_unless_current "LABELS", '/labels' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
+<%=link_to_unless_current "CONTACTS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<%end%>
+
+<b><%=link_to_unless_current "LOGOUT", {:controller=>"home",:action=>"logout"}%></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+</td>
+
+
+</tr>	
+</table>
+</div>
+
+
 <h1>Send Email</h1>
-<% form_tag :action => 'sendmail' do%>
+<% form_tag ({:action => 'sendmail',:id=>params[:id], :uid=>params[:uid]}) do%>
 <p><label for="email_subject">Subject</label>:
 <%= text_field 'email', 'subject' %></p>
 <p><label for="email_recipient">Recipient</label>:

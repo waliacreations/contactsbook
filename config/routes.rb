@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "home", :action=>"index" 
   
-  
+  map.connect 'user_mailer/index', :controller=>'user_mailer', :action=>'index'
+  map.connect 'user_mailer/show', :controller=>'user_mailer', :action=>'show'
+  map.connect 'user_mailer/sendmail', :controller=>'user_mailer', :action=>'sendmail'
   
 map.connect 'home/index', :controller=>'home', :action=>'index'
   map.connect 'home/login', :controller=>'home', :action=>'login'

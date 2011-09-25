@@ -28,6 +28,8 @@ class UserMailerController < ActionController::Base
        item3=[]
        item4=[]
          to_create1=params[:email]
+           
+          
    # if to_create1
           
          # to_create1.each do |key, value|
@@ -45,10 +47,31 @@ class UserMailerController < ActionController::Base
     message = email_array["message"]
        #message="TEST"
        UserMailer.deliver_reply(recipient, subject, message)
-       return if request.xhr?
-       render :text => 'Message sent successfully'+subject+recipient+message
+       #return if request.xhr?
+       
+       redirect_to :controller=>'user_mailer', :action=>'show', :id=>params[:id], :uid=>params[:uid], :email=>'Message sent successfully. '+" TO: "+recipient+" Subject: "+subject+" Message: "+message
+       #render :text => 'Message sent successfully'+subject+recipient+message
     end
    
+    
+    def show
+      @user_id=0
+       @user_id=params[:uid]
+         if @user_id.nil?
+           if params[:id].nil?
+           @user_id=0
+           else
+           @user_id=params[:id]
+           end #if params[:id].nil?
+         end #if user_id.nil?
+         
+       @status=params[:email]
+             if @status.nil?
+               @status="First Mail"
+             end
+    end
+    
+    
    def sendmailold
      @sender = params[:sender]
      @subject = params[:subject]
