@@ -2,7 +2,7 @@
 source "http://rubygems.org"
 
 
-gem 'rails'  --version  2.3.5
+gem 'rails', '2.3.5'
 
 
 #source :gemcutter
