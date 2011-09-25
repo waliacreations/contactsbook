@@ -23,14 +23,7 @@
 	<br />
 </div>
 
-<div id = "notice">
-<%if flash[:notice]%> <%# notice will be red%>
-<p style="color: red; background:yellow"><%= flash[:notice] %></p>
-<%end%>
-<%if flash[:message]%>
-<p style="color: green; background:yellow"><%=flash[:message]%></p>
-<%end%>
-</div>
+
 
 
 <%= yield %>
