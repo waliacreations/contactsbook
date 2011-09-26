@@ -1,8 +1,10 @@
 
 
 
-class UserMailerController < ActionController::Base
-  before_filter :authorize 
+#class UserMailerController < ActionController::Base
+ 
+class UserMailerController <ApplicationController
+before_filter :authorize 
   
   
   def index
