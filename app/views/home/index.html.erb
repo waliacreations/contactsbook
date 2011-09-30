@@ -56,7 +56,7 @@ return false;
 <p></p>
 <table cellspacing="5">	
 <div id="update1">
-<%form_tag ({:action=>'login', :msg=>params[:username_1]},{ :onsubmit=>'return validate_Form1();'}) do %>
+<%form_tag({:action=>'login', :msg=>params[:username_1]},{ :onsubmit=>'return validate_Form1();'}) do %>
 
 <tr>
 <td colspan="20"></td>
@@ -159,7 +159,7 @@ return false;
 <div id="update_new">
 
 <%#form_tag ({:action=>'new', :msg=>params[:username_1], :onsubmit=>'return validate_Form2();'}) do %>
-<%form_tag ({:controller=>"home",:action=>'createlogin'},{:onsubmit=>'return validate_Form2();'}) do %>
+<%form_tag({:controller=>"home",:action=>'createlogin'},{:onsubmit=>'return validate_Form2();'}) do %>
 
 
 <tr>
@@ -259,7 +259,7 @@ document.getElementById('labeldetails_4').value=_y;
 :with=>"'labeldetails_#{i}='+value") %>
 </td>
 
-<td colspan="20" align="center"><%=submit_tag ("NEW REGISTERATION",:class=>"button")%>
+<td colspan="20" align="center"><%=submit_tag("NEW REGISTERATION",:class=>"button")%>
 </td>
 </tr>
 <%####end password evaluation######%>
