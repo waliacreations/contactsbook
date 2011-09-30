@@ -18,6 +18,9 @@ Rails::Initializer.run do |config|
   #:secret      => ‘walia’
   #}
   
+  config.gem "moonshado-sms"
+  
+  
   # Set to one of [:active_record_store, :drb_store, :mem_cache_store, :cookie_store]  
  # config.action_controller.session_store = :cookie_store
   

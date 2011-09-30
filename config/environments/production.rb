@@ -26,3 +26,28 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+#config.after_initialize do
+#  Moonshado::Sms.configure do |config|
+ #   config.api_key = ENV['MOONSHADOSMS_URL']
+#  end
+#end
+
+
+config.after_initialize do
+  Moonshado::Sms.configure do |config|
+    config.api_key = ENV['MOONSHADOSMS_URL']
+    config.keywords = {:bender => "http://planetexpress.com/sms/mo"}
+
+    # This will auto register keywords on application startup
+    config.auto_register_keywords = true
+  end
+end
+
+
+
+
+
+
+
+

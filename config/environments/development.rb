@@ -15,3 +15,9 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+config.after_initialize do
+  Moonshado::Sms.configure do |config|
+    config.production_environment = false
+  end
+end
