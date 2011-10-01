@@ -8,8 +8,8 @@ source :gemcutter
 #gem "moonshado-sms", :git =>env GIT_SSL_NO_VERIFY=true git clone "https://github.com/moonshado/moonshado-sms.git"
 
 #gem "moonshado", "1.1.0"
-
-gem "moonshado-sms", "~> 1.1.0"
+#gem "moonshado-sms", "1.1.1.rc1"  #ruby version for windows
+#gem "moonshado-sms", "~> 1.1.0"
 #gem "moonshado-sms", :git => "git@github.com/moonshado/moonshado-sms.git"
 gem 'rails', '2.3.5'
 gem "sqlite3-ruby", :require => "sqlite3"
@@ -21,6 +21,7 @@ gem "sqlite3-ruby", :require => "sqlite3"
 group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"
+  gem "moonshado-sms", "1.1.1.rc1"
 end
 
 group :test do
@@ -30,6 +31,11 @@ group :test do
 end
 
 
+
+group :production do
+#gem "moonshado-sms", "1.1.0" 
+  gem "moonshado-sms", "1.1.1.rc1"
+end
 
 
 
