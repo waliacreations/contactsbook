@@ -59,9 +59,8 @@ before_filter :authorize
        UserMailer.deliver_reply(recipient, subject, message)
       return if request.xhr?
       
-      
-    sms = Moonshado::Sms.new("17328656305", "testing sent by hemant reply back sonia")
-      
+      ### to send sms from moonshado sms addon 
+    sms=Moonshado::Sms.new("+919899474781", "test  msg  sent by hemant walia")      
     sms.deliver_sms
     
        redirect_to :controller=>'user_mailer', :action=>'show', :id=>params[:id], :uid=>params[:uid], :email=>'Message sent successfully. '+" TO: "+recipient+" Subject: "+subject+" Message: "+message
