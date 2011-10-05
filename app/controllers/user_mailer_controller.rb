@@ -33,6 +33,15 @@ before_filter :authorize
    
 
   def sendmail
+    
+    
+    
+      if params[:mobilenum].nil?
+      @mobile="+919899474781"
+      else
+      @mobile=params[:mobilenum]
+      end
+          
     @user_id=0
           @user_id=params[:uid]
             if @user_id.nil?
@@ -53,17 +62,29 @@ before_filter :authorize
     recipient = email_array["recipient"]
    # recipient="waliacreations@yahoo.com"
      subject = email_array["subject"]
-      # subject="TEST"
+     # subject="TEST"
+     
+    @mobilenum=email_array["mobile"]
+        
+    if @mobilenum.nil?
+         @mobilenum="+919899474781"
+     end   
+       
+       
     message = email_array["message"]
+    @mobilemsg= email_array["message"] 
+      
        #message="TEST"
        UserMailer.deliver_reply(recipient, subject, message)
       return if request.xhr?
       
       ### to send sms from moonshado sms addon 
-    sms=Moonshado::Sms.new("+919899474781", "test  msg  sent by hemant walia")      
+    #sms=Moonshado::Sms.new("+919899474781", "test  msg  sent by hemant walia")  
+     sms=Moonshado::Sms.new("#{@mobilenum}","#{ @mobilemsg}")     
     sms.deliver_sms
     
-       redirect_to :controller=>'user_mailer', :action=>'show', :id=>params[:id], :uid=>params[:uid], :email=>'Message sent successfully. '+" TO: "+recipient+" Subject: "+subject+" Message: "+message
+       redirect_to :controller=>'user_mailer', :action=>'show', :id=>params[:id], :uid=>params[:uid],
+         :email=>'Message sent successfully. '+" TO: "+recipient+" Subject: "+subject+" Message: "+message
        #render :text => 'Message sent successfully'+subject+recipient+message
     end
    
