@@ -21,7 +21,8 @@ gem "sqlite3-ruby", :require => "sqlite3"
 group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"
-  gem "moonshado-sms", "1.1.1.rc1"
+  #gem "moonshado-sms", "1.1.1.rc1"
+  gem "moonshado-sms", :git => "https://github.com/moonshado/moonshado-sms.git" #export GIT_SSL_NO_VERIFY=true (type in console)
   gem "rdoc"
 end
 
@@ -35,7 +36,8 @@ end
 
 group :production do
 #gem "moonshado-sms", "1.1.0" 
-  gem "moonshado-sms", "1.1.1.rc1"
+  #gem "moonshado-sms", "1.1.1.rc1"
+  gem "moonshado-sms", :git => "https://github.com/moonshado/moonshado-sms.git" #export GIT_SSL_NO_VERIFY=true (type in console)
   gem "rdoc"
 end
 
