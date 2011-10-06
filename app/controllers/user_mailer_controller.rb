@@ -89,7 +89,7 @@ before_filter :authorize
       balance=current_env
       
     end
-      sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg+balance.to_s}")     
+      sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg+balance}")     
     sms.deliver_sms
     #Moonshado::Sms.get_credit
    
