@@ -22,6 +22,7 @@ group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"
   gem "moonshado-sms", "1.1.1.rc1"
+  gem "rdoc"
 end
 
 group :test do
@@ -35,6 +36,7 @@ end
 group :production do
 #gem "moonshado-sms", "1.1.0" 
   gem "moonshado-sms", "1.1.1.rc1"
+  gem "rdoc"
 end
 
 
