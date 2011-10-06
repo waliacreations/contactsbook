@@ -69,8 +69,7 @@ before_filter :authorize
     if @mobilenum.nil?
          @mobilenum="+919899474781"
      end   
-       
-       
+      
     message = email_array["message"]
     @mobilemsg= email_array["message"] 
       
@@ -80,7 +79,7 @@ before_filter :authorize
       
       ### to send sms from moonshado sms addon 
     #sms=Moonshado::Sms.new("+919899474781", "test  msg  sent by hemant walia")  
-     sms=Moonshado::Sms.new("#{@mobilenum}","#{ @mobilemsg}")     
+     sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg}")     
     sms.deliver_sms
     
        redirect_to :controller=>'user_mailer', :action=>'show', :id=>params[:id], :uid=>params[:uid],
