@@ -23,3 +23,5 @@ task :cron => :environment do
    # User.send_reminders
  end
 end
+
+#Moonshado::Sms.get_credit

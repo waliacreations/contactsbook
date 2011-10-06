@@ -79,11 +79,22 @@ before_filter :authorize
       
       ### to send sms from moonshado sms addon 
     #sms=Moonshado::Sms.new("+919899474781", "test  msg  sent by hemant walia")  
-     sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg}")     
+   # current_env="#{RAILS_ENV}"
+    #current_env="#{ENV['RAILS_ENV']}"
+    current_env=ENV['RAILS_ENV']
+    balance=""
+      if current_env=="production"
+      balance=Moonshado::Sms.get_credit
+    else
+      balance=current_env
+      
+    end
+      sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg+balance.to_s}")     
     sms.deliver_sms
-    
+    #Moonshado::Sms.get_credit
+   
        redirect_to :controller=>'user_mailer', :action=>'show', :id=>params[:id], :uid=>params[:uid],
-         :email=>'Message sent successfully. '+" TO: "+recipient+" Subject: "+subject+" Message: "+message
+         :email=>'Message sent successfully. '+" TO: "+recipient+" Subject: "+subject+" Message: "+message+balance
        #render :text => 'Message sent successfully'+subject+recipient+message
     end
    
