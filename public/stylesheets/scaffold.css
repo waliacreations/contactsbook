@@ -1,5 +1,5 @@
 
-/* for class put as .border{}*/
+/* for class put as .border{}  for id put as #border*/
 
  /* HERE STARTS ACTUAL CSS ABOVE ARE ONLY EXAMPLES*/ 
 body, select, input, textarea {  
@@ -8,6 +8,28 @@ body, select, input, textarea {
     /* set your base font here, to apply evenly */  
     /* font-family: Georgia, serif;  */  
 }  
+
+
+
+/* all PLACEHOLDER     http://davidwalsh.name/css-selection*/
+::-webkit-input-placeholder , ::-webkit-select-placeholder  { color:#f00; }
+input:-moz-placeholder, select:-moz-placeholder { color:#f00; }
+
+
+/* individual: webkit */
+#Password(3-15)::-webkit-input-placeholder { color:#00f; }
+#field3::-webkit-input-placeholder { color:#090; background:lightgreen; text-transform:uppercase; }
+#field4::-webkit-input-placeholder { font-style:italic; text-decoration:overline; letter-spacing:3px; color:#999; }
+
+/* individual: mozilla */
+#field2::-moz-placeholder { color:#00f; }
+#field3::-moz-placeholder { color:#090; background:lightgreen; text-transform:uppercase; }
+#field4::-moz-placeholder { font-style:italic; text-decoration:overline; letter-spacing:3px; color:#999; }
+
+/* webkit, opera, IE9 */
+::selection { background:lightblue; }
+/* mozilla firefox */
+::-moz-selection { background:lightblue; }
 
 
 .entry-title a:link,
@@ -26,7 +48,7 @@ body, select, input, textarea {
 	background:url(public/images/rails.png) no-repeat bottom left;
 }
 
-
+p3 {font-size:9.0pt;font-family:"Arial Narrow";font: normal 0.85em  "Arial", serif; color:#520052;  text-align: center}
 h20 {font-size:9.0pt;font-family:"Times New Roman";}
 
 /*body { background-color: #fff; color: #333; }*/
@@ -68,7 +90,7 @@ a:hover { color:#FF0000; background-color:gold; }
 
 #flash_notice, #flash_error {
   padding: 5px 8px;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 #flash_notice {
@@ -132,7 +154,7 @@ div.progressBar div.background {
   width: 0%;
 }
 
-div.notice {
+div.noticeold {
 background-color: #yellow;
 	margin-left: auto;
 	margin-right: auto;
@@ -141,6 +163,18 @@ background-color: #yellow;
 	border: 5px solid #ccc;
 	margin-top: 50px;
 	padding: 20px;
+	font-weight: bold;
+}
+
+div.notice {
+background-color: #yellow;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 40%;
+	border: 2px solid #ccc;
+	margin-top: 1px;
+	padding: 1px;
 	font-weight: bold;
 }
 
@@ -168,11 +202,16 @@ background-color: #yellow;
 #seperator {border-bottom: 0.5px solid; 
  border-color: blue;}
 
-#notice { background: #yellow; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
+#noticeold { background: #yellow; padding-top: 0px; padding-bottom: 0.5px; border-bottom: 0.5px solid; 
  border-color: red; text-align: center; font: bold 3em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 }
+
+#notice { background: #yellow; padding-top: 0px; padding-bottom: 0px; border-bottom: 0.5px solid; 
+ border-color: white; text-align: center; font: bold 3em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+
 	
-#last_login { background-color: yellow; padding-top: 0px; padding-bottom: 0.5px; border: 0.5px solid; 
+#last_login { background-color: yellow; padding-top: 0px; padding-bottom: 0px; border: 0.5px solid; 
  border-color: white; text-align: center; text-decoration:blink; text-decoration:underline; font: bold 1.2em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 color:green;	}	
 	
@@ -262,7 +301,7 @@ color:red;	}
  color: #FF0000; text-align: center; font:bold 3.2em "Georgia", Times, serif;
 	}
 
-#banner1 { background: #FDD017; padding-top: 0px; padding-bottom: 2px; border-bottom: 0.1px solid; 
+#banner1 { background: #FDD017; padding-top: 0px; padding-bottom: 1px; border-bottom: 0.1px solid; 
   color: #520052;font: bold 0.95em  "Arial", serif;   text-align: center;}
 
 #banner2 { background: red; padding-top: 0px; padding-bottom: 0px; border-bottom: 0.5px solid; 
@@ -325,6 +364,8 @@ border-style:solid;  border-color:yellow;font: "Arial Narrow"; font-size: 10.0pt
 
 
 .Title{background-color:yellow; text-align: center; font: bold 1.2em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; color:#520052;}
+.Titlebordergold{background-color:yellow;border-width:2px;
+  border-style:solid; border-color:#FDD017; text-align: center; font: bold 1.2em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; color:#520052;}
 
 
 navigation_bar1 {display: none} 
@@ -349,6 +390,25 @@ td.bottomlineblue{border-top:none; font-size: 0.85em; border-bottom-width:2px;
   
 td.bottomline{border-top:none; font-size: 0.85em; border-bottom-width:2px;
   border-bottom-style:solid;  border-bottom-color:#520052;}  
+
+td.leftlinepurple{border-top:none; font-size: 0.85em; border-left-width:2px;
+  border-left-style:solid;  border-left-color:#520052;}  
+ 
+td.leftlinegold{border-top:none;border-right:none; font-size: 0.85em; border-left-width:2px;
+  border-left-style:solid;  border-left-color:#FDD017; }   
+td.leftbottomlinegold{border-top:none;border-right:none; font-size: 0.85em; border-left-width:2px;border-bottom-width:2px;
+  border-left-style:solid; border-bottom-style:solid; border-left-color:#FDD017; border-bottom-color:#FDD017;} 
+td.bottomlinegold{border-top:none;border-left:none; font-size: 0.85em;border-bottom-width:2px;
+  border-bottom-style:solid; border-bottom-color:#FDD017;} 
+td.toplinegold{border-bottom:none;border-left:none; border-right:none;font-size: 0.85em;border-top-width:2px;
+  border-top-style:solid; border-top-color:#FDD017;}
+
+td.rightlinegold{border-top:none;border-left:none;border-bottom:none; font-size: 0.85em; border-right-width:2px;
+  border-right-style:solid;  border-right-color:#FDD017;} 
+td.rightbottomlinegold{border-top:none;border-left:none; font-size: 0.85em; border-right-width:2px;border-bottom-width:2px;
+  border-right-style:solid; border-bottom-style:solid; border-right-color:#FDD017; border-bottom-color:#FDD017;} 
+
+
 
 td.bottomline1{border-top:none; font-size: 0.85em; border-bottom-width:2px;
   border-bottom-style:solid;  border-bottom-color:#000000;}
@@ -384,6 +444,8 @@ font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-aft
 table.widetable4 { width: 880px; padding-top:2em; padding-right:2em; 	padding-bottom: 1em; padding-left: 2em; 
 font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-before:always;  }
 
+ table.bordertable {border-width:2px; border-style:solid;  border-color:#FDD017; spacing:0em; padding:1em; }
+table.bordertable2 {border: 5px solid #660000;}
 td.noborder4 {border:none; font-size: 0.6em;}
 
 tr.noborderall{border: 1px;}

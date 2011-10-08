@@ -12,7 +12,7 @@ task :cron => :environment do
 #  if Time.now.hour == 0 # run at midnight
   #if Time.now.hour == 11 # run at afternoon US time and 10.5 hrs ahead in india ie. 9.30 IST
 
-  if Time.now.hour == 11   #&& Time.now.min==45
+ ## if Time.now.hour == 11   #&& Time.now.min==45
    puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
   puts "starting sms creation"
    sms=Moonshado::Sms.new("+919899474781", "good night cron  msg  sent by hemant walia")  
@@ -21,7 +21,7 @@ task :cron => :environment do
     sms.deliver_sms
    puts "done"
    # User.send_reminders
- end
+## end
 end
 
 #Moonshado::Sms.get_credit

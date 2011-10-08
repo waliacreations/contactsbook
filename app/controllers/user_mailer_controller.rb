@@ -86,7 +86,7 @@ before_filter :authorize
     balanceh={}
       if current_env=="production"
       balanceh=Moonshado::Sms.get_credit
-        balance=balanceh.collect { |k, v| "['#{k}'#{v}]" }.join
+        balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join
     else
       balance=current_env
       

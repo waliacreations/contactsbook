@@ -226,6 +226,36 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <script type="text/javascript">
 function CheckMobile()
 {
+//var a = document.form.phone.value;
+var _empty="";
+var _a=document.getElementById("labeldetails_11").value;
+
+if ((_a.to_s=="")||(_a==" ")||(_a=="  ")||(_a.length==0)) {
+alert("please Enter the Mobile Number");
+document.getElementById("labeldetails_11").value=_empty;
+document.getElementById("labeldetails_11").focus();
+return false;
+}
+else{
+var i=0;
+for(i=0;i<10;i++){
+
+if(isNaN(_a.charAt(i))){
+alert("Character "+_a.charAt(i)+" around position "+i+" WRONG!!");
+document.getElementById("labeldetails_11").value=_empty;
+document.getElementById("labeldetails_11").focus();
+}
+}//for(i=0;i<10; i++)
+
+if((_a.length < 10) || (_a.length > 10)){
+alert(" Your Mobile Number is wrong!:'"+_a+"' must be 10 characters");
+document.getElementById("labeldetails_11").value=_empty;
+document.getElementById("labeldetails_11").focus();
+//return false;
+}
+
+}//if(_a=="") ||(_a==" ")
+
 }//function CheckMobile()
 </script>
 

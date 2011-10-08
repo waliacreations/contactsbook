@@ -818,13 +818,13 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
                            
                           if @msg_login=="" or @msg_login.blank?
                            # page.alert("blank entry!!!:"+@msg_login)
-                            page['username_1'].value=_empty
+                            #page['username_1'].value=_empty
                             page.replace_html 'error_msg6', "WRONG blank entry!!!:"
                             page.replace_html 'ok_msg6', ""
                           else
                          # page.refresh
                          # page.alert(@msg_login)                          
-                        page['username_1'].value=_empty
+                        #page['username_1'].value=_empty
                          # page['username_1'].focus() 
                             page.replace_html 'error_msg6', @msg_login
                             page.replace_html 'ok_msg6', ""
@@ -927,7 +927,7 @@ def validatepassword  #validate password for login
          # end 
           @results1=""
                
-           page['password_1'].value=@results1
+         #  page['password_1'].value=@results1
           #page['labeldetails_3'].value=@results1
            #page['labeldetails_1'].focus() 
            #return false;
