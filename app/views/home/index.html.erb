@@ -130,7 +130,7 @@ return false;
 <%=hidden_field("labeldetails",i, "size"=>30, "value"=>"")%>
 
 <%#=select_tag("Slabeldetails_"+i.to_s,options_for_select([["SELECT TITLE:",""]]+Contact::TITLE_TYPES,@sel.to_s),:onClick=>"setTitle1();", :onBlur=>"setTitle2();")%>
-<%=select_tag("Slabeldetails_"+i.to_s,options_for_select([["Title:",""]]+Contact::TITLE_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
+<%=select_tag("Slabeldetails_"+i.to_s,options_for_select([["Title:",""]]+Contact::TITLE_TYPES,@sel.to_s), :onBlur=>"setTitle2();", :class=>"select-class")%>
 <%#=select_tag("Slabeldetails_"+i.to_s,options_for_select(Contact::TITLE_TYPES,@sel.to_s),:include_blank => true, :onBlur=>"setTitle2();")%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>"201")%>
 <%=observe_field( "Slabeldetails_"+i.to_s,	:frequency =>2.5, :update=>'labeldetails_4',

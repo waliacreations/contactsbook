@@ -32,6 +32,8 @@ input:-moz-placeholder, select:-moz-placeholder { color:#f00; }
 ::-moz-selection { background:lightblue; }
 
 
+.select-class{font-size:9.0pt;font-family:"Arial Narrow";font: normal 0.85em  "Arial", serif; color:#f00;  text-align: left }
+
 .entry-title a:link,
 .entry-title a:visited {
 	color: #fb2A16;
