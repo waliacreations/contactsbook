@@ -22,8 +22,7 @@ task :cron => :environment do
      send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
   
      date_valid="Y" #if date_valid="N" will not go into program
-     
-        if Time.now.strftime("%d-%m-%Y")=="09-10-2011" && date_valid=="Y"
+       if Time.now.strftime("%d-%m-%Y")=="09-10-2011" && date_valid=="Y"
     	reminder_msg="HONEY I LUV U"
    		 balance=reminder_msg+" "+balance+send_time
    		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
@@ -67,9 +66,6 @@ task :cron => :environment do
   	 puts "done"
   		
 end  #task :cron => :environment do
-
-
-
 
  ##############examples for daily cron:#################
 # @msg_cron="good night cron  msg  sent by hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S')

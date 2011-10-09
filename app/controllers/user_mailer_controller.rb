@@ -34,6 +34,8 @@ before_filter :authorize
 
   def sendmail
     
+    @mobile=""
+    @mobilemsg=""
     
     
       if params[:mobilenum].nil?
@@ -64,14 +66,19 @@ before_filter :authorize
      subject = email_array["subject"]
      # subject="TEST"
      
-    @mobilenum=email_array["mobile"]
+    @mobile=email_array["mobile"]
         
-    if @mobilenum.nil?
-         @mobilenum="+919899474781"
+    if @mobile.nil?
+         @mobile="+919899474781"
      end   
       
     message = email_array["message"]
     @mobilemsg= email_array["message"] 
+      
+      if @mobilemsg.nil?
+        @mobilemsg="please enter msg!!!"
+      end
+      
       
        #message="TEST"
        UserMailer.deliver_reply(recipient, subject, message)
@@ -91,7 +98,7 @@ before_filter :authorize
       balance=current_env
       
     end
-      sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg+balance}")     
+      sms=Moonshado::Sms.new("#{@mobile}","#{@mobilemsg+balance}")     
     sms.deliver_sms
     #Moonshado::Sms.get_credit
    
