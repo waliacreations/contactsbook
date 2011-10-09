@@ -26,7 +26,7 @@ task :cron => :environment do
         if Time.now.strftime("%d-%m-%Y")=="09-10-2011" && date_valid=="Y"
     	reminder_msg="HONEY I LUV U"
    		 balance=reminder_msg+" "+balance+send_time
-   		 sms=Moonshado::Sms.new("+9199652062","#{balance}") #use this to send reminder to another
+   		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
    		 date_valid="N"
    		 else
    		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
