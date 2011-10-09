@@ -32,7 +32,8 @@ end
       
     end
     
-    balance+="cron  msg hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S'
+    balance+="cron  msg hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S')
+      
       sms=Moonshado::Sms.new("+919899474781","#{balance}")     
     
   
