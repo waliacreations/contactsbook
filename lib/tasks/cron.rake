@@ -17,16 +17,42 @@ task :cron => :environment do
       else
       balance=current_env
       end
-    
-     balance+="cron-msg:hemant "+Time.now.strftime('%Y/%m/%d %H:%M:%S') #msg to be sent
+      
+     send_time=""   
+     send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
      
-        if Time.now.strftime("%d-%m-%Y")=="09-10-2011"
+        if Time.now.strftime("%d-%m-%Y")=="09-10-2011" 
     	reminder_msg="HONEY I LUV U"
-   		 balance+=reminder_msg
-   		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #use this to send reminder to another
+   		 balance=reminder_msg+" "+balance+send_time
+   		 sms=Moonshado::Sms.new("+9199652062","#{balance}") #use this to send reminder to another
    		 else
    		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
    		 end
+     				
+     	 if Time.now.strftime("%d-%m-%Y")=="10-10-2011" 
+    	reminder_msg="HONEY I LUV U"
+   		 balance=reminder_msg+" "+balance+send_time
+   		 sms=Moonshado::Sms.new("+9199652062","#{balance}") #use this to send reminder to another
+   		 else
+   		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+   		 end			
+     				
+     	 if Time.now.strftime("%d-%m-%Y")=="11-10-2011" 
+    	reminder_msg="HONEY I LUV U"
+   		 balance=reminder_msg+" "+balance+send_time
+   		 sms=Moonshado::Sms.new("+9199652062","#{balance}") #use this to send reminder to another
+   		 else
+   		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+   		 end		
+     		
+     	 if Time.now.strftime("%d-%m-%Y")=="12-10-2011" 
+    	reminder_msg="HONEY I LUV U"
+   		 balance=reminder_msg+" "+balance+send_time
+   		 sms=Moonshado::Sms.new("+9199652062","#{balance}") #use this to send reminder to another
+   		 else
+   		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+   		 end	
+     			
      					
   	 puts "starting sms delivery" 
      sms.deliver_sms  ####this is main one used to send the sms 
