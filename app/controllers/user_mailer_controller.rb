@@ -1,5 +1,3 @@
--
-
 
 #class UserMailerController < ActionController::Base
  
@@ -8,15 +6,15 @@ before_filter :authorize
   
   
   def index
-    @user_id=0
-          @user_id=params[:uid]
-            if @user_id.nil?
-              if params[:id].nil?
-              @user_id=0
-              else
-              @user_id=params[:id]
-              end #if params[:id].nil?
-            end #if user_id.nil?
+   @user_id=1
+    @user_id=params[:uid]
+     if @user_id.nil?
+     if params[:id].nil?
+      @user_id=0
+      else
+      @user_id=params[:id]
+      end #if params[:id].nil?
+   end #if user_id.nil?
             
     
   end
@@ -126,40 +124,40 @@ before_filter :authorize
     end
     
     
-   def sendmailold
-     @sender = params[:sender]
-     @subject = params[:subject]
-     @message = params[:message]
-     if validate(@sender, @subject, @message)
-       UserMailer.deliver_reply(@sender, @subject, @message)
+ #  def sendmailold
+  #   @sender = params[:sender]
+  #   @subject = params[:subject]
+   #  @message = params[:message]
+   #  if validate(@sender, @subject, @message)
+   #    UserMailer.deliver_reply(@sender, @subject, @message)
           # return if request.xhr?
-           render :text => 'Message sent successfully'
+    #       render :text => 'Message sent successfully'
            
     #   user_mailer.reply(@sender, @subject, @message).deliver      
-       flash[:success] = "Message sent successfully"      
-       redirect_to :action=>"reply"
-     else
-       flash.now[:error] = @error     
-       render :action=>'reply'
-     end
-   end
+   #    flash[:success] = "Message sent successfully"      
+   #    redirect_to :action=>"reply"
+    # else
+    #   flash.now[:error] = @error     
+   #   render :action=>'reply'
+    # end
+  # end
  
-   private
-     def validate(sender, subject, message)
-       @email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-       if sender.blank? || subject.blank? || message.blank?
-         @error = "Message not sent: Required information not filled"
-         return false
-       elsif subject.length >= 50
-         @error = "Message not sent: Subject must be smaller than 50 characters"
-         return false
-     elsif sender[@email_regex].nil?
-         @error = "Message not sent: Email not valid"
-         return false
-       else
-         return true
-       end
-     end
+  # private
+    # def validate(sender, subject, message)
+     #  @email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+     #  if sender.blank? || subject.blank? || message.blank?
+     #    @error = "Message not sent: Required information not filled"
+     #    return false
+    #   elsif subject.length >= 50
+     #    @error = "Message not sent: Subject must be smaller than 50 characters"
+    #     return false
+    # elsif sender[@email_regex].nil?
+    #     @error = "Message not sent: Email not valid"
+    #     return false
+    #   else
+    #     return true
+   #    end
+   #  end
    
   
 end
