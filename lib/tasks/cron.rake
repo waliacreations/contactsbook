@@ -20,8 +20,25 @@ end
  ## if Time.now.hour == 11   #&& Time.now.min==45
    puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
   puts "starting sms creation"
-  @msg_cron="good night cron  msg  sent by hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S')
-   sms=Moonshado::Sms.new("+919899474781", @msg_cron)  
+  
+   current_env=ENV['RAILS_ENV']
+    balance=""
+    balanceh={}
+      if current_env=="production"
+      balanceh=Moonshado::Sms.get_credit
+        balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join
+    else
+      balance=current_env
+      
+    end
+    
+    balance+="cron  msg hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S'
+      sms=Moonshado::Sms.new("+919899474781","#{balance}")     
+    
+  
+  
+ # @msg_cron="good night cron  msg  sent by hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S')
+  # sms=Moonshado::Sms.new("+919899474781", @msg_cron)  
     # sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg}")     
    puts "starting sms delivery" 
     sms.deliver_sms
