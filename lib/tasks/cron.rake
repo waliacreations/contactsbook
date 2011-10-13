@@ -21,37 +21,10 @@ task :cron => :environment do
      send_time=""   
      send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
   
-     date_valid="Y" #if date_valid="N" will not go into program
-       if Time.now.strftime("%d-%m-%Y")=="09-10-2011" && date_valid=="Y"
-    	reminder_msg="HONEY I LUV U"
-   		 balance=reminder_msg+" "+balance+send_time
-   		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
-   		 date_valid="N"
-   		 else
-   		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-   		 end
-     		
-     		
-     				
-     	 if Time.now.strftime("%d-%m-%Y")=="10-10-2011" && date_valid=="Y"
-    	reminder_msg="HONEY I LUV U"
-   		 balance=reminder_msg+" "+balance+send_time
-   		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
-   		 date_valid="N"
-   		 else
-   		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-   		 end			
-     				
-     	 if Time.now.strftime("%d-%m-%Y")=="11-10-2011" && date_valid=="Y"
-    	reminder_msg="HONEY I LUV U"
-   		 balance=reminder_msg+" "+balance+send_time
-   		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
-   		 date_valid="N"
-   		 else
-   		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-   		 end		
-     		
-     	 if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
+     
+     
+          if ("2011-10-15".to_date-Time.now.to_date).to_i>0      		
+     	## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
     	reminder_msg="HONEY I LUV U"
    		 balance=reminder_msg+" "+balance+send_time
    		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
@@ -70,8 +43,19 @@ end  #task :cron => :environment do
  ##############examples for daily cron:#################
 # @msg_cron="good night cron  msg  sent by hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S')
   					# sms=Moonshado::Sms.new("+919899474781", @msg_cron)  
-  					# sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg}")     
-
+  	               	# sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg}") 
+  	               	 
+  			# date_valid="Y" #if date_valid="N" will not go into program		   
+  # if Time.now.strftime("%d-%m-%Y")=="09-10-2011" && date_valid=="Y"
+    	#reminder_msg="HONEY I LUV U"
+   		# balance=reminder_msg+" "+balance+send_time
+   		# sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+   		# date_valid="N"
+   		# else
+   		# sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+   		# end
+     		
+     		
  # if Time.now.hour == 11   #&& Time.now.min==45 
   # User.send_reminders
 	## end
