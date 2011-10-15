@@ -3,6 +3,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "home", :action=>"index" 
   
+  
+  map.connect 'message/index', :controller=>'message', :action=>'index'
+    map.connect 'message/create', :controller=>'message', :action=>'create'
+  
   map.connect 'user_mailer/index', :controller=>'user_mailer', :action=>'index'
   map.connect 'user_mailer/show', :controller=>'user_mailer', :action=>'show'
   map.connect 'user_mailer/sendmail', :controller=>'user_mailer', :action=>'sendmail'
@@ -21,7 +25,7 @@ map.connect 'contacts/quickentry', :controller => 'contacts', :action => 'quicke
 
   map.resources :categories
 
- 
+ map.resources :messages
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -15,9 +15,10 @@ before_filter :authorize
       @user_id=params[:id]
       end #if params[:id].nil?
    end #if user_id.nil?
-            
-    
+             
   end
+  
+  
   
   def reply
      @title||= "Reply"

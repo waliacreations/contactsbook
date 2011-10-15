@@ -28,8 +28,8 @@ task :cron => :environment do
     	reminder_msg="HONEY I LUV U"
    		 balance=reminder_msg+" "+balance+send_time
    		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
-   		 date_valid="N"
-   		 else
+   		 
+   		else
    		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
    		 end	
      			

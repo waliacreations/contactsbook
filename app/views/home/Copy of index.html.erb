@@ -69,10 +69,10 @@ return false;
 <%labelnumber=[]%>
 <%i=0%>
 
-<table  cellspacing="20" cellpadding="0" align="left">
-<tr>  <td bgcolor="white" vertical-align="top">
+<table  cellspacing="20" cellpadding="0" "align="left">
+<tr>    <td bgcolor="white" vertical-align="top">
 
-<table class="bordertablecream" cellspacing="0" cellpadding ="5"  align="left" >
+<table class="bordertable" cellspacing="0" cellpadding ="5"  align="left" >
 
 <div id="update_new">
 <%form_tag({:controller=>"home",:action=>'createlogin'},{:onsubmit=>'return validate_Form2();'}) do %>
@@ -326,12 +326,15 @@ return false;
 <%#####END USER REGISTERATION#########%>
 
 
+
+
+
 <%######LOGIN FORM START#######%>
-<%#<table class= "bordertable"  cellspacing="0" cellpadding="5" align="center">%>
+<%#<table class= "bordertable"  cellspacing="0" cellpadding="5" "align="center">%>
 <%#<tr>   %>
 </td> <td bgcolor="white" vertical-align="center"><h2> OR </h2> </td> <td bgcolor="white" vertical-align="top">
 </td> <td bgcolor="white">
-<table class= "bordertablecream" cellspacing="0" cellpadding ="5"  align="center"  >	
+<table class= "bordertable" cellspacing="0" cellpadding ="5"  align="center"  >	
 <div id="update1">
 <%form_tag({:action=>'login', :msg=>params[:username_1]},{ :onsubmit=>'return validate_Form1();'}) do %>
 
@@ -346,8 +349,8 @@ return false;
 <td colspan="100" class="Titlebordergold"><strong><u>SIGNUP:/LOGIN:</u></strong></td>
 </tr>
 <tr>
-<td colspan="10"></td>
-<td colspan="40"><%=text_field("username",1, "size"=>30, "value"=>"", "placeholder"=>"Username(Email)")%>
+<td colspan="10" ></td>
+<td colspan="40" ><%=text_field("username",1, "size"=>30, "value"=>"", "placeholder"=>"Username(Email)")%>
 <%=observe_field( :username_1,	:frequency =>5.5, :update=>'username_1',
  :url=> {:action => "validateusername" },
 :with=>"'username_1='+value") %></td>
@@ -373,18 +376,17 @@ return false;
 </tr>
 <tr>
 <td colspan="10"></td>
-<td colspan="40">&nbsp;</td>
-<td colspan="40">&nbsp;</td>
-<td colspan="10">&nbsp;</td>
-</tr>
-<tr>
-<td colspan="10"></td>
 <td colspan="40"  align="center"><%=submit_tag("LOGIN",:class=>"button" )%></td>
 <td colspan="40"  >
 </td>
 <td colspan="10"  ></td>
 </tr>
-
+<tr>
+<td colspan="10"></td>
+<td colspan="40">&nbsp;</td>
+<td colspan="40">&nbsp;</td>
+<td colspan="10">&nbsp;</td>
+</tr>
 
 <tr>
 <td colspan="10"></td>
@@ -453,7 +455,7 @@ return false;
 </div> <%#update%>
 </table>
 </td>
-</tr>
+</tr></table>
 
 
 <%######END LOGIN  FORM#######%>
@@ -464,36 +466,37 @@ return false;
 
 
 
-<%#<br/><br/><br/><br/><br/><p></p>%>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<br/>
+<p></p>
 
 
 
-<tr>
-<td cellspan="200">
 
-
-
-
-<br/>=========================<br/>
+<br/>========================================================<br/>
 
 <%if @previous_name!=''%>
 <p>Last Login:<%=h @previous_name%></p>
 <%end%><%#if @previous_name!=''%>
 
-</td>
+
 
 <%###################################################################################%>
 
-<td></td><td></td>
-<td cellspan="100">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 
 
-<br/>=========================<br/>
+<br/>=========================================================<br/>
 updated on:30thsept 2011; 10:15
 <br/>NOW:<%=Time.now.strftime("%d-%m-%Y %H:%M:%S")%>
-
-</td></tr>
-</table>
-
 </body>
+
+
 </html>

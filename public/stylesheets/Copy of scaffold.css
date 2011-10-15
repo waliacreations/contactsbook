@@ -10,6 +10,7 @@ body, select, input, textarea {
 }  
 
 
+
 /* all PLACEHOLDER     http://davidwalsh.name/css-selection*/
 ::-webkit-input-placeholder , ::-webkit-select-placeholder  { color:#f00; }
 input:-moz-placeholder, select:-moz-placeholder { color:#f00; }
@@ -446,9 +447,6 @@ table.widetable4 { width: 880px; padding-top:2em; padding-right:2em; 	padding-bo
 font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-before:always;  }
 
  table.bordertable {border-width:2px; border-style:solid;  border-color:#FDD017; spacing:0em; padding:1em; }
-
-table.bordertablecream {background-color:#FDFCDC; border-width:2px; border-style:solid;  border-color:#FDD017; spacing:0em; padding:1em; }
-
 table.bordertable2 {border: 5px solid #660000;}
 td.noborder4 {border:none; font-size: 0.6em;}
 
