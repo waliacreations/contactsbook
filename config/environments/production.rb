@@ -41,7 +41,7 @@ config.logger = Logger.new(STDOUT)
 config.after_initialize do
   Moonshado::Sms.configure do |config|
     config.api_key = ENV['MOONSHADOSMS_URL']
-    config.keywords = {:bender => "http://planetexpress.com/sms/mo"}
+    config.keywords = {:icontactsbook => "http://www.icontactsbook.com/messages/create"}
 
     # This will auto register keywords on application startup
     config.auto_register_keywords = true
