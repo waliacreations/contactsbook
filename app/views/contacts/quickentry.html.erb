@@ -29,7 +29,7 @@ function validate_Form(){
 var _a=document.getElementById("labeldetails_4").value;
 var _b=document.getElementById("labeldetails_5").value;
 var _c=document.getElementById("labeldetails_3").value;
-var _d=document.getElementById("labeldetails_9").value;
+var _d=document.getElementById("labeldetails_8").value;
 var _e=document.getElementById("labeldetails_1").value;
 var _empty="";
 var _msg="";
@@ -93,7 +93,7 @@ alert("CHECK TITLE!!!");
 if(_d=="")
 {
 alert("please Enter the Mobile Number");
-document.getElementById("labeldetails_9").focus();
+document.getElementById("labeldetails_8").focus();
 return false;
 }
 else
@@ -104,8 +104,8 @@ _msg="OK";
 if(isNaN(_d))
 {
 alert("Enter the valid Mobile Number(eg: 9899474781)");
-document.getElementById("labeldetails_9").value=_empty;
-document.getElementById("labeldetails_9").focus();
+document.getElementById("labeldetails_8").value=_empty;
+document.getElementById("labeldetails_8").focus();
 return false;
 }
 else
@@ -115,8 +115,8 @@ else
 if((_d.charAt(0)!="9") && (_d.charAt(0)!="8") && (_d.charAt(0)!="7"))
 {
 alert("Enter the valid Mobile Number start with '7,8 or 9'(eg: 9899474781):" +_d.charAt(0));
-document.getElementById("labeldetails_9").value=_empty;
-document.getElementById("labeldetails_9").focus();
+document.getElementById("labeldetails_8").value=_empty;
+document.getElementById("labeldetails_8").focus();
 return false;
 }
 else
@@ -126,8 +126,8 @@ else
 if((_d.length < 10) || (_d.length > 10))
 {
 alert(" Your Mobile Number is wrong!:'"+_d+"' must be 10 Integers");
-document.getElementById("labeldetails_9").value=_empty;
-document.getElementById("labeldetails_9").focus();
+document.getElementById("labeldetails_8").value=_empty;
+document.getElementById("labeldetails_8").focus();
 return false;
 }
 else
@@ -153,7 +153,7 @@ alert("CHECK CATEGORY!!!");
 
   <br />========================================================================<br/> 
   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
-&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <b>  <%#=submit_tag ("       Create New Multiple Records            ")%>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <b> <%#=submit_tag ("   Create New Contact   ",:class=>"button")%>
       </b>
   <br />========================================================================<br/>
 <%end %>

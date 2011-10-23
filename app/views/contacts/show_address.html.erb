@@ -1,0 +1,176 @@
+<%= error_messages_for 'contact' %>
+<%c=1%>
+<%con=Contact.find(:first,  :order=> "contactid DESC")%>
+<%if con.nil?%>
+	<%c=1%>
+	<%else%>
+	<%c=(con.contactid).to_i%>
+	<%c=c+1%>
+<%end%>
+
+
+<%case @choice
+when "PEOPLE" then%>
+<%@labels=Label.find(:all, :conditions=> "labelnumber in (509,514,516)", :order=>"labelnumber")%>
+
+<%end%>
+
+<table cellspacing="2" border="0">
+
+<%#</table>%>
+<%i=10%>
+<%labelnumber=[]%>
+<%label=[]%>
+<%labeldetails=[]%>
+<%contactid=[]%>
+<%time_at=[]%>
+<%detail=[]%>
+<%category1="a"%>
+<%category2="b"%>
+<%#<table cellspacing="1" border="0">%>
+<%odd_or_even=0%>
+<%@labels.each do |@label|%>
+ <%odd_or_even=1- odd_or_even%>
+<%i+=1%>
+<%category2 =@label.labelcategory%>  
+
+
+
+
+ <% var1=@label.labeldetails%>
+<tr>
+ <td><%#=i%> </td>
+<td class="ListLine<%= odd_or_even%>">
+
+<%#### to combine 2 or 3 fields to shorten form%>
+<%case @label.labeldetails
+when "title" then%>
+NAME(title/first&middle/lastname)
+
+<%when "company name" then%>
+Company-Name/Designation-Post
+
+<%when "phone-fax" then%>
+phone-fax(011-29237824)/website
+
+<%when "mobilenumber" then%>
+mobilenumber(9899474781)
+
+<%when "city" then%>
+City-State
+
+<%when "pincode" then%>
+Pincode/Country
+
+<%when "birthday" then%>
+Birthday(dd-mm-yyyy)/Message
+
+<%when "number&streetname" then%>
+Number-streetname/Locality-district
+
+<%else%>
+<%=@label.labeldetails%>
+
+<%end%>
+<%#### END to combine 2 or 3 fields to shorten form%>
+
+<%if ["entity category","title","mobilenumber"].include? @label.labeldetails%>*<%end%>
+</td>
+
+<%case @label.labeldetails 
+when "number&streetname" then %>
+<td class="ListLine0White"><%=text_field("labeldetails",i, "size"=>30, "value"=>"",:onBlur=>"CheckAddr1();")%>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+<%#######number&streetname VALIDATION#########%>
+<script type="text/javascript">
+function CheckAddr1() {
+var _empty="";
+var _a=document.getElementById("labeldetails_13").value;
+
+if ((_a.to_s=="")||(_a==" ")||(_a=="  ")||(_a.length==0)) {
+alert("please Enter the 'number&streetname'");
+document.getElementById("labeldetails_13").value=_empty;
+document.getElementById("labeldetails_13").focus();
+return false;
+}
+}//function CheckAddr1()
+</script>
+<%#######number&streetname VALIDATION#########%>
+<%i+=1%>
+
+<%=text_field("labeldetails",i, "size"=>20, "value"=>"",:onBlur=>"CheckAddr2();")%>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>511)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+
+</td> 
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+
+<script type="text/javascript">
+function CheckAddr2() {
+var _empty="";
+var _a=document.getElementById("labeldetails_14").value;
+
+if ((_a.to_s=="")||(_a==" ")||(_a=="  ")||(_a.length==0)) {
+alert("please Enter the 'locality/district'");
+document.getElementById("labeldetails_14").value=_empty;
+document.getElementById("labeldetails_14").focus();
+return false;
+}
+}//function CheckAddr2()
+</script>
+
+<%when "city" then %>
+<td class="ListLine0White"><%= options=[["Select or type new city", ""]] + Contact::CITY_TYPES
+select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+<%i+=1%>
+
+<%= options=[["Selector type new state", ""]] + Contact::STATE_TYPES
+select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
+<%sprintf("%0.0f",c.to_s)%>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>515)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+</td> 
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+
+
+<%when "pincode" then%>
+<td class="ListLine0White"><%=text_field("labeldetails",i, "size"=>10, "value"=>"")%>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+
+<%i+=1%>
+<%= options=[["Select or type new country", ""]] + Contact::COUNTRY_TYPES
+select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>517)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+</td> 
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<%end%>
+
+</tr>
+<%end%>
+<%#</table>%>

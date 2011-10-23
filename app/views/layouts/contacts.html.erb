@@ -18,19 +18,28 @@
 <tr>
 <td colspan="30">
 <span id="left1"><b> <%=@username%>:</b></span>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;
 </td>
 <td colspan="20"><b>
-<%=link_to_unless_current "HOME", '/home' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+<%=link_to_unless_current "HOME", '/home' %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
 </td>
 <td colspan="20"><b>
-<%=link_to_unless_current "CATEGORIES", '/categories' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
+<%=link_to_unless_current "CATEGORIES", '/categories' %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  
 </td>
 <td colspan="30"><b>
 <%if @user_id.to_i==1%>
 <%=link_to_unless_current "LABELS", '/labels' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
-<%=link_to_unless_current "CONTACTS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
- &nbsp;&nbsp;&nbsp;	&nbsp;&nbsp;
+<%=link_to_unless_current "PEOPLE", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;
+ <%=link_to_unless_current "PLACES", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;
+ <%=link_to_unless_current "PRODUCTS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;
+ <%=link_to_unless_current "PROJECTS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;
+ <%=link_to_unless_current "PROGRESS", {:controller=>"contacts", :action=>"viewsummary", :id=>params[:id], :uid=>params[:uid]} %>&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;
+ 
 <%=link_to_unless_current "EMAIL", {:controller=>"user_mailer", :action=>"index", :id=>params[:id], :uid=>params[:uid]} %>
 <%end%>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	

@@ -14,13 +14,12 @@
 
 <%case @choice
 when "PEOPLE" then%>
-<%@labels=Label.find(:all, :conditions=> "labelnumber in (150,201,205,212,250,260,270,509,514,516,2001,21001,21050,21190)", :order=>"labelnumber")%>
-
+<%@labels=Label.find(:all, :conditions=> "labelnumber in (150,201,205,250,260,2001)", :order=>"labelnumber")%>
 <%end%>
-
-<div id="update">
 <table cellspacing="2" border="0">
 
+
+<div id="update">
 
 <%#</table>%>
 <%i=0%>
@@ -47,7 +46,6 @@ when "PEOPLE" then%>
      <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -------------------------------</td>
      <td></td>
      <td></u></td>
-     
 </tr>
 <%category1=@label.labelcategory%>
     
@@ -123,7 +121,6 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>160)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
 <%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
-
 </td> 
 <td></td>
 <td></td>
@@ -152,7 +149,7 @@ document.getElementById('labeldetails_3').value=_h;
 <%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
 <%i+=1%>
 
-/<%=text_field("labeldetails",i, "size"=>15, "value"=>"",:onBlur=>"CheckFirst();")%>
+<%=text_field("labeldetails",i, "size"=>15, "value"=>"",:onBlur=>"CheckFirst();")%>
 <%sprintf("%0.0f",c.to_s)%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>202)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
@@ -167,7 +164,7 @@ function CheckFirst() {
 
 <%i+=1%>
 
-/<%=text_field("labeldetails",i, "size"=>15, "value"=>"",:onBlur=>"CheckName();")%>
+<%=text_field("labeldetails",i, "size"=>15, "value"=>"",:onBlur=>"CheckName();")%>
 <%sprintf("%0.0f",c.to_s)%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>204)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
@@ -192,14 +189,12 @@ function CheckName()
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
 <%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
-
 <%i+=1%>
-/<%= options=[["Select post or type new", ""]] + Contact::POSTS
+<%= options=[["Select post or type new", ""]] + Contact::POSTS
 select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>210)%></td>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
 <%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%></td>
-
 </td> 
 <td></td>
 <td></td>
@@ -228,12 +223,12 @@ function CheckMobile()
 {
 //var a = document.form.phone.value;
 var _empty="";
-var _a=document.getElementById("labeldetails_11").value;
+var _a=document.getElementById("labeldetails_8").value;
 
 if ((_a.to_s=="")||(_a==" ")||(_a=="  ")||(_a.length==0)) {
 alert("please Enter the Mobile Number");
-document.getElementById("labeldetails_11").value=_empty;
-document.getElementById("labeldetails_11").focus();
+document.getElementById("labeldetails_8").value=_empty;
+document.getElementById("labeldetails_8").focus();
 return false;
 }
 else{
@@ -242,15 +237,15 @@ for(i=0;i<10;i++){
 
 if(isNaN(_a.charAt(i))){
 alert("Character "+_a.charAt(i)+" around position "+i+" WRONG!!");
-document.getElementById("labeldetails_11").value=_empty;
-document.getElementById("labeldetails_11").focus();
+document.getElementById("labeldetails_8").value=_empty;
+document.getElementById("labeldetails_8").focus();
 }
 }//for(i=0;i<10; i++)
 
 if((_a.length < 10) || (_a.length > 10)){
 alert(" Your Mobile Number is wrong!:'"+_a+"' must be 10 characters");
-document.getElementById("labeldetails_11").value=_empty;
-document.getElementById("labeldetails_11").focus();
+document.getElementById("labeldetails_8").value=_empty;
+document.getElementById("labeldetails_8").focus();
 //return false;
 }
 
@@ -263,9 +258,9 @@ document.getElementById("labeldetails_11").focus();
 <%when "email" then %>
 <td class="ListLine<%= odd_or_even%>White"><%#=text_field("vvv","value"=>"")%>
 <%=text_field("labeldetails",i, "size"=>40, "value"=>"")%></td> 
-<%=observe_field( :labeldetails_10,	:frequency =>14.5, :update=>'labeldetails_10',
+<%=observe_field( :labeldetails_9,	:frequency =>14.5, :update=>'labeldetails_9',
  :url=> {:action => "validateemail" },
-:with=>"'labeldetails_10='+value") %>
+:with=>"'labeldetails_9='+value") %>
 <td><%sprintf("%0.0f",c.to_s)%></td>
 <td><%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
 <td><%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
@@ -351,7 +346,10 @@ document.getElementById("labeldetails_11").focus();
 <%#######phone/fax NUMBER VALIDATION#########%>
 
 <%when "number&streetname" then %>
-<td class="ListLine0White"><%=text_field("labeldetails",i, "size"=>30, "value"=>"",:onBlur=>"CheckAddr1();")%>
+<td class="ListLine0White">
+<%#=link_to_remote("AJAX", :update=>'mydiv', :url=>{:action=>:say_hello})%>
+<%#<div id="mydiv"> change this </div>%>
+<%=text_field("labeldetails",i, "size"=>30, "value"=>"",:onBlur=>"CheckAddr1();")%>
 <%sprintf("%0.0f",c.to_s)%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
@@ -378,8 +376,6 @@ return false;
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>511)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
 <%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
-
-
 </td> 
 <td></td>
 <td></td>
@@ -423,7 +419,6 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <td></td>
 <td></td>
 
-
 <%when "pincode" then%>
 <td class="ListLine0White"><%=text_field("labeldetails",i, "size"=>10, "value"=>"")%>
 <%sprintf("%0.0f",c.to_s)%>
@@ -444,7 +439,6 @@ select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.ed
 <td></td>
 <td></td>
 
-
 <%when "birthday" then %>
 <td class="ListLineReqdWhite"><%=text_field("labeldetails",i, "size"=>10, "value"=>"")%>
 <input type="hidden" name="date" id="f_date_c" readonly="1" />
@@ -455,7 +449,7 @@ onmouseover="this.style.background=’red’;"
 onmouseout="this.style.background=’black’" />
 <script type="text/javascript">
 Calendar.setup({
-inputField : "labeldetails_19",
+inputField : "labeldetails_10",
 ifFormat : "%d-%m-%Y",
 button : "f_trigger_c",
 align : "Tl",
@@ -468,7 +462,7 @@ singleClick : false
 <%=hidden_field("created_at",i,"size"=>10,"value"=>Time.now.strftime("%y-%m-%d"))%>
 <%i+=1%>
 &nbsp;&nbsp;&nbsp;
-/<%=text_field("labeldetails",i, "size"=>35, "value"=>"")%>
+<%=text_field("labeldetails",i, "size"=>35, "value"=>"")%>
 
 <%sprintf("%0.0f",c.to_s)%>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>2002)%>
@@ -488,8 +482,8 @@ singleClick : false
 <td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
 <td style="font-size: 10.0pt.; color:Red; height:1em;"><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
 
-<%if @label.labeldetails=="Comments"%>
-<%=submit_tag ("  Create New Contact  ",:class=>"button")%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*=REQUIRED<%end%>
+<%#if @label.labeldetails=="Comments"%>
+<%#=submit_tag ("  Create New Contact  ",:class=>"button")%><%#end%>
 
 </td>
 
@@ -497,14 +491,112 @@ singleClick : false
 
 </tr>
 <%end%>
+
+</div>
 <tr>
 <td></td>
-<td colspan="20" style="font-size: 10.0pt.; color:Red; height:1em;"></td>
-<td colspan="20"  ><%#=submit_tag ("  Create New Contact  ",:class=>"button")%></td>
+<td colspan="20"></td>
+<td colspan="20"></td>
 <td colspan="20"></td>
 <td></td>
 </tr>
-</table>
-</div>
-<!--[eoform:contact]-->
+<tr>
+<td></td>
+<td colspan="20">
+</td>
+<td colspan="20"></td>
+<td colspan="20"></td>
+<td></td>
+</tr>
 
+
+
+<tr >
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u>spouse details</u>----- </td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> 
+     </td>
+     <td></td>
+     <td></u></td>     
+</tr>
+<tr>
+<td colspan="100" align="left">
+    <%=link_to_remote("Add", :update=>'spousediv', :url=>{:action=>:show_spouse, :choice=>@choice})%>
+&nbsp;&nbsp;&nbsp;  <%=link_to_remote("REMOVE", :update=>'spousediv', :url=>{:action=>:hide_spouse, :choice=>@choice})%>
+<div id="spousediv"></div></td>
+</tr>
+
+
+<tr >
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u>kids details</u>----- </td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> 
+     </td>
+     <td></td>
+     <td></u></td>     
+</tr>
+<tr>
+<td colspan="100" align="left">
+    <%=link_to_remote("Add", :update=>'kidsdiv', :url=>{:action=>:show_kids, :choice=>@choice})%>
+&nbsp;&nbsp;&nbsp;  <%=link_to_remote("REMOVE", :update=>'kidsdiv', :url=>{:action=>:hide_kids, :choice=>@choice})%>
+<div id="kidsdiv"></div></td>
+</tr>
+
+
+
+
+
+<tr >
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u>MAILING ADDRESS</u>----- </td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> 
+     </td>
+     <td></td>
+     <td></u></td>     
+</tr>
+<tr>
+<td colspan="100" align="left">
+    <%=link_to_remote("Add", :update=>'mydiv', :url=>{:action=>:show_address, :choice=>@choice})%>
+&nbsp;&nbsp;&nbsp;  <%=link_to_remote("REMOVE", :update=>'mydiv', :url=>{:action=>:hide_address, :choice=>@choice})%>
+<div id="mydiv"></div></td>
+</tr>
+
+
+<tr >
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u>MEMO</u>----- </td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> 
+     </td>
+     <td></td>
+     <td></u></td>     
+</tr>
+<tr>
+<td colspan="100" align="left">
+    <%=link_to_remote("Add", :update=>'mydiv1', :url=>{:action=>:show_memo, :choice=>@choice})%>
+&nbsp;&nbsp;&nbsp;  <%=link_to_remote("REMOVE", :update=>'mydiv1', :url=>{:action=>:hide_memo, :choice=>@choice})%>
+<div id="mydiv1"></div></td>
+</tr>
+<tr>
+<td></td>
+<td colspan="20">
+</td>
+<td colspan="20"></td>
+<td colspan="20"></td>
+<td></td>
+</tr>
+
+<%#</table>%>
+<%#<table cellspacing="2" border="0">%>
+
+<tr>
+<td colspan="100" align="right" style="font-size: 10.0pt.; color:Red; height:1em;">*=REQUIRED&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+<%=submit_tag ("  Create New Contact  ",:class=>"button")%></td>
+</tr>
+</table>
+
+
+<!--[eoform:contact]-->

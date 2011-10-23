@@ -1,0 +1,111 @@
+<%= error_messages_for 'contact' %>
+<%c=1%>
+<%con=Contact.find(:first,  :order=> "contactid DESC")%>
+<%if con.nil?%>
+	<%c=1%>
+	<%else%>
+	<%c=(con.contactid).to_i%>
+	<%c=c+1%>
+<%end%>
+
+
+<%case @choice
+when "PEOPLE" then%>
+<%@labels=Label.find(:all, :conditions=> "labelnumber in (21001,21050,21190)", :order=>"labelnumber")%>
+
+<%end%>
+
+<table cellspacing="2" border="0">
+
+<%#</table>%>
+<%i=10%>
+<%labelnumber=[]%>
+<%label=[]%>
+<%labeldetails=[]%>
+<%contactid=[]%>
+<%time_at=[]%>
+<%detail=[]%>
+<%category1="a"%>
+<%category2="b"%>
+<%#<table cellspacing="1" border="0">%>
+<%odd_or_even=0%>
+<%@labels.each do |@label|%>
+ <%odd_or_even=1- odd_or_even%>
+<%i+=1%>
+<%category2 =@label.labelcategory%>  
+
+
+
+
+ <% var1=@label.labeldetails%>
+<tr>
+ <td><%#=i%> </td>
+<td class="ListLine<%= odd_or_even%>">
+
+<%#### to combine 2 or 3 fields to shorten form%>
+<%case @label.labeldetails
+when "title" then%>
+NAME(title/first&middle/lastname)
+
+<%when "company name" then%>
+Company-Name/Designation-Post
+
+<%when "phone-fax" then%>
+phone-fax(011-29237824)/website
+
+<%when "mobilenumber" then%>
+mobilenumber(9899474781)
+
+<%when "city" then%>
+City-State
+
+<%when "pincode" then%>
+Pincode/Country
+
+<%when "birthday" then%>
+Birthday(dd-mm-yyyy)/Message
+
+<%when "number&streetname" then%>
+Number-streetname/Locality-district
+
+<%when "Comments" then%>
+Comments..........&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+<%else%>
+<%=@label.labeldetails%>
+
+<%end%>
+<%#### END to combine 2 or 3 fields to shorten form%>
+
+<%if ["entity category","title","mobilenumber"].include? @label.labeldetails%>*<%end%>
+</td>
+
+<%case @label.labeldetails 
+when "number&streetname" then %>
+
+<%else%>
+<td class="ListLine<%= odd_or_even%>White"><%=text_field("labeldetails",i, "size"=>40)%></td>
+<td> <%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td style="font-size: 10.0pt.; color:Red; height:1em;"><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+
+<%#if @label.labeldetails=="Comments"%>
+<%#=submit_tag ("  Create New Contact  ",:class=>"button")%><%#end%>
+
+</td>
+
+<%end%>
+
+</tr>
+<%end%>
+
+
+
+
+
+
+
+

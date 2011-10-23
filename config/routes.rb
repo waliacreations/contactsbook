@@ -4,8 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "home", :action=>"index" 
   
   
-  map.connect 'message/index', :controller=>'message', :action=>'index'
-    map.connect 'message/create', :controller=>'message', :action=>'create'
+  map.connect 'messages/index', :controller=>'messages', :action=>'index'
+    map.connect 'messages/create', :controller=>'messages', :action=>'create'
   
   map.connect 'user_mailer/index', :controller=>'user_mailer', :action=>'index'
   map.connect 'user_mailer/show', :controller=>'user_mailer', :action=>'show'

@@ -24,12 +24,68 @@ class ContactsController < ApplicationController
  
   
   
+  def say_hello
+   render(:layout=>false) 
+  end
   
   
+  def show_address
+    @choice=params[:choice]
+    render(:layout=>false) 
+   # render(:partial=>'address')
+  end
   
+  def hide_address
+     @choice=params[:choice]
+     render(:layout=>false) 
+    # render(:partial=>'address')
+   end
   
+  def show_spouse
+     @choice=params[:choice]
+     render(:layout=>false) 
+    # render(:partial=>'address')
+   end
+   
+   def hide_spouse
+      @choice=params[:choice]
+      render(:layout=>false) 
+     # render(:partial=>'address')
+    end  
+   
+  def show_kids
+     @choice=params[:choice]
+     render(:layout=>false) 
+    # render(:partial=>'address')
+   end
+   
+   def hide_kids
+      @choice=params[:choice]
+      render(:layout=>false) 
+     # render(:partial=>'address')
+    end
+   
+   
+   
+   
+  def show_memo
+    @choice=params[:choice]
+    render(:layout=>false) 
+   # render(:partial=>'address')
+  end
   
-  
+  def hide_memo
+     @choice=params[:choice]
+     render(:layout=>false) 
+    # render(:partial=>'address')
+   end
+   
+   
+   
+   
+   
+   
+   
   def show
     if params[:id]=="viewsummary"
        @contact=Contact.find(:all, :conditions=>"labelnumber=152")
@@ -233,7 +289,7 @@ class ContactsController < ApplicationController
     @results3=""
     @emailbegin=[]
     @emailend=[]
-    @phrase1=params[:labeldetails_13]
+    @phrase1=params[:labeldetails_9]
       
  if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.size<9
    msgbeg="ENTER EMAIL!!!"
@@ -350,8 +406,8 @@ end
            if msgbeg!="ok"||msgbeg1!="ok"||msg1!="ok" || msg2!="ok" || msg3!="ok" || msg4!="ok" || msg5!="ok" || msg6!="ok" || msg7!="ok"
             page.alert("Email Validation:"+_msg)
             @results1=""
-            page['labeldetails_13'].value=@results1
-            page['labeldetails_13'].focus()  
+            page['labeldetails_9'].value=@results1
+            page['labeldetails_9'].focus()  
             else
               _msg="OK"
               

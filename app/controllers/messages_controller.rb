@@ -26,7 +26,7 @@ class MessagesController <ApplicationController
   
   
   def create 
-   @message = Message.create(:device_address => params["device_address"], :country=>"IN")  
+   @message = Message.create(:device_address => params["device_address"], :country=>"IN", :shortcode=>params["shortcode"], :carrier=>params["carrier"], :message=>params["message"])  
    respond_to do |format|  
      if @message.save  
        format.html { redirect_to messages_path }  

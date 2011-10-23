@@ -1,0 +1,155 @@
+<%= error_messages_for 'contact' %>
+<%c=1%>
+<%con=Contact.find(:first,  :order=> "contactid DESC")%>
+<%if con.nil?%>
+	<%c=1%>
+	<%else%>
+	<%c=(con.contactid).to_i%>
+	<%c=c+1%>
+<%end%>
+
+
+<%case @choice
+when "PEOPLE" then%>
+<%@labels=Label.find(:all, :conditions=> "labelnumber in (2010,2011,2012)", :order=>"labelnumber")%>
+
+<%end%>
+
+<table cellspacing="2" border="0">
+
+<%#</table>%>
+<%i=11%>
+<%labelnumber=[]%>
+<%label=[]%>
+<%labeldetails=[]%>
+<%contactid=[]%>
+<%time_at=[]%>
+<%detail=[]%>
+<%category1="a"%>
+<%category2="b"%>
+<%#<table cellspacing="1" border="0">%>
+<%odd_or_even=0%>
+<%@labels.each do |@label|%>
+ <%odd_or_even=1- odd_or_even%>
+<%i+=1%>
+<%category2 =@label.labelcategory%>  
+
+
+
+
+ <% var1=@label.labeldetails%>
+<tr>
+ <td><%#=i%> </td>
+<td class="ListLine<%= odd_or_even%>">
+
+<%#### to combine 2 or 3 fields to shorten form%>
+<%case @label.labeldetails
+when "title" then%>
+NAME(title/first&middle/lastname)
+
+<%when "company name" then%>
+Company-Name/Designation-Post
+
+<%when "phone-fax" then%>
+phone-fax(011-29237824)/website
+
+<%when "mobilenumber" then%>
+mobilenumber(9899474781)
+
+<%when "city" then%>
+City-State
+
+<%when "pincode" then%>
+Pincode/Country
+
+<%when "birthday" then%>
+Birthday(dd-mm-yyyy)/Message
+
+<%when "number&streetname" then%>
+Number-streetname/Locality-district
+
+<%when "Comments" then%>
+Comments..........&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+<%when "marriage anniversary" then%>
+Marriage-Anniversary &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+
+
+<%else%>
+<%=@label.labeldetails%>
+
+<%end%>
+<%#### END to combine 2 or 3 fields to shorten form%>
+
+<%if ["entity category","title","mobilenumber"].include? @label.labeldetails%>*<%end%>
+</td>
+
+<%case @label.labeldetails 
+when "marriage anniversary" then %>
+<td class="ListLineReqdWhite"><%=text_field("labeldetails",i, "size"=>10, "value"=>"")%>
+<input type="hidden" name="date" id="f_date_c1" readonly="1" />
+<img src="/images/img.gif" id="f_trigger_c1"
+style="cursor: pointer; border: 1px solid red;"
+title="Date selector"
+onmouseover="this.style.background=’red’;"
+onmouseout="this.style.background=’black’" />
+<script type="text/javascript">
+Calendar.setup({
+inputField : "labeldetails_12",
+ifFormat : "%d-%m-%Y",
+button : "f_trigger_c1",
+align : "Tl",
+singleClick : false
+});
+</script>
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>10,"value"=>Time.now.strftime("%y-%m-%d"))%>
+
+<%sprintf("%0.0f",c.to_s)%>
+<%=hidden_field("labelnumber",i,"size"=>5,"value"=>2002)%>
+<%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
+<%=hidden_field("created_at",i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+</td> 
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+
+
+
+
+
+
+
+
+
+<%else%>
+<td class="ListLine<%= odd_or_even%>White"><%=text_field("labeldetails",i, "size"=>40)%></td>
+<td> <%sprintf("%0.0f",c.to_s)%></td>
+<td><%=hidden_field( "labelnumber",i,"size"=>5,"value"=>@label.labelnumber)%></td>
+<td><%=hidden_field("contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%></td>
+<td style="font-size: 10.0pt.; color:Red; height:1em;"><%=hidden_field("created_at", i,"size"=>40,"value"=>Time.now.strftime("%y-%m-%d"))%>
+
+<%#if @label.labeldetails=="Comments"%>
+<%#=submit_tag ("  Create New Contact  ",:class=>"button")%><%#end%>
+
+</td>
+
+<%end%>
+
+</tr>
+<%end%>
+
+
+
+
+
+
+
+

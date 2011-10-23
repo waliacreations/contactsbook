@@ -315,6 +315,7 @@ color:red;	}
 #banner img{float: left;}
 
 #columns { background: #FDD017;}
+
 #main {margin-left: 15em;
 	padding-top: 4ex;
 	padding-left: 1em;
@@ -330,14 +331,14 @@ color:red;	}
 .ListLine0old {background: #999; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 .ListLine1old {background: #998; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
-.ListLine0purple {background:#7D267D; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
-.ListLine1purple {background:#660066; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+.ListLine0purple {background:#7D267D; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 9.0pt.; color:White; height:1em;}
+.ListLine1purple {background:#660066; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 9.0pt.; color:White; height:1em;}
 
 .ListLine0indigo {background:	#3C0068; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
 .ListLine1indigo {background:#4B0082; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
 
-.ListLine0 {background:#470047; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
-.ListLine1 {background:#520052; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:White; height:1em;}
+.ListLine0 {background:#470047; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 9.0pt.; color:yellow; font-height:1em;}
+.ListLine1 {background:#520052; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 9.0pt.; color:yellow; font-height:1em;}
 
 .ListLine0lightblue {background: #AFEEEE; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 .ListLine1darkblue {background: #B0E0E6; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
@@ -363,6 +364,8 @@ border-style:solid;  border-color:yellow;font: "Arial Narrow"; font-size: 10.0pt
 .ListLineReqd {background: #999; margin-bottom: 0.0ex; border-width:1px;
   border-style:solid;  border-color:red yellow;font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
+.Listbreak {font-size: 10.0pt.; color:#01004e; height:1em;}
+
 
 .Title{background-color:yellow; text-align: center; font: bold 1.2em "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; color:#520052;}
 .Titlebordergold{background-color:yellow;border-width:2px;
@@ -380,10 +383,16 @@ font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-aft
 tbody.noborder {border:none;}
 tbody.noborderall{border: 1px;}
 table.wide-table1 { width:60%; font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; }
+
+tr.1cream {background-color:#FDFCDC;}
 tr.noborder {border-top:none; border-bottom:none; background: #F5FAFA;}
 tr.noborder1 {border-top:none; border-bottom:none; background: white;}
 tr.noborder4 {border: 1px; background: white;}
 tr.noborderall {border: 1px; background: white;}
+
+
+td.L1cream {background-color:#FDFCDC;}
+
 td.alt {background: #F5FAFA; color: #797268;}
 
 td.bottomlineblue{border-top:none; font-size: 0.85em; border-bottom-width:2px;
@@ -445,10 +454,10 @@ font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-aft
 table.widetable4 { width: 880px; padding-top:2em; padding-right:2em; 	padding-bottom: 1em; padding-left: 2em; 
 font-size:1em; empty-cells:show; border: 1px; table-layout:fixed; page-break-before:always;  }
 
- table.bordertable {border-width:2px; border-style:solid;  border-color:#FDD017; spacing:0em; padding:1em; }
+table.bordertable {border-width:2px; border-style:solid;  border-color:#FDD017; spacing:0em; padding:1em; }
 
 table.bordertablecream {background-color:#FDFCDC; border-width:2px; border-style:solid;  border-color:#FDD017; spacing:0em; padding:1em; }
-
+table.bordertablewhite {background-color:white; border-width:2px; border-style:solid;  border-color:#FDD017; spacing:0em; padding:1em; }
 table.bordertable2 {border: 5px solid #660000;}
 td.noborder4 {border:none; font-size: 0.6em;}
 
@@ -456,6 +465,10 @@ tr.noborderall{border: 1px;}
 
 td.noborder1 {border-bottom:none; font-size: 0.85em;}
 td.cell {display: table-cell;border: 1px solid black;padding: 1em; width: 12.5%;}
+
+
+
+.Lcream {background-color:#FDFCDC; margin-bottom: 0.0ex; font: "Arial Narrow"; font-size: 10.0pt.; color:#01004e; height:1em;}
 
 .buttonpurple {background-color:#520052; border:solid, border-width:4px;border-color:Red; font-size: 10.0pt.; color:#FF0000; height:2em; text-align: center;
   font-weight: bold;}
