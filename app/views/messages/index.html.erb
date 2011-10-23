@@ -4,5 +4,5 @@
 <%@messages.each do |m|%>
 <br/>
 <%n+=1%>
-<%=n%>. &nbsp;<%=m.id%>/<%=m.device_address%>/<%=m.country%>/<%=m.shortcode%>/<%=m.carrier%>/<%=m.created_at%>/
+<%=n%>. &nbsp;<%=m.id%>/<%=m.device_address%>/<%=m.country%>/<%=m.shortcode%>/<%=m.carrier%><%=m.message%>/<%=m.created_at%>//
 <%end%>
