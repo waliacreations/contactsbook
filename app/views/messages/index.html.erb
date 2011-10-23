@@ -1,7 +1,8 @@
 
-<h1>MESSAGES:</h1><br/>
-
+<h1>SMS MESSAGES received:</h1><br/>
+<%n=0%>
 <%@messages.each do |m|%>
 <br/>
-<%=m.device_address%>/<%=m.id%>
+<%n+=1%>
+<%=n%>. &nbsp;<%=m.id%>/<%=m.device_address%>/<%=m.country%>/<%=m.shortcode%>/<%=m.carrier%>/<%=m.created_at%>/
 <%end%>
