@@ -8,6 +8,7 @@ task :cron => :environment do
   
    current_env=ENV['RAILS_ENV']
     balance=""
+    mobilenum=""
     balanceh={}
     reminder_msg=""
     
@@ -31,13 +32,18 @@ task :cron => :environment do
     	##if (f.date.to_date-Time.now.to_date).to_i<3
     	reminder_msg="HONEY I LUV U"
     	reminder_msg=f.message
-   		 balance=reminder_msg+" "+balance+send_time
+   		 balance=reminder_msg+"-"+balance+send_time
    		 
-   		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+   		 @contacts=Contact.find(:all, :conditions=>"userid=1 and labelnumber=250")
+   		 @contacts.each do |con|
+   		 mobilenum="+91"+con.labeldetails
+   		 
+   		 #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+   		 sms=Moonshado::Sms.new("#{mobilenum}","#{balance}") #use this to send reminder to another
    		 puts "starting sms delivery" 
-     sms.deliver_sms  ####this is main one used to send the sms 
-  	 puts "done"
-   		
+     		sms.deliver_sms  ####this is main one used to send the sms 
+  	 		puts "done"
+   		end #@contacts.each do |con|
    		 
    		else
    		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
