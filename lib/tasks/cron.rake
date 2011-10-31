@@ -42,6 +42,13 @@ task :cron => :environment do
    		# balance=reminder_msg
    		 
    		 if mobilenum=="+919899474781"
+   		  if current_env=="production"  #used only in production
+     	 	 balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
+     		 balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join  #get balance credit in moonshado
+    	     else
+           balance=current_env
+          end # if current_env=="production"
+       		 
    		 balance=reminder_msg+"-"+balance+send_time
    		 end
    		 
