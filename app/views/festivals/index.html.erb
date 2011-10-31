@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<%=javascript_include_tag :defaults %>
+
+<style type="text/css">@import url(/javascripts/calendar-win2k-1.css);</style>
+<script type="text/javascript" src="/javascripts/calendar.js"></script>
+<script type="text/javascript" src="/javascripts/lang/calendar-en.js"></script>
+<script type="text/javascript" src="/javascripts/calendar-setup.js"></script>
+<script type="text/javascript" src="/javascripts/combo-box.js"></script>
+
+<title><h3>New Festivals for USERNAME:</h3></title>
+</head>
+
+<body>
+<h1>ADD NEW FESTIVAL/CELEBRATION:</h1>
+
+<% form_for(@festival) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %> 
+  </p>
+  <p>
+    <%= f.label :date %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <%= f.label :duration %>          <br />
+     <%= f.text_field :date, :size=>"8" %>
+    
+    <input type="hidden" name="date" id="f_date_c" readonly="1" />
+<img src="/images/img.gif" id="f_trigger_c"
+style="cursor: pointer; border: 1px solid red;"
+title="Date selector"
+onmouseover="this.style.background=’red’;"
+onmouseout="this.style.background=’black’" />
+<script type="text/javascript">
+Calendar.setup({
+inputField : "festival_date",
+ifFormat : "%d-%m-%Y",
+button : "f_trigger_c",
+align : "Tl",
+singleClick : false
+});
+</script>
+    
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <%= f.text_field :duration, :size=>"1", :value=>"1" %>day(s) -number only
+   </p>
+ 
+   <p>
+    <%= f.label :message%><br />
+    <%= f.text_field :message, :size=>"80", :value=>"Happy/Merry/Best Wishes" %>
+  </p>      
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description, :size=>"80" %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.submit 'Create',:class=>"button" %>
+   
+  </p>
+<% end %>
+
+<%#= link_to 'Back', festivals_path %>
+<br/>####################################################################################<br/>
+<h1>FESTIVALS ADDED:</h1><br/>
+<%n=0%>
+<%if @festivals.nil? or @festivals.blank?%>
+
+<br/> NO RECORDS FOR FESTIVAL!!!
+<%else%>
+<%@festivals.each do |f|%>
+
+<%n+=1%>
+<%=n%>. /<%=f.name%>/<%=f.date.strftime("%B, %d-%Y")%>/<%=f.duration%>day(s)/<%=f.message%>/<%#=f.created_at%><%=f.description%><%=f.activities%>/<%=f.id%>/
+ &nbsp;&nbsp;<%= link_to 'Edit', :action => 'edit', :id =>f.id, :uid=>@user_id %>
+<%=link_to 'Delete', { :action => 'delete', :id =>f.id }, :confirm => 'Are you sure? ALL RECORDS FOR THIS CONTACT WILL BE DELETED', :post => true %>
+ <%#= link_to 'Update', :action => 'append', :id =>f.id, :uid=>@user_id %>
+<%=check_box("to_be_deleted",f.id,{},"yes","no")%>
+
+<br/>
+<%end%><%#@festivals.each do |f|%>
+
+<%#=submit_tag("     DELETE CHECKED CONTACTS    ",:class=>"button")%>
+
+
+<%end%><%#if @festivals.nil? or @festivals.blank?%>
+
+<br/>####################################################################################<br/>
+
+
+</body>
+
+

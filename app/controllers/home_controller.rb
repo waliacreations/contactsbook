@@ -83,7 +83,7 @@ class HomeController < ApplicationController
       else
         
        @username_match=Contact.find(:first,:conditions=>"labelnumber=101 and labeldetails LIKE '#{@username_login}'")
-        userid_search=@username_match.userid     
+       userid_search=@username_match.userid     
        @username_match2=Contact.find(:first,:conditions=>"labelnumber=111 and userid=#{userid_search}")
       #if @msg_login=="waliacreations@yahoo.com" ## here check if username/pwd correct
         if @msg_login==@username_match.labeldetails and @username_password==@username_match2.labeldetails
@@ -107,12 +107,12 @@ class HomeController < ApplicationController
                  @names<<@name
                end 
            time_entry=Time.now.strftime("%Y-%m-%d %H:%M:%S")
-              @log_in_change=Contact.find(:first, :conditions=>"userid=#{userid_search} and labelnumber=130") 
-             @log_in_change.update_attributes({:labeldetails=>time_entry})
-            #session[:email]||=@username.login #if session[:email] exists or=@username.login        
-            session[:time]=Time.now.strftime("%d-%m-%y %H:%M:%S")
-             session[:names]=@names
-             session[:username]= @username_login  
+           @log_in_change=Contact.find(:first, :conditions=>"userid=#{userid_search} and labelnumber=130") 
+           @log_in_change.update_attributes({:labeldetails=>time_entry})
+           #session[:email]||=@username.login #if session[:email] exists or=@username.login        
+           session[:time]=Time.now.strftime("%d-%m-%y %H:%M:%S")
+           session[:names]=@names
+           session[:username]= @username_login  
                
          redirect_to(:controller=>"contacts",:action=>"viewsummary",:uid=>@username_match.userid,:id=>@username_match.userid, :msg1=>@msg_login)
 #redirect_back_or_default(:controller=>"contacts",:action=>"viewsummary",:id=>1, :msg1=>@msg_login)
@@ -134,7 +134,6 @@ class HomeController < ApplicationController
 def validateusername_1    ###NEW USER REGISTERATION EMAIL CHECK IF EMAIL ALREADY REGD
     @phrase1=[]
     @phrase2=[]
-      
       msg=""
       msg1=""
       msg2=""
@@ -161,15 +160,11 @@ def validateusername_1    ###NEW USER REGISTERATION EMAIL CHECK IF EMAIL ALREADY
    msgbeg="ENTER EMAIL!!!"
    msg+=msgbeg
   else    
-    
-    #emailsearch1=@phrase1.downcase  # search for same email whether upcase or downcase
+   #emailsearch1=@phrase1.downcase  # search for same email whether upcase or downcase
    # emailsearch2=@phrase2.upcase
    @existingemail=Contact.find(:first, :conditions=>"labelnumber=101 and labeldetails LIKE '#{@phrase1}'")    ###check if user email already exists????
     if @existingemail.nil?  ##email should not exist
-      
-   
-    
-     msgbeg="ok" 
+    msgbeg="ok" 
     @phrase2=@phrase1.split("@")
     
     if @phrase2[1]=="" or @phrase2[1].nil?
@@ -178,9 +173,7 @@ def validateusername_1    ###NEW USER REGISTERATION EMAIL CHECK IF EMAIL ALREADY
     else 
     msgbeg1="ok"
     @emailend=@phrase2[1].split(".")
-    
-    
-    
+ 
 if @emailend[1].nil? or @emailend[1]==""
   msg+="check email address after '.' :"
   @results1=""
@@ -337,7 +330,7 @@ end # if @existingemail.nil?  ##email should not exist
               if msgbeg!="ok"                             
                #page.alert("Title Validation:"+_msg)
               # end 
-               @results1="WRONG!Select a Title"  
+               @results1="RETRY!Select a Title"  
                
                obj1="Select a Title"
                id1=0
@@ -402,21 +395,13 @@ def validatename_5
     #if @phrase1.match(/\A[\w\.\_\-\+]+\z/) #letters,numbers,+,-
      #/^[\w\-@]*$/
    
-  
-     
-     if @phrase1.match(/\A[a-zA-Z\s\.+]+\z/)
-     
-       msgbeg1="ok"
+    if @phrase1.match(/\A[a-zA-Z\s\.+]+\z/)
+      msgbeg1="ok"
       @msg="CORRECT FIRST NAME:)"
     else
-     
-      
-      msgbeg1="enter words,space,. only"
+     msgbeg1="enter words,space,. only"
       @msg=msgbeg1
     end 
-
-     
-    
  end # if @phrase1=="" or @phrase1.nil?  
  
    
@@ -442,7 +427,7 @@ def validatename_5
                
            page['labeldetails_5'].value=@results1
        
-             page.replace_html 'error_msg3', "WRONG"
+             page.replace_html 'error_msg3', "RETRY!"
            page.replace_html 'ok_msg3', ""
               page.visual_effect :highlight,'error_msg3', :duration=>1.5
            else
@@ -534,7 +519,7 @@ def validatename_6
                
            page['labeldetails_6'].value=@results1
        
-             page.replace_html 'error_msg4', "WRONG"
+             page.replace_html 'error_msg4', "RETRY!"
            page.replace_html 'ok_msg4', ""
               page.visual_effect :highlight,'error_msg4', :duration=>1.5
            else
@@ -632,7 +617,7 @@ def validatepassword_2
            #page.delay(5)
              #page.hide['update_new']
              #page.insert_html :bottom, 'update_new', '<table></table><p> HEELOOO!!!!</p>'
-             page.replace_html 'error_msg', "WRONG"
+             page.replace_html 'error_msg', "RETRY!"
            page.replace_html 'ok_msg', ""
               page.visual_effect :highlight,'error_msg', :duration=>2.5
            else
@@ -733,8 +718,7 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
           document.getElementById("error_msg").innerHTML="";
           document.getElementById("ok_msg1").innerHTML="DONE!";
           document.getElementById("ok_msg").innerHTML="DONE!"; 
-             
-                   }
+            }
                      else{
             var _empty="";
                       message="NOT MATCHING TRY AGAIN";
@@ -745,8 +729,7 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
                     document.getElementById("ok_msg1").innerHTML="";   
           document.getElementById("error_msg").innerHTML="WRONG!!!";
                               document.getElementById("ok_msg").innerHTML=""; 
-                
-                         }
+                 }
                      //alert("MATCH:"+opt23+message);   
             
         //  curStyle = document.getElementById("divTitle").currentStyle;
@@ -799,7 +782,7 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
            if @username_login.blank? or @username_login==""
           @msg_login="" 
            else
-           @msg_login="WRONG:!!!"     
+           @msg_login="RETRY!"     
          end #if params[:username].blank?
                     
         end      # if (@username_login.to_s).downcase=="waliacreations@yahoo.com" 
@@ -819,7 +802,7 @@ if @phrase1.match(/\A[\w\b]{3,15}\z/)
                           if @msg_login=="" or @msg_login.blank?
                            # page.alert("blank entry!!!:"+@msg_login)
                             #page['username_1'].value=_empty
-                            page.replace_html 'error_msg6', "WRONG blank entry!!!:"
+                            page.replace_html 'error_msg6', "blank entry!!!:"
                             page.replace_html 'ok_msg6', ""
                           else
                          # page.refresh
@@ -873,9 +856,7 @@ def validatepassword  #validate password for login
      
     #if @phrase1.match(/\A[\w\.\_\-\+]+\z/) #letters,numbers,+,-
      #/^[\w\-@]*$/   OR(/\A[\w\+]+\z/)
-   
-  
-     
+ 
     # if @phrase1.match(/\A[\w\d]+\z/)  #\w  Word characters [a-zA-Z_0-9]
    if @phrase1.match(/\A[\w\b]{3,15}\z/)  #\w  Word characters [a-zA-Z_0-9]
        msgbeg1="ok"
@@ -891,22 +872,15 @@ def validatepassword  #validate password for login
              msgbeg2="ok"
              @msg="ACCEPTING PASSWORD:)"
            end #if @password_match.nil?
-      
-      
-      
-      
+ 
     else
-     
-      
+
       msgbeg1="enter words,numbers,underscore only. No space/?/.etc."
       @msg=msgbeg1
     end 
 
  end # if @phrase1=="" or @phrase1.nil?  
  
-
-   
-   
    respond_to do |format|
      #render :text => "Check PASSWORD"
      # page.replace_html 'warning', "Invalid options supplied"
@@ -935,7 +909,7 @@ def validatepassword  #validate password for login
            #page.delay(5)
              #page.hide['update_new']
              #page.insert_html :bottom, 'update_new', '<table></table><p> HEELOOO!!!!</p>'
-             page.replace_html 'error_msg7', "WRONG"
+             page.replace_html 'error_msg7', "RETRY!"
            page.replace_html 'ok_msg7', ""
               page.visual_effect :highlight,'error_msg7', :duration=>1.5
            else
@@ -954,8 +928,7 @@ def validatepassword  #validate password for login
          
   end #validatepassword 
       
-   
-  
+
     
 def createlogin   ###NBW USER REGISTERATION
   
@@ -1038,7 +1011,7 @@ def createlogin   ###NBW USER REGISTERATION
       @contact= Contact.create(
       :labelnumber=>item1[x],
       :labeldetails=>item2[x],
-    :created_at=>time_entry,
+      :created_at=>time_entry,
      :updated_at=>time_entry,
       :userid=>cid,
       :contactid=>cid
@@ -1108,21 +1081,12 @@ if record_create=="yes"
         redirect_to :controller=>'contacts',:action => 'viewsummary', :id =>@contact.userid , :cid=>@contact.userid
 else
   flash.now[:notice] = 'PLEASE ENTER PROPERLY!!!! in THE TEXT BOXES.'
-  flash.now[:message] = 'PLEASE ENTER PROPERLY!!!! in THE TEXT BOXES.!!'  
+  flash.now[:message] ='PLEASE ENTER PROPERLY!!!! in THE TEXT BOXES.!!'  
   redirect_to :controller=>'home',:action => 'index' , :msg=>'PLEASE ENTER PROPERLY!'
 end     #if record_create=="yes"  
         #redirect_back_or_default(:controller=>"contacts",:action=>"viewsummary",:id=>@contact.userid, :msg1=>@msg_login)
 
-
- 
-
 end #createlogin()
      
-  
-  
-  
-  
-       
-
   
 end  #class HomeController < ApplicationController

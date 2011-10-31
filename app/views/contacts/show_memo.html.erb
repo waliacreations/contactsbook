@@ -12,13 +12,18 @@
 <%case @choice
 when "PEOPLE" then%>
 <%@labels=Label.find(:all, :conditions=> "labelnumber in (21001,21050,21190)", :order=>"labelnumber")%>
+<%i=10%>
+
+<%when "PLACES" then%>
+<%@labels=Label.find(:all, :conditions=> "labelnumber in (21060,21061,21190)", :order=>"labelnumber")%>
+<%i=15%>
 
 <%end%>
 
 <table cellspacing="2" border="0">
 
 <%#</table>%>
-<%i=10%>
+
 <%labelnumber=[]%>
 <%label=[]%>
 <%labeldetails=[]%>

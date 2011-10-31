@@ -14,7 +14,24 @@
 
 <body>
 <%form_tag({:action => "createmultiple", :uid=>@user_id},{ :onsubmit=>'return validate_Form();'}) do%>
-  <%= render :partial=>"formpersonal" %>
+
+<%case @choice
+when "PEOPLE" then%>
+<%= render :partial=>"formpersonal" %>
+
+<%when "PLACES" then%>
+<%= render :partial=>"formplaces" %>
+
+<%when "PRODUCTS" then%>
+<%#= render :partial=>"formproducts" %>
+
+<%when "PROJECTS" then%>
+<%#= render :partial=>"formprojects" %>
+
+<%when "PROGRESS" then%>
+<%#= render :partial=>"formprogress" %>
+
+<%end%>
 
 <%####### VALIDATE#########%>  
 <script type="text/javascript">

@@ -9,11 +9,28 @@
   </p>
   <p>
     <%= f.label :group %><br />
-    <%= f.text_field :group %>
+    <%= f.text_field :group %> here add all the groups from model. user cannot choose CONTACTS MODEL PLACES TYPE
+ <%i+=1%>
+ <%=select_tag("category_"+i.to_s,options_for_select([["SELECT PLACE:",""]]+Contact::PLACES_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
+
+<%#=observe_field( "Tlabeldetails_"+i.to_s,	:frequency =>2.5, :update=>'labeldetails_1',
+ :url=> {:action => "validatecategory_"+i.to_s },
+:with=>"'Tlabeldetails_#{i}='+value") %>
+
+<script type="javascript">
+function setTitle2(){
+var _h=document.getElementById('category_1').options[length].text;
+document.getElementById('labeldetails_1').value=_h;
+}
+</script>
+ 
+ 
+ 
+ 
   </p>
   <p>
     <%= f.label :subgroup %><br />
-    <%= f.text_field :subgroup %>
+    <%= f.text_field :subgroup %> user can add but no duplicates
   </p>
   <p>
     <%= f.submit 'Create' %>

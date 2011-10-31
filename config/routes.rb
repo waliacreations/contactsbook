@@ -3,6 +3,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "home", :action=>"index" 
   
+  map.connect 'festivals/index', :controller=>'festivals', :action=>'index'
+     map.connect 'festivals/create', :controller=>'festivals', :action=>'create'
+   
+  
+  
   
   map.connect 'messages/index', :controller=>'messages', :action=>'index'
     map.connect 'messages/create', :controller=>'messages', :action=>'create'
@@ -19,14 +24,17 @@ map.connect 'home/index', :controller=>'home', :action=>'index'
 map.connect 'contacts/view', :controller => 'contacts', :action => 'view' 
 map.connect 'contacts/viewsummary', :controller => 'contacts', :action => 'viewsummary'   
 map.connect 'contacts/quickentry', :controller => 'contacts', :action => 'quickentry'  ###put these before map.resources :contacts
-  map.resources :contacts
 
-  map.resources :labels
+map.resources :contacts
 
-  map.resources :categories
+ map.resources :labels
+
+ map.resources :categories
 
  map.resources :messages
 
+  map.resources :festivals
+ 
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

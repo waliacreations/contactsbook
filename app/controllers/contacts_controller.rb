@@ -12,8 +12,7 @@ class ContactsController < ApplicationController
    def index
     redirect_to :action => 'viewsummary'    
   #  @contacts = Contact.all
-
-   # respond_to do |format|
+  # respond_to do |format|
    #   format.html # index.html.erb
    #   format.xml  { render :xml => @contacts }
    # end
@@ -731,15 +730,7 @@ end   #if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.s
   end #validatwebsite2
   
      
-   
-   
-   
-   
-   
-   
-   
-   
-   
+      
  def quickentry
    @username=session[:username]
   @user_id=params[:id]
@@ -747,7 +738,9 @@ end   #if @phrase1.to_s=="" or @phrase1.to_s==" " or @phrase1.nil? or @phrase1.s
     if @choice.nil?
       @choice="none"
     end
+    
   @contact=Contact.find(:last)
+  
  end
   
   def new
@@ -998,6 +991,7 @@ def deletemultiple
 	end
      redirect_to :action => 'viewsummary', :uid=>@user_id
 end
+
 
 def view	  
 	 @contact_pages #, @contacts = paginate :contacts, :per_page => 30

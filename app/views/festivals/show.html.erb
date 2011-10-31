@@ -1,0 +1,27 @@
+
+<h1>FESTIVAL UPDATED:</h1>
+<%n=0%>
+<%if @festivals.nil? or @festivals.blank?%>
+
+<br/> NO RECORDS FOR FESTIVAL!!!
+<%else%>
+<%#@festivals.each do |f|%>
+
+
+<%n+=1%>
+<%=n%>. /<%=@f.name%>/<%=@f.date.strftime("%B, %d-%Y")%>/<%=@f.duration%>day(s)/<%=@f.message%>/<%#=f.created_at%><%=@f.description%><%=@f.activities%>/<%=@f.id%>/
+ &nbsp;&nbsp;<%= link_to 'Edit', :action => 'view', :id =>@f.id, :uid=>@user_id %>
+<%=link_to 'Delete', { :action => 'delete', :id =>@f.id }, :confirm => 'Are you sure? ALL RECORDS FOR THIS CONTACT WILL BE DELETED', :post => true %>
+ <%= link_to 'Update', :action => 'append', :id =>@f.id, :uid=>@user_id %>
+<%=check_box("to_be_deleted",@f.id,{},"yes","no")%>
+
+<br/>
+<%#end%><%#@festivals.each do |f|%>
+
+<%#=submit_tag("     DELETE CHECKED CONTACTS    ",:class=>"button")%>
+
+
+<%end%><%#if @festivals.nil? or @festivals.blank?%>
+<br/>
+<%= link_to 'Back', festivals_path, :uid=>@user_id %>
+<br/>####################################################################################<br/>

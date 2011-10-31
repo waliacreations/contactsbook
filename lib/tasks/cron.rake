@@ -16,31 +16,61 @@ task :cron => :environment do
       balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join  #get balance credit in moonshado
       else
       balance=current_env
-      end
-      
+      end # if current_env=="production"
+    
      send_time=""   
      send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
-  
-     
-     
-          if ("2011-10-15".to_date-Time.now.to_date).to_i>0      		
+   
+   
+   @festivals=Festival.find(:all, :order=>"id")
+   
+   @festivals.each do |F|   
+   
+      if (F.date.to_date-Time.now.to_date).to_i==0  or (F.date.to_date-Time.now.to_date).to_i==1 or (F.date.to_date-Time.now.to_date).to_i==2 		
      	## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
     	reminder_msg="HONEY I LUV U"
+    	reminder_msg=F.message
    		 balance=reminder_msg+" "+balance+send_time
+   		 
    		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+   		
    		 
    		else
    		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-   		 end	
-     			
-     					
-  	 puts "starting sms delivery" 
+   		
+   		
+   		 puts "starting sms delivery" 
      sms.deliver_sms  ####this is main one used to send the sms 
   	 puts "done"
+   		
+   		
+   		end	 #if (F.date.to_date-Time.now.to_date).to_i==0  or (F.date.to_date-Time.now.to_date).to_i==1 		
+     			
+     					
+  	
+  	
+  	end #@festivals.each do
   		
 end  #task :cron => :environment do
 
  ##############examples for daily cron:#################
+
+#if ("2011-10-15".to_date-Time.now.to_date).to_i>0      		
+     	## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
+   # 	reminder_msg="HONEY I LUV U"
+  # 		 balance=reminder_msg+" "+balance+send_time
+   #		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+   		 
+   #	else
+  # 		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+  # 		 end	
+
+
+
+
+
+
+
 # @msg_cron="good night cron  msg  sent by hemant walia"+Time.now.strftime('%Y/%m/%d %H:%M:%S')
   					# sms=Moonshado::Sms.new("+919899474781", @msg_cron)  
   	               	# sms=Moonshado::Sms.new("#{@mobilenum}","#{@mobilemsg}") 

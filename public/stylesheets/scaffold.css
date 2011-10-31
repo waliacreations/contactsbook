@@ -9,7 +9,6 @@ body, select, input, textarea {
     /* font-family: Georgia, serif;  */  
 }  
 
-
 /* all PLACEHOLDER     http://davidwalsh.name/css-selection*/
 ::-webkit-input-placeholder , ::-webkit-select-placeholder  { color:#f00; }
 input:-moz-placeholder, select:-moz-placeholder { color:#f00; }

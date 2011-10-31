@@ -8,8 +8,6 @@ class Contact < ActiveRecord::Base
   @@per_page = 50
 
 
-
-
 TITLE_TYPES=[
 	["Mr.", "Mr."],
 	["Mrs.", "Mrs."],
@@ -44,10 +42,7 @@ TITLE_TYPES=[
     ["PRESIDENT","PRESIDENT"],
     ].freeze
 	
-	
-	
-	
-	
+
 	GENERAL_TYPES=[
 	["General Customer", "General Customer"],
 	["General Supplier", "General Supplier"],
@@ -64,7 +59,85 @@ TITLE_TYPES=[
 	["Shareholder/Partner", "Shareholder/Partner"],
 	].freeze
 	
+PLACES_GROUPS=[
+    ["ChineeseRestaurant", "ChineeseRestaurant"],
+    ["IndianRestaurant", "IndianRestaurant"],
+    ["ItalianRestaurant","ItalianRestaurant"],
+    ["JapaneeseRestaurant/Sushi","JapaneeseRestaurant/Sushi"],
+     ["Pizza","Pizza"],
+     ["Deli","Deli"],
+     ["AmericanDiner","AmericanDiner"],
+    ["Cafe","Cafe"],
+    ["EnglishRestaurant/Pub","CreditCarda/c"],
+    ["Credit Customer", "Credit Customer"],
+    ["Credit Supplier", "Credit Supplier"],
+    ["Employee", "Employee"],
+    ["UtilityAccount","UtilityAccount"],
+    ["GroupCompany", "GroupCompany"],
+    ["Owner/Proprietor","Owner/Proprietor"],
+    ["Shareholder/Partner", "Shareholder/Partner"],
+    ].freeze
 	
+	
+  PLACES_TYPES=[
+      ["Restaurant", "Restaurant"],
+      ["Gym", "Gym"],
+      ["Spa","Spa"],
+      ["Moviehall/Theatre","Moviehall/Theatre"],
+      ["Market/ShoppingStreet","Market/ShoppingStreet"],
+      ["ShoppingMall","ShoppingMall"],
+      ["Temple", "Temple"],
+      ["Mosque", "Mosque"],
+      ["Gurudwara", "Gurudwara"],
+      ["Shop","Shop"],
+      ["Bank", "Bank"],
+      ["TaxDepartment","TaxDepartment"],
+      ["UtilityCompany","UtilityCompany"],
+      ["CommunicationsCompany","CommunicationsCompany"],
+      ["SocietyClub", "SocietyClub"],
+      ["Website","Website"],
+      ["Office","Office"],
+      ["Home","Home"],
+      ["Suppliers","Suppliers"],
+      ["TouristLandmark","TouristLandmark"],
+      ["Palace/Fort","Palace/Fort"],
+      ["Museum","Museum"],
+      ["School/College/Academy","School/College/Academy"],
+      ["Lake","Lake"],
+      ["Zoo","Zoo"],
+      ["Dealership","Dealership"],  
+        
+      ].freeze
+   
+	
+  PRODUCT_TYPES=[
+        ["AirTravel", "Restaurant"],
+        ["RailTravel", "Gym"],
+        ["Lodging","Spa"],
+        ["Food","Moviehall/Theatre"],
+        ["Movie/Theatre","Market/ShoppingStreet"],
+        ["Communication","ShoppingMall"],
+        ["Religous", "Temple"],
+        ["Computer&Printers", "Mosque"],
+        ["Car", "Gurudwara"],
+        ["Finance/Investment", "Bank"],
+        ["Accounting/Tax","TaxDepartment"],
+        ["SocialService", "SocietyClub"],
+        ["PR/Marketing","Website"],
+        ["MobilePhones","Office"],
+        ["Apparel","Home"],
+        ["Shoes","Suppliers"],
+        ["Bags","TouristLandmark"],
+        ["Jewellery","Palace/Fort"],
+        ["Watch","Museum"],
+        ["Education","School/College/Academy"],
+        ["Cosmetics","Lake"],
+        ["Maintenance&Repair","Zoo"],
+        ["Insurance","Dealership"],            
+        ].freeze   
+      
+      
+    
 	EMPLOYEE_TYPES=[
 	["ManagementEmployee","ManagementEmployee"],
 	["SalesEmployee", "SalesEmployee"],
@@ -127,29 +200,15 @@ TITLE_TYPES=[
      
    
    
-   
-   
-   
-   
-   
-     
-     
-     
-     		
   ENTITY_TYPES=[
 	["Friend", "Friend"],
 	["Relative", "Relative"],
 	["Acquaintance", "Acquaintance"],  
   ["Mentor","Mentor"],  
   ["Teacher/Expert","Teacher"],   
-    ].freeze
+  ].freeze
 	
-    
-    
-    
   
-    
-    
 	
 	ENTITY_TYPESOLD=[
 	["Customer", "Customer"],
@@ -236,9 +295,6 @@ TITLE_TYPES=[
   ].freeze
   	
 	
-	
-	
-	
 	#@labels=Label.find_all
     
 	#labelnumber=[]
@@ -251,11 +307,6 @@ TITLE_TYPES=[
 	
 	
 #end
-
-
-
-
-
 
 end
 

@@ -16,6 +16,11 @@
 when "PEOPLE" then%>
 <%@labels=Label.find(:all, :conditions=> "labelnumber in (150,201,205,250,260,2001)", :order=>"labelnumber")%>
 
+<%when "PLACES" then%>
+<%@labels=Label.find(:all, :conditions=> "labelnumber in (150,205,206,201,250,260)", :order=>"labelnumber")%>
+
+
+
 <%end%>
 <table cellspacing="2" border="0">
 
@@ -43,7 +48,7 @@ when "PEOPLE" then%>
 <%else%>
 <tr >
      <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
-     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u><%=@label.labelcategory%></u>----- </td>
+     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u><%=@label.labelcategory%><%if @label.labelcategory=="name"%>:-Company Contact<%end%></u>----- </td>
      <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -------------------------------</td>
      <td></td>
      <td></u></td>
@@ -62,7 +67,7 @@ when "title" then%>
 NAME(title/first&middle/lastname)
 
 <%when "company name" then%>
-Company-Name/Designation-Post
+Company-Name*/Designation-Post
 
 <%when "phone-fax" then%>
 phone-fax(011-29237824)/website
@@ -88,7 +93,7 @@ Number-streetname/Locality-district
 <%end%>
 <%#### END to combine 2 or 3 fields to shorten form%>
 
-<%if ["entity category","title","mobilenumber"].include? @label.labeldetails%>*<%end%>
+<%if ["entity category","mobilenumber"].include? @label.labeldetails%>*<%end%>
 </td>
 
 <%case @label.labeldetails 
@@ -96,7 +101,7 @@ when "entity category" then%><%### try and group entity category with group%>
 <td class="ListLineReqdWhite">
 <%@sel="Friend"%>
 <%=hidden_field("labeldetails",i, "size"=>20, "value"=>"Friend")%>
-<%=select_tag("Tlabeldetails_"+i.to_s,options_for_select([["SELECT TITLE:",""]]+Contact::PEOPLE_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
+<%=select_tag("Tlabeldetails_"+i.to_s,options_for_select([["SELECT PLACE:",""]]+Contact::PLACES_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
 
 <%=observe_field( "Tlabeldetails_"+i.to_s,	:frequency =>2.5, :update=>'labeldetails_1',
  :url=> {:action => "validatecategory_"+i.to_s },
@@ -117,7 +122,7 @@ document.getElementById('labeldetails_1').value=_h;
 <%#next one added to entity category%>
 <%i+=1%>
 GROUP:
-<%= options=[["Select or type new group", ""]] + Contact::PERSONAL_GROUPS
+<%= options=[["Select or type new group", ""]] + Contact::PLACES_GROUPS
 select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
 <%=hidden_field("labelnumber",i,"size"=>5,"value"=>160)%>
 <%=hidden_field( "contactid", i,"size"=>5,"value"=>sprintf("%0.0f",c.to_s))%>
@@ -397,7 +402,6 @@ return false;
 }//function CheckAddr2()
 </script>
 
-
 <%when "city" then %>
 <td class="ListLine0White"><%= options=[["Select or type new city", ""]] + Contact::CITY_TYPES
 select("labeldetails",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false;"}) %>
@@ -509,43 +513,6 @@ singleClick : false
 <td colspan="20"></td>
 <td></td>
 </tr>
-
-
-
-<tr >
-     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
-     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u>spouse details</u>----- </td>
-     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> 
-     </td>
-     <td></td>
-     <td></u></td>     
-</tr>
-<tr>
-<td colspan="100" align="left">
-    <%=link_to_remote("Add", :update=>'spousediv', :url=>{:action=>:show_spouse, :choice=>@choice})%>
-&nbsp;&nbsp;&nbsp;  <%=link_to_remote("REMOVE", :update=>'spousediv', :url=>{:action=>:hide_spouse, :choice=>@choice})%>
-<div id="spousediv"></div></td>
-</tr>
-
-
-<tr >
-     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
-     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> ----<u>kids details</u>----- </td>
-     <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> 
-     </td>
-     <td></td>
-     <td></u></td>     
-</tr>
-<tr>
-<td colspan="100" align="left">
-    <%=link_to_remote("Add", :update=>'kidsdiv', :url=>{:action=>:show_kids, :choice=>@choice})%>
-&nbsp;&nbsp;&nbsp;  <%=link_to_remote("REMOVE", :update=>'kidsdiv', :url=>{:action=>:hide_kids, :choice=>@choice})%>
-<div id="kidsdiv"></div></td>
-</tr>
-
-
-
-
 
 <tr >
      <td class="Listline2" style="font-size: 10.5pt.; color:#01004e; height:1em;"> -</td>
