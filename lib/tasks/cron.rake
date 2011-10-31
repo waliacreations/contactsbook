@@ -20,8 +20,8 @@ task :cron => :environment do
       end # if current_env=="production"
     
      send_time=""   
-     send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
-   
+     #send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
+     send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
    
    @festivals=Festival.find(:all, :order=>"id")
    
@@ -39,7 +39,7 @@ task :cron => :environment do
    		 mobilenum="+91"+con.labeldetails
    		 
    		 puts "starting sms creation"
-   		 balance=reminder_msg
+   		# balance=reminder_msg
    		 
    		 if mobilenum=="+919899474781"
    		 balance=reminder_msg+"-"+balance+send_time
