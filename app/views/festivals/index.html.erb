@@ -86,6 +86,39 @@ singleClick : false
 
 <br/>####################################################################################<br/>
 
+<%#balance=""%>
+
+<%#@festivals=Festival.find(:all, :order=>"id")%>
+<%#@festivals.each do |f|%>   
+   
+<%#  if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 or (f.date.to_date-Time.now.to_date).to_i==2%> 		
+<%#	## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"%>
+<%#   	reminder_msg="HONEY I LUV U" %>
+<%#    	reminder_msg=f.message %>
+<%#	 balance=reminder_msg+" "+balance%><%#+send_time %>
+   		 
+<%#  sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another%>
+   		
+<%#	else %>
+ <%# sms=Moonshado::Sms.new("+919899474781","#{balance}")%><% #this for daily testing%> 
+   		
+<%# puts "starting sms delivery"%> 
+<%#     sms.deliver_sms  ####this is main one used to send the sms %>
+ <%#	 puts "done"%>
+   		
+   		
+  <%# 		end	%> <% #if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 	%>	
+     			
+     					
+  	
+  	
+ <% #	end %> <%#@festivals.each do%>
+
+
+
+
+
+
 
 </body>
 

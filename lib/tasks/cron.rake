@@ -24,12 +24,12 @@ task :cron => :environment do
    
    @festivals=Festival.find(:all, :order=>"id")
    
-   @festivals.each do |F|   
+   @festivals.each do |f|   
    
-      if (F.date.to_date-Time.now.to_date).to_i==0  or (F.date.to_date-Time.now.to_date).to_i==1 or (F.date.to_date-Time.now.to_date).to_i==2 		
+      if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 or (f.date.to_date-Time.now.to_date).to_i==2 		
      	## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
     	reminder_msg="HONEY I LUV U"
-    	reminder_msg=F.message
+    	reminder_msg=f.message
    		 balance=reminder_msg+" "+balance+send_time
    		 
    		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
@@ -44,7 +44,7 @@ task :cron => :environment do
   	 puts "done"
    		
    		
-   		end	 #if (F.date.to_date-Time.now.to_date).to_i==0  or (F.date.to_date-Time.now.to_date).to_i==1 		
+   		end	 #if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 		
      			
      					
   	
