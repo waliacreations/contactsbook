@@ -26,20 +26,22 @@ task :cron => :environment do
    
    @festivals.each do |f|   
    
-      if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 or (f.date.to_date-Time.now.to_date).to_i==2 		
+     if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 or (f.date.to_date-Time.now.to_date).to_i==2 		
      	## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
+    	##if (f.date.to_date-Time.now.to_date).to_i<3
     	reminder_msg="HONEY I LUV U"
     	reminder_msg=f.message
    		 balance=reminder_msg+" "+balance+send_time
    		 
    		 sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+   		 puts "starting sms delivery" 
+     sms.deliver_sms  ####this is main one used to send the sms 
+  	 puts "done"
    		
    		 
    		else
    		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-   		
-   		
-   		 puts "starting sms delivery" 
+   		puts "starting sms delivery" 
      sms.deliver_sms  ####this is main one used to send the sms 
   	 puts "done"
    		
