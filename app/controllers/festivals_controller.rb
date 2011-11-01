@@ -97,9 +97,120 @@ class FestivalsController < ApplicationController
     end
   
   
-  
-  
-  
-  
+    
+    def creategreeting
+      @user_id=params[:uid]
+      _status=""
+          
+      greetings_array=params[:greetings]
+        @member_id=greetings_array["1"]
+        @festival_id=greetings_array["2"]
+          
+          if @member_id.nil? or @festival_id.nil?
+            
+            
+            _status="FAIL"
+               
+         
+          
+          else
+         
+            _status="PASS"
+          
+        ######### sms to be sent -greeting############
+             puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
+           
+          
+           current_env=ENV['RAILS_ENV']
+            balance=""
+            mobilenum=""
+            balanceh={}
+            reminder_msg=""
+            
+              if current_env=="production"  #used only in production
+              balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
+              balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join  #get balance credit in moonshado
+              else
+              balance=current_env
+              end # if current_env=="production"
+            
+             send_time=""   
+             #send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
+             send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
+           
+           @festivals=Festival.find(:all, :order=>"id")
+           
+           @festivals.each do |f|   
+           
+             if f.id==@festival_id.to_i
+            # if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 or (f.date.to_date-Time.now.to_date).to_i==2    
+              ## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
+              ##if (f.date.to_date-Time.now.to_date).to_i<3
+              reminder_msg="HONEY I LUV U"
+              reminder_msg=f.message
+               
+               
+               @contacts=Contact.find(:all, :conditions=>"userid=#{@member_id.to_i} and labelnumber=250", :order=>"contactid DESC")
+              
+               @contacts.each do |con|
+               mobilenum="+91"+con.labeldetails
+               
+               puts "starting sms creation"
+              # balance=reminder_msg
+               
+               if mobilenum=="+919899474781"
+                if current_env=="production"  #used only in production
+                 balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
+                 balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join  #get balance credit in moonshado
+                   else
+                   balance=current_env
+                  end # if current_env=="production"
+                   
+               balance=reminder_msg+"-"+balance+send_time
+               end
+               
+                if mobilenum=="+919999652062"
+               balance=reminder_msg+"-"+"HONEY I LUV U"
+               end
+               
+               
+               #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+               sms=Moonshado::Sms.new("#{mobilenum}","#{balance}") #use this to send reminder to another
+               puts "starting sms delivery" 
+                sms.deliver_sms  ####this is main one used to send the sms 
+                puts "done"
+              end #@contacts.each do |con|
+               
+              else
+               sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+              puts "starting sms delivery" 
+             sms.deliver_sms  ####this is main one used to send the sms 
+             puts "done"
+              
+              
+              end  #if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1    
+                  
+             #########END sms to be sent -greeting############              
+            
+            
+            end #@festivals.each do     
+          
+          end    #if @memberid.nil? or @festival_id.nil?
+
+#redirect_to :action=>index, :uid=>@user_id
+              
+         
+
+       @status=_status
+                                      
+    
+
+
+
   
 end
+
+
+
+
+end #FINAL

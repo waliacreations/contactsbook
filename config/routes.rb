@@ -4,19 +4,17 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "home", :action=>"index" 
   
   map.connect 'festivals/index', :controller=>'festivals', :action=>'index'
-     map.connect 'festivals/create', :controller=>'festivals', :action=>'create'
+  map.connect 'festivals/create', :controller=>'festivals', :action=>'create'
+  map.connect 'festivals/creategreeting', :controller=>'festivals', :action=>'creategreeting'
    
-  
-  
-  
   map.connect 'messages/index', :controller=>'messages', :action=>'index'
-    map.connect 'messages/create', :controller=>'messages', :action=>'create'
+  map.connect 'messages/create', :controller=>'messages', :action=>'create'
   
   map.connect 'user_mailer/index', :controller=>'user_mailer', :action=>'index'
   map.connect 'user_mailer/show', :controller=>'user_mailer', :action=>'show'
   map.connect 'user_mailer/sendmail', :controller=>'user_mailer', :action=>'sendmail'
   
-map.connect 'home/index', :controller=>'home', :action=>'index'
+  map.connect 'home/index', :controller=>'home', :action=>'index'
   map.connect 'home/login', :controller=>'home', :action=>'login'
   map.connect 'home/createlogin', :controller => 'home', :action => 'createlogin' 
  
@@ -33,7 +31,7 @@ map.resources :contacts
 
  map.resources :messages
 
-  map.resources :festivals
+ map.resources :festivals
  
   # The priority is based upon order of creation: first created -> highest priority.
 
