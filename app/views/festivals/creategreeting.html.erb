@@ -2,13 +2,16 @@
 
 Sending Greeting.............
 
-MISSION <%=@status%>
+MISSION STATUS:<%=@status%><br/>
+RECIPIENT_EXIST:<%=@recipient_exist%><br/>
 
-<%=@member_id%><%=@festival_id%>
+MemberId:<%=@member_id%><br/>
+FestivalId:<%=@festival_id%><br/>
+RECIPIENT TYPE:<%=@people%><br/>
 
 
 <br/><br/>
-<%= link_to 'Back',{ :controller=>"festivals",:action=>"index", :uid=>@user_id }%>
+<h5><%= link_to 'Back',{ :controller=>"festivals",:action=>"index", :uid=>@user_id }%></h5>
 
 
 <br/>##############################################

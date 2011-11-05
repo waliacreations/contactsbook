@@ -1,40 +1,99 @@
+<html>
+<head>
+
+<%=javascript_include_tag :defaults %>
+
+<style type="text/css">@import url(/javascripts/calendar-win2k-1.css);</style>
+<script type="text/javascript" src="/javascripts/calendar.js"></script>
+<script type="text/javascript" src="/javascripts/lang/calendar-en.js"></script>
+<script type="text/javascript" src="/javascripts/calendar-setup.js"></script>
+<script type="text/javascript" src="/javascripts/combo-box.js"></script>
+
+</head>
+
+<body>
+<%########## to set body onload events and set values to nil on load########%>
+<body onload="cleartext11();">
+<script type="text/javascript">
+//window.onload=cleartext11();
+function cleartext11(){
+var _second="";
+var _third=0;
+document.getElementById("category_group").value=_second;
+document.getElementById('category_1').options.selectedIndex=0;
+document.getElementById("category_subgroup").value=_second;
+document.getElementById('category_2').options.selectedIndex=0;
+
+return false;
+//alert("CHECK SELECTION!!!");
+};
+</script>
+<%########## END to set body onload events and set values to nil on load########%>
+
 <h1>New category</h1>
+<%i=0%>
+
 
 <% form_for(@category) do |f| %>
   <%= f.error_messages %>
-
+ <div id='subgroupdiv'>
   <p>
-    <%= f.label :id %><br />
+    <%#= f.label :id %><br />
     <%= f.hidden_field :id %>
   </p>
   <p>
     <%= f.label :group %><br />
-    <%= f.text_field :group %> here add all the groups from model. user cannot choose CONTACTS MODEL PLACES TYPE
- <%i+=1%>
- <%=select_tag("category_"+i.to_s,options_for_select([["SELECT PLACE:",""]]+Contact::PLACES_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
+    <%= f.hidden_field :group %> 
+    <%i+=1%> <%=select_tag("category_"+i.to_s,options_for_select([["SELECT PLACE:",""]]+Contact::PLACES_TYPES,@sel.to_s), :onBlur=>"setGroup();")%>
+    
+ 
 
-<%#=observe_field( "Tlabeldetails_"+i.to_s,	:frequency =>2.5, :update=>'labeldetails_1',
- :url=> {:action => "validatecategory_"+i.to_s },
-:with=>"'Tlabeldetails_#{i}='+value") %>
+<%=observe_field( "category_"+i.to_s,	:frequency =>3.5, :update=>'category_subgroup',
+ :url=> {:action => "subcategory_"+i.to_s },
+:with=>"'category_#{i}='+value") %>
 
-<script type="javascript">
-function setTitle2(){
-var _h=document.getElementById('category_1').options[length].text;
-document.getElementById('labeldetails_1').value=_h;
-}
+<script type="text/javascript">
+function setGroup(){
+
+//var _h=document.getElementById('category_1').options[length].text;
+var _h=document.getElementById('category_1').value;
+//alert("hello"+_h);
+document.getElementById('category_group').value=_h;
+};
 </script>
- 
- 
- 
- 
-  </p>
+ </p>
   <p>
+ 
     <%= f.label :subgroup %><br />
-    <%= f.text_field :subgroup %> user can add but no duplicates
+    <%= f.hidden_field :subgroup %> 
+ <%i+=1%>
+  <%#= options=[["Select or type new group", ""]] + Contact::PERSONAL_GROUPS
+select("category_",i,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false; setGroup1();"}) %>
+ 
+  <%= options=[["Select or type new group", ""]] + Contact::PERSONAL_GROUPS
+select("vehicle_new",1,options,{},{:onKeyPress=>"edit(event)",:onBlur=>"this.editing=false; setGroup1();"}) %>
+ 
+ <script type="text/javascript">
+function setGroup1(){
+//var _h=document.getElementById('category_2').options[length].text;
+var _h=document.getElementById('vehicle_new_1').value;
+//alert("hello"+_h);
+document.getElementById('category_subgroup').value=_h;
+};
+</script> user can add but no duplicates
+  
+ </div> 
+  
   </p>
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', categories_path %>
+
+<br/><br/>
+<strong><%= link_to 'Back', categories_path %></strong>
+
+</body>
+
+</html>

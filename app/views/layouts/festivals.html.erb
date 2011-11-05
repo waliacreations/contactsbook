@@ -55,19 +55,19 @@
 <td colspan="25"><span id="left1"> <b>ADD NEW :</b></span>
 </td>
 <td colspan="15" >
-<%=button_to "  PEOPLE  ", {:action=>"quickentry", :id=>@user_id, :choice=>"PEOPLE"},:class=>"button"%>
+<%=button_to "  PEOPLE  ", {:controller=>"contacts",:action=>"quickentry", :id=>@user_id, :choice=>"PEOPLE"},:class=>"button"%>
 <h20></h20></td>
 <td colspan="15">
-<%=button_to "PLACES", {:action=>"quickentry", :id=>@user_id, :choice=>"PLACES"},:class=>"button"%>
+<%=button_to "PLACES", {:controller=>"contacts",:action=>"quickentry", :id=>@user_id, :choice=>"PLACES"},:class=>"button"%>
 <h20></h20></td>
 <td colspan="15">
-<%#=button_to "PRODUCTS", {:action=>"quickentry", :id=>@user_id, :choice=>"PRODUCT"},:class=>"button"%>
+<%#=button_to "PRODUCTS", {:controller=>"contacts",:action=>"quickentry", :id=>@user_id, :choice=>"PRODUCT"},:class=>"button"%>
 <h20>(PRODUCT-SERVICES/ASSETS-EXPENSES)</h20></td>
 <td colspan="15">
-<%#=button_to "PROJECTS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROCESS"},:class=>"button"%>
+<%#=button_to "PROJECTS", {:controller=>"contacts",:action=>"quickentry", :id=>@user_id,:choice=>"PROCESS"},:class=>"button"%>
 <h20>(PROJECTS/REMINDERS)</h20></td>
 <td colspan="15">
-<%#=button_to "PROGRESS", {:action=>"quickentry", :id=>@user_id,:choice=>"PROGRESS"},:class=>"button"%>
+<%#=button_to "PROGRESS", {:controller=>"contacts",:action=>"quickentry", :id=>@user_id,:choice=>"PROGRESS"},:class=>"button"%>
 <h20>(PROGRESS)</h20></td>
 </tr>
 

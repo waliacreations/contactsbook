@@ -69,13 +69,8 @@ PLACES_GROUPS=[
      ["AmericanDiner","AmericanDiner"],
     ["Cafe","Cafe"],
     ["EnglishRestaurant/Pub","CreditCarda/c"],
-    ["Credit Customer", "Credit Customer"],
-    ["Credit Supplier", "Credit Supplier"],
-    ["Employee", "Employee"],
-    ["UtilityAccount","UtilityAccount"],
+    ["Utility","Utility"],
     ["GroupCompany", "GroupCompany"],
-    ["Owner/Proprietor","Owner/Proprietor"],
-    ["Shareholder/Partner", "Shareholder/Partner"],
     ].freeze
 	
 	

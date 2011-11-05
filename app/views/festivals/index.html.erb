@@ -54,20 +54,40 @@ singleClick : false
   <p>
     <%= f.label :description %><br />
     <%= f.text_field :description, :size=>"80" %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.submit 'Create',:class=>"button" %>
+    <%= f.submit 'Create NEW FESTIVAL/MESSAGE',:class=>"button" %>
    
   </p>
 <% end %>
 
 <%#= link_to 'Back', festivals_path %>
 ####################################################################################
-<h5> Send SMS GREETINGS:</h5>
+<h5> Send SMS GREETINGS(for MemberId:<%=@user_id%>) </h5>
 <%form_tag({:controller=>"festivals", :action => "creategreeting", :uid=>@user_id}) do%>
 <%num=1%>
-Memberid:<%=@user_id%><%=hidden_field("greetings",num, "size"=>30, "value"=>@user_id)%> <br/>
+<%#Memberid:%><%=hidden_field("greetings",num, "size"=>30, "value"=>@user_id)%>
 
 <%num+=1%>
-Festivalid:<%=text_field("greetings",num, "size"=>30, "value"=>"")%>
+Festivalid:<%=text_field("greetings",num, "size"=>2, "value"=>"")%>
+
+<%num+=1%>
+Recipients:<%=hidden_field("greetings",num, "size"=>30, "value"=>"")%>
+
+<%num+=1%>
+<%=select_tag("greetings_"+num.to_s,options_for_select([["ALL","ALL"]]+Contact::PEOPLE_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
+
+
+<%#=observe_field( "Tlabeldetails_"+i.to_s,	:frequency =>2.5, :update=>'labeldetails_1',
+ :url=> {:action => "validatecategory_"+i.to_s },
+:with=>"'Tlabeldetails_#{i}='+value") %>
+
+<script type="text/javascript">
+function setTitle2(){
+var _h=document.getElementById('greetings_4').value;
+document.getElementById('greetings_3').value=_h;
+}
+</script>
+
+
 
 <%=submit_tag ("  Send Greetings  ",:class=>"button")%>
 <%end%>

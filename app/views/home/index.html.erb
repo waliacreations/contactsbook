@@ -347,7 +347,7 @@ return false;
 <tr>
 <td colspan="10"></td>
 <td colspan="40"><%=text_field("username",1, "size"=>30, "value"=>"", "placeholder"=>"Username(Email)")%>
-<%=observe_field( :username_1,	:frequency =>5.5, :update=>'username_1',
+<%=observe_field( :username_1,	:frequency =>3.5, :update=>'username_1',
  :url=> {:action => "validateusername" },
 :with=>"'username_1='+value") %></td>
 <td colspan="40"><strong><span id="error_msg6"></span><span id="ok_msg6"></span></strong></td>
@@ -357,7 +357,7 @@ return false;
 <tr>
 <td colspan="10"></td>
 <td colspan="40"><%=password_field("password",1, "size"=>30, "value"=>"", "placeholder"=>"Password(3-15)")%></p3>
-<%=observe_field( :password_1,	:frequency =>4.5, :update=>'password_1',
+<%=observe_field( :password_1,	:frequency =>1.5, :update=>'password_1',
  :url=> {:action => "validatepassword" },
 :with=>"'password_1='+value") %></td>
 <td colspan="40" ><strong><span id="error_msg7"></span><span id="ok_msg7"></span></strong></td>

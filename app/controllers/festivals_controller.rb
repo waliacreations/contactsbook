@@ -1,9 +1,6 @@
 class FestivalsController < ApplicationController
 #before_filter :authorize 
   
-  
-  
- 
   def index  
     @user_id=params[:uid]||params[:id]
     @festivals= Festival.all(:order => "id")  
@@ -36,7 +33,7 @@ class FestivalsController < ApplicationController
        format.html { redirect_to festivals_path }  
      end  
    end  
-    end  
+   end  
    
   
   def show
@@ -100,28 +97,24 @@ class FestivalsController < ApplicationController
     
     def creategreeting
       @user_id=params[:uid]
+      @recipient_exist="false"
       _status=""
           
       greetings_array=params[:greetings]
         @member_id=greetings_array["1"]
         @festival_id=greetings_array["2"]
+         @people=greetings_array["3"] 
           
           if @member_id.nil? or @festival_id.nil?
-            
-            
+                     
             _status="FAIL"
-               
-         
-          
           else
-         
-            _status="PASS"
+          _status="PASS"
           
         ######### sms to be sent -greeting############
              puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
            
-          
-           current_env=ENV['RAILS_ENV']
+            current_env=ENV['RAILS_ENV']
             balance=""
             mobilenum=""
             balanceh={}
@@ -153,6 +146,19 @@ class FestivalsController < ApplicationController
                @contacts=Contact.find(:all, :conditions=>"userid=#{@member_id.to_i} and labelnumber=250", :order=>"contactid DESC")
               
                @contacts.each do |con|
+                
+                 if @people=="ALL"
+                 @recipient_record=Contact.find(:first, :conditions=>"labelnumber=150 and contactid=#{con.contactid}")
+                 else
+                 @recipient_record=Contact.find(:first, :conditions=>"labelnumber=150 and labeldetails LIKE '#{@people}' and contactid=#{con.contactid}")
+                 end
+                 
+                 
+                 if @recipient_record.nil? or @recipient_record.blank?
+                                                    
+                 else
+                 
+                   @recipient_exist="true"  
                mobilenum="+91"+con.labeldetails
                
                puts "starting sms creation"
@@ -179,7 +185,9 @@ class FestivalsController < ApplicationController
                puts "starting sms delivery" 
                 sms.deliver_sms  ####this is main one used to send the sms 
                 puts "done"
-              end #@contacts.each do |con|
+             
+                 end #  if @recipient_record.nil? or @recipient_record.blank?
+                 end #@contacts.each do |con|
                
               else
                sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
@@ -199,14 +207,7 @@ class FestivalsController < ApplicationController
 
 #redirect_to :action=>index, :uid=>@user_id
               
-         
-
-       @status=_status
-                                      
-    
-
-
-
+    @status=_status
   
 end
 
