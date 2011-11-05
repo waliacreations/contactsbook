@@ -70,7 +70,7 @@ singleClick : false
 Festivalid:<%=text_field("greetings",num, "size"=>2, "value"=>"")%>
 
 <%num+=1%>
-Recipients:<%=hidden_field("greetings",num, "size"=>30, "value"=>"")%>
+Recipients:<%=hidden_field("greetings",num, "size"=>30, "value"=>"ALL")%>
 
 <%num+=1%>
 <%=select_tag("greetings_"+num.to_s,options_for_select([["ALL","ALL"]]+Contact::PEOPLE_TYPES,@sel.to_s), :onBlur=>"setTitle2();")%>
