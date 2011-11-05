@@ -1045,8 +1045,22 @@ def createlogin   ###NBW USER REGISTERATION
                       :contactid=>cid
                       )
                      @contact.save! 
+                     
+         ##enter labeldetails=self with labelnumber=150
+      @contact= Contact.create(
+                    :labelnumber=>150,
+                    :labeldetails=>"Self",
+                    #:contactid=>cid,
+                   :created_at=>time_entry,
+                     :updated_at=>time_entry,
+                    :userid=>cid,
+                    :contactid=>cid
+                    )
+                   @contact.save!               
+                     
       end #if record_create=="yes"
       
+    
          
       @msg_login=item2[1] #labeldetails_1
       @username_login=item2[1]  #labeldetails_1           
