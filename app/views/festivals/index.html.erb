@@ -15,7 +15,7 @@
 <body>
 <h1>ADD NEW FESTIVAL/CELEBRATION:</h1>
 
-<% form_for(@festival) do |f| %>
+<% form_for(@festival, :id=>@user_id, :uid=>@user_id) do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
@@ -54,7 +54,7 @@ singleClick : false
   <p>
     <%= f.label :description %><br />
     <%= f.text_field :description, :size=>"80" %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= f.submit 'Create NEW FESTIVAL/MESSAGE',:class=>"button" %>
+    <%= f.submit 'Create NEW FESTIVAL/MESSAGE',:class=>"button", :id=>@user_id, :uid=>@user_id %>
    
   </p>
 <% end %>

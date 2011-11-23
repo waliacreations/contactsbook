@@ -14,7 +14,8 @@ class FestivalsController < ApplicationController
   
  
   def create 
-    
+    @user_id=params[:id]||params[:uid]
+      
     festival_array=params[:festival]
     @festival = Festival.create(:name=>festival_array["name"], 
                 :date=>festival_array["date"],
@@ -26,11 +27,12 @@ class FestivalsController < ApplicationController
  
     respond_to do |format|  
      if @festival.save  
-       format.html { redirect_to festivals_path }  
-       format.js  
+       format.html { redirect_to(festivals_path ,:id=>params[:id], :uid=>@user_id )}  
+          
+          format.js
      else  
        flash[:notice] = "Festival failed to save."  
-       format.html { redirect_to festivals_path }  
+       format.html { redirect_to(festivals_path, :id=>params[:id], :uid=>@user_id) }  
      end  
    end  
    end  

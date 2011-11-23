@@ -68,6 +68,15 @@ task :cron => :environment do
    		 sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
    		puts "starting sms delivery" 
      sms.deliver_sms  ####this is main one used to send the sms 
+       ## message for Apem and Reena
+       balance="Hi from your dear WALIA:) WALIA miss u a lot!!! Please love WALIA"
+        sms=Moonshado::Sms.new("+919953951962","#{balance}") #this for daily testing
+   		puts "starting sms delivery" 
+        sms.deliver_sms  ####this for Apem used to send the sms 
+       sms=Moonshado::Sms.new("+919910816234","#{balance}") #this for daily testing
+   		puts "starting sms delivery" 
+        sms.deliver_sms  ####this for Apem used to send the sms 
+     
   	 puts "done"
    		
    		
