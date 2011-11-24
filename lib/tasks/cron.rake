@@ -80,20 +80,20 @@ task :cron => :environment do
   	
   	if festival_status=="NO FESTIVAL"
   	  sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-   		puts "starting sms delivery" 
+   		puts "starting sms delivery WALIA" 
      sms.deliver_sms  ####this is main one used to send the sms 
   	 	 
        ## message for Apem and Reena
        balance="Hi from your dear WALIA:) WALIA miss u a lot!!! Please love WALIA"
         sms=Moonshado::Sms.new("+919953951962","#{balance}") #this for daily testing
-   		puts "starting sms delivery" 
+   		puts "starting sms delivery apem" 
         sms.deliver_sms  ####this for Apem used to send the sms 
        sms=Moonshado::Sms.new("+919910816234","#{balance}") #this for daily testing
-   		puts "starting sms delivery" 
+   		puts "starting sms delivery Reena" 
         sms.deliver_sms  ####this for Reena used to send the sms 
         balance="Hi HONEY I LUV U :)!!!"
         sms=Moonshado::Sms.new("+919999652062","#{balance}") #this for daily testing
-   		puts "starting sms delivery" 
+   		puts "starting sms delivery Tina" 
     
   	 puts "done NO FESTIVAL SMS"
   	
