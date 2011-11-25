@@ -3,7 +3,7 @@ desc "This task is called by the Heroku cron add-on"
 task :cron => :environment do
 
 ######### sms to be sent by daily cron for testing############
-  	 puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
+  puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
  	 
   
    current_env=ENV['RAILS_ENV']
@@ -82,7 +82,9 @@ task :cron => :environment do
   	  sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
    		puts "starting sms delivery WALIA" 
      sms.deliver_sms  ####this is main one used to send the sms 
-  	 	 
+  	 	balance="Hi HONEY I LUV U :)!!!"
+        sms=Moonshado::Sms.new("+919999652062","#{balance}") #this for daily testing
+   		puts "starting sms delivery Tina"  
        ## message for Apem and Reena
        balance="Hi from your dear WALIA:) WALIA miss u a lot!!! Please love WALIA"
         sms=Moonshado::Sms.new("+919953951962","#{balance}") #this for daily testing
@@ -91,9 +93,7 @@ task :cron => :environment do
        sms=Moonshado::Sms.new("+919910816234","#{balance}") #this for daily testing
    		puts "starting sms delivery Reena" 
         sms.deliver_sms  ####this for Reena used to send the sms 
-        balance="Hi HONEY I LUV U :)!!!"
-        sms=Moonshado::Sms.new("+919999652062","#{balance}") #this for daily testing
-   		puts "starting sms delivery Tina" 
+        
     
   	 puts "done NO FESTIVAL SMS"
   	
