@@ -22,7 +22,7 @@ task :cron => :environment do
     
     sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
    	  sms.deliver_sms  ####this is main one used to send the sms 
-  	   puts "sms delivery WALIA" 
+  	   puts "sms delivery WALIA on +919899474781" 
     
      send_time=""   
      #send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
