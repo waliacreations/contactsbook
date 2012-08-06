@@ -19,6 +19,11 @@ task :cron => :environment do
       balance=current_env
       end # if current_env=="production"
     
+    
+    sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+   	  sms.deliver_sms  ####this is main one used to send the sms 
+  	   puts "sms delivery WALIA" 
+    
      send_time=""   
      #send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
      send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
