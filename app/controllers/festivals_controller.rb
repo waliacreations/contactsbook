@@ -182,7 +182,7 @@ class FestivalsController < ApplicationController
                balance=reminder_msg+"-"+"HONEY I LUV U"
                end
                
-               balance=reminder_msg+"-"+balance+send_time
+               balance=reminder_msg+balance+send_time
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
                sms=Moonshado::Sms.new("#{mobilenum}","#{balance}") #use this to send reminder to another
                puts "starting sms delivery" 
