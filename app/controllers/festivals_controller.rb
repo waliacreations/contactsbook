@@ -166,7 +166,7 @@ class FestivalsController < ApplicationController
                puts "starting sms creation"
               # balance=reminder_msg
                
-               if mobilenum=="+919899474781"
+              # if mobilenum=="+919899474781"
                 
                  if current_env=="production"  #used only in production
                  balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
@@ -175,14 +175,14 @@ class FestivalsController < ApplicationController
                    balance=current_env
                   end # if current_env=="production"
                    
-               balance=reminder_msg+"-"+balance+send_time
-               end
+                 balance=reminder_msg+"-"+balance+send_time
+              # end #if mobilenum=="+919899474781"
                
                 if mobilenum=="+919999652062"
                balance=reminder_msg+"-"+"HONEY I LUV U"
                end
                
-               
+               balance=reminder_msg+"-"+balance+send_time
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
                sms=Moonshado::Sms.new("#{mobilenum}","#{balance}") #use this to send reminder to another
                puts "starting sms delivery" 
