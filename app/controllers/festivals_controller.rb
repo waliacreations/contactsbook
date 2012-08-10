@@ -157,7 +157,7 @@ class FestivalsController < ApplicationController
                  
                  
                  if @recipient_record.nil? or @recipient_record.blank?
-                   @recipient_exist="false"                                
+                   #@recipient_exist="false"                                
                  else
                  
                    @recipient_exist="true"  
