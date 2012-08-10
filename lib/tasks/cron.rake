@@ -20,7 +20,7 @@ task :cron => :environment do
       end # if current_env=="production"
     
     
-    sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+    sms=Moonshado::Sms.new("+919810946177","#{balance}+hello") #this for daily testing
    	  sms.deliver_sms  ####this is main one used to send the sms 
   	   puts "sms delivery WALIA on +919899474781" 
     
