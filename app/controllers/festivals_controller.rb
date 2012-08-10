@@ -7,7 +7,7 @@ class FestivalsController < ApplicationController
 
             @festival=Festival.new
   
-    respond_to do |format|  
+            respond_to do |format|  
          format.html  
        end  
      end  
@@ -141,7 +141,7 @@ class FestivalsController < ApplicationController
             # if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1 or (f.date.to_date-Time.now.to_date).to_i==2    
               ## if Time.now.strftime("%d-%m-%Y")=="12-10-2011" && date_valid=="Y"
               ##if (f.date.to_date-Time.now.to_date).to_i<3
-              reminder_msg="HONEY I LUV U"
+             # reminder_msg="HONEY I LUV U"
               reminder_msg=f.message
                
                
@@ -157,7 +157,7 @@ class FestivalsController < ApplicationController
                  
                  
                  if @recipient_record.nil? or @recipient_record.blank?
-                                                    
+                   @recipient_exist="false"                                
                  else
                  
                    @recipient_exist="true"  
@@ -167,7 +167,8 @@ class FestivalsController < ApplicationController
               # balance=reminder_msg
                
                if mobilenum=="+919899474781"
-                if current_env=="production"  #used only in production
+                
+                 if current_env=="production"  #used only in production
                  balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
                  balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join  #get balance credit in moonshado
                    else
