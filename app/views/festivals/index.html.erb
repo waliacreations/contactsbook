@@ -61,6 +61,7 @@ singleClick : false
 
 <%#= link_to 'Back', festivals_path %>
 ####################################################################################
+
 <h5> Send SMS GREETINGS(for MemberId:<%=@user_id%>) </h5>
 <%form_tag({:controller=>"festivals", :action => "creategreeting", :uid=>@user_id}) do%>
 <%num=1%>
