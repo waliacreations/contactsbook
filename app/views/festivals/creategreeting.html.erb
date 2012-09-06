@@ -39,5 +39,5 @@ TiME:<%=send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') %>
 <%#puts @message%>
 
 <%@account = @client.account%>
-<%@message = @account.sms.messages.create({:from => '+13058098840', :to => '+919899474781', :body => 'HONEY!!!  I love you '})%>
+<%@message = @account.sms.messages.create({:from => '+13058098840', :to => '+919899474781', :body => 'HONEY!!!  I love you :' +send_time})%>
 <%= @message%>
