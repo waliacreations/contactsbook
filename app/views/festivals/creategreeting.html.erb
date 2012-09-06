@@ -14,7 +14,7 @@ RECIPIENT TYPE:<%=@people%><br/>
 <h5><%= link_to 'Back',{ :controller=>"festivals",:action=>"index", :uid=>@user_id }%></h5>
 
 
-<br/>##############################################
+<br/>##############################################<br/><br/>
 
 
 
@@ -24,9 +24,9 @@ RECIPIENT TYPE:<%=@people%><br/>
 
 <%@account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'%>
 <%@auth_token ='f20006d448513a3639931e286025f25e'%>
-TiME:<%=send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') %>
+<%send_time=Time.now.strftime('%d-%m-%Y  ,%H:%M:%S') %>
 
-
+<h3>TiME:<%=send_time%></h3>
 
 
 
@@ -41,3 +41,4 @@ TiME:<%=send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') %>
 <%@account = @client.account%>
 <%@message = @account.sms.messages.create({:from => '+13058098840', :to => '+919899474781', :body => 'HONEY!!!  I love you :' +send_time})%>
 <%= @message%>
+
