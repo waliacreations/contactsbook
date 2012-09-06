@@ -1,5 +1,5 @@
 
-#source :rubygems
+source :rubygems
 source :gemcutter
 #gem "rails", "~> 2.3.5"
 #gem "moonshado", "1.1.0"
@@ -13,6 +13,8 @@ source :gemcutter
 #gem "moonshado-sms", :git => "git@github.com/moonshado/moonshado-sms.git"
 gem 'rails', '2.3.5'
 gem "sqlite3-ruby", :require => "sqlite3"
+
+gem "twilio-ruby"
 
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"

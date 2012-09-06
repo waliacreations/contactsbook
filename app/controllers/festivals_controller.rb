@@ -13,6 +13,10 @@ class FestivalsController < ApplicationController
      end  
   
  
+   
+     
+     
+     
   def create 
     @user_id=params[:id]||params[:uid]
       

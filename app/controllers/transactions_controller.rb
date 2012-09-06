@@ -1,5 +1,5 @@
-class MessagesController <ApplicationController
-#before_filter :authorize 
+class TransactionsController <ApplicationController
+before_filter :authorize 
   
   ### to capture sms received when sent to 69940 from US number with keyword:"icontactsbook"
   ####posted by moonshado to "http://www.icontactsbook.com/sms/create"
@@ -18,25 +18,26 @@ class MessagesController <ApplicationController
   
  
   def index  
-    @user_id=params[:uid]||params[:id]
+    redirect_to :controller=>'contacts', :action => 'viewsummary' 
+   # @user_id=params[:uid]||params[:id]
        #@messages= Message.all(:order => "created_at DESC")  
-       respond_to do |format|  
-         format.html  
-       end  
+       #respond_to do |format|  
+        # format.html  
+       #end  
      end  
   
   
   def create 
-   @message = Message.create(:device_address => params["device_address"], :country=>"IN", :shortcode=>params["shortcode"], :carrier=>params["carrier"], :message=>params["message"])  
-   respond_to do |format|  
-     if @message.save  
-       format.html { redirect_to messages_path }  
-       format.js  
-     else  
-       flash[:notice] = "Message failed to save."  
-       format.html { redirect_to messages_path }  
-     end  
-   end  
+  # @message = Message.create(:device_address => params["device_address"], :country=>"IN", :shortcode=>params["shortcode"], :carrier=>params["carrier"], :message=>params["message"])  
+  # respond_to do |format|  
+    # if @message.save  
+      # format.html { redirect_to messages_path }  
+      # format.js  
+     #else  
+    #   flash[:notice] = "Message failed to save."  
+     #  format.html { redirect_to messages_path }  
+    # end  
+   #end  
     end  
    
   

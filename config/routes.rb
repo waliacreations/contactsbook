@@ -3,6 +3,15 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => "home", :action=>"index" 
   
+  map.connect 'transactions/index', :controller=>'transactions', :action=>'index'
+  
+  
+  map.connect 'messages/index', :controller=>'messages', :action=>'index'
+  map.connect 'messages/show', :controller=>'messages', :action=>'show'
+  map.connect 'messages/send', :controller=>'messages', :action=>'send'
+  map.connect 'messages/create', :controller=>'messages', :action=>'create'
+  
+  
   map.connect 'festivals/index', :controller=>'festivals', :action=>'index'
   map.connect 'festivals/create', :controller=>'festivals', :action=>'create'
   map.connect 'festivals/creategreeting', :controller=>'festivals', :action=>'creategreeting'
@@ -22,6 +31,8 @@ ActionController::Routing::Routes.draw do |map|
 map.connect 'contacts/view', :controller => 'contacts', :action => 'view' 
 map.connect 'contacts/viewsummary', :controller => 'contacts', :action => 'viewsummary'   
 map.connect 'contacts/quickentry', :controller => 'contacts', :action => 'quickentry'  ###put these before map.resources :contacts
+
+  map.resources :transactions
 
 map.resources :contacts
 
