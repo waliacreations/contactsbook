@@ -169,7 +169,7 @@ class FestivalsController < ApplicationController
                    @recipient_exist="true"  
                mobilenum="+91"+con.labeldetails
                
-               puts "starting sms creation"
+               
                balance=reminder_msg
               tryslice=""
              tryslice=mobilenum.slice(3..6)
@@ -196,7 +196,7 @@ class FestivalsController < ApplicationController
                #balance=reminder_msg+balance+send_time
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
                puts "WATCH"
-               puts "enter tryslice"
+               puts "enter tryslice #{tryslice}"
                if tryslice=="9899" or tryslice=="9999" or tryslice=="9811" #these are Vodafone
                  puts "tryslice="            
                  @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
@@ -210,9 +210,9 @@ class FestivalsController < ApplicationController
                  
                else
                sms=Moonshado::Sms.new("#{mobilenum}","#{balance}") #use this to send reminder to another
-               puts "starting sms delivery" 
+               
                 sms.deliver_sms  ####this is main one used to send the sms 
-                puts "done"
+                puts "#{mobilenum} done"
                end # if tryslice in ("9899","9811","9999")  #these are Vodafone
                 
                 
