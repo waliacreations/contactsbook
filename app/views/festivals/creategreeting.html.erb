@@ -17,8 +17,8 @@ RECIPIENT TYPE:<%=@people%><br/>
 <br/>##############################################<br/><br/>
 
 
-
-
+ <%current_env=ENV['RAILS_ENV']%>
+ <%if current_env=="production" %><% #used only in production%>
 <%require 'rubygems'%>
 <%require 'twilio-ruby'%>
 
@@ -41,4 +41,12 @@ RECIPIENT TYPE:<%=@people%><br/>
 <%@account = @client.account%>
 <%@message = @account.sms.messages.create({:from => '+13058098840', :to => '+919899474781', :body => 'HONEY!!!  I love you :' +send_time})%>
 <%= @message%>
+<%end%> <%#if current_env=="production" %>
+<br/>
+
+<%### only get the 4 nos. to decide which carrier%>
+<%@trynum=""%><%tryslice=""%>
+<%@trynum="+919899474781"%>
+<%tryslice=@trynum.slice(3..6)%>
+<%#tryslice%>
 

@@ -1,7 +1,5 @@
 class FestivalsController < ApplicationController
 #before_filter :authorize 
-  require 'rubygems'
-  require 'twilio-ruby'
   
   def index  
     @user_id=params[:uid]||params[:id]
@@ -171,24 +169,18 @@ class FestivalsController < ApplicationController
                
                puts "starting sms creation"
                balance=reminder_msg
-              tryslice=""
-             tryslice=mobilenum.slice(3..6)
-             #tryslice
-               
-              
-                      
-               
                
               if mobilenum=="+919899474781"
-                if current_env=="production"  #used only in production
+                
+                 if current_env=="production"  #used only in production
                  balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
                  balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join  #get balance credit in moonshado
                    else
                    balance=current_env
                   end # if current_env=="production"
+                   
                  balance=reminder_msg+"-"+balance+send_time
                end #if mobilenum=="+919899474781"
-               
                
                 if mobilenum=="+919999652062"
                balance=reminder_msg+"-"+"HONEY I LUV U"
@@ -196,40 +188,20 @@ class FestivalsController < ApplicationController
                
                #balance=reminder_msg+balance+send_time
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
-               
-               if tryslice=="9899"||"9811"||"9999"  #these are Vodafone
-                                
-                 @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
-                 @auth_token ='f20006d448513a3639931e286025f25e'
-                 # set up a client to talk to the Twilio REST API
-                 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
-                 @account = @client.account
-                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>mobilenum, :body => 'HONEY!!!  I love you :' +send_time})
-                 @message
-                 
-                 
-               else
                sms=Moonshado::Sms.new("#{mobilenum}","#{balance}") #use this to send reminder to another
                puts "starting sms delivery" 
                 sms.deliver_sms  ####this is main one used to send the sms 
                 puts "done"
-               end # if tryslice in ("9899","9811","9999")  #these are Vodafone
-                
-                
+             
                  end #  if @recipient_record.nil? or @recipient_record.blank?
                  end #@contacts.each do |con|
                
               else
-                
-              # sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-             # puts "starting sms delivery" 
-            # sms.deliver_sms  ####this is main one used to send the sms 
-             #puts "done"
+               sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+              puts "starting sms delivery" 
+             sms.deliver_sms  ####this is main one used to send the sms 
+             puts "done"
               
-                
-                
-                
-                
               
               end  #if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1    
                   
