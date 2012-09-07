@@ -197,7 +197,7 @@ class FestivalsController < ApplicationController
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
                
                puts "enter tryslice"
-               if tryslice=="9899" #these are Vodafone
+               if tryslice=="9899" or tryslice=="9999" or tryslice=="9811" #these are Vodafone
                  puts "tryslice="+tryslice            
                  @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
                  @auth_token ='f20006d448513a3639931e286025f25e'
