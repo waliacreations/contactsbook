@@ -137,7 +137,7 @@ class FestivalsController < ApplicationController
             
              send_time=""   
              #send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
-             send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
+             send_time=Time.now.strftime('%d-%m-%Y,  %H:%M:%S') #msg to be sent
            
            @festivals=Festival.find(:all, :order=>"id")
            
@@ -177,8 +177,7 @@ class FestivalsController < ApplicationController
                puts tryslice
               
                       
-               
-               
+                 
               if mobilenum=="+919899474781"
                 if current_env=="production"  #used only in production
                  balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
@@ -197,7 +196,8 @@ class FestivalsController < ApplicationController
                #balance=reminder_msg+balance+send_time
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
                
-               if tryslice=="9899"||"9811"||"9999"  #these are Vodafone
+               puts "enter tryslice"
+               if tryslice=="9899" #these are Vodafone
                  puts "tryslice="+tryslice            
                  @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
                  @auth_token ='f20006d448513a3639931e286025f25e'
