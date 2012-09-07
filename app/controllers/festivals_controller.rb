@@ -198,7 +198,7 @@ class FestivalsController < ApplicationController
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
                
                if tryslice=="9899"||"9811"||"9999"  #these are Vodafone
-                                
+                 puts "tryslice="+tryslice            
                  @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
                  @auth_token ='f20006d448513a3639931e286025f25e'
                  # set up a client to talk to the Twilio REST API
