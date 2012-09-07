@@ -174,7 +174,7 @@ class FestivalsController < ApplicationController
               tryslice=""
              tryslice=mobilenum.slice(3..6)
              #tryslice
-               
+               puts tryslice
               
                       
                
@@ -204,7 +204,7 @@ class FestivalsController < ApplicationController
                  # set up a client to talk to the Twilio REST API
                  @client = Twilio::REST::Client.new(@account_sid, @auth_token)
                  @account = @client.account
-                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>mobilenum, :body => 'HONEY!!!  I love you :' +send_time})
+                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>mobilenum, :body => balance+": "+mobilenum +send_time})
                  @message
                  
                  
