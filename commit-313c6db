@@ -1,0 +1,19 @@
+commit 313c6dbf19c2ae421bbc7d1b8bd9bc238146aaf4
+Author: Hemant Walia <waliacreations@yahoo.com>
+Date:   Thu Sep 6 22:06:04 2012 -0800
+
+    new
+
+diff --git a/app/controllers/festivals_controller.rb b/app/controllers/festivals_controller.rb
+index 1a71031..f6e3bdb 100755
+--- a/app/controllers/festivals_controller.rb
++++ b/app/controllers/festivals_controller.rb
+@@ -120,7 +120,7 @@ class FestivalsController < ApplicationController
+           _status="PASS"
+           
+         ######### sms to be sent -greeting############
+-             puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
++             puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}... updated on 9th sept 2012"
+            
+             current_env=ENV['RAILS_ENV']
+             balance=""
