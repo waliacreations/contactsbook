@@ -1,0 +1,18 @@
+commit a21fc98ae07b7cffda300987148a8cd4202bdb3f
+Author: Hemant Walia <waliacreations@yahoo.com>
+Date:   Fri Sep 7 19:35:54 2012 -0800
+
+    new festival controller
+
+diff --git a/app/views/festivals/creategreeting.html.erb b/app/views/festivals/creategreeting.html.erb
+index 5f8b7ff..30a6d3c 100755
+--- a/app/views/festivals/creategreeting.html.erb
++++ b/app/views/festivals/creategreeting.html.erb
+@@ -49,4 +49,4 @@ RECIPIENT TYPE:<%=@people%><br/>
+ <%##tryslice=@trynum.slice(3..6)%>
+ <%##=tryslice%>
+ 
+-<%=@try_done%>
+\ No newline at end of file
++TRY STATUS OF SLICE: <%=@try_done%>
+\ No newline at end of file
