@@ -1,4 +1,9 @@
 
+require 'rubygems'
+  require 'twilio-ruby'
+
+
+
 desc "This task is called by the Heroku cron add-on"
 task :cron => :environment do
 
@@ -91,6 +96,22 @@ task :cron => :environment do
         sms=Moonshado::Sms.new("+919999652062","#{balance}") #this for daily testing
    		 sms.deliver_sms  ####this for Tina used to send the sms
    		puts "sms delivery Tina"  
+    
+		#start TWILIO sms
+		 @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
+                 @auth_token ='f20006d448513a3639931e286025f25e'
+                 # set up a client to talk to the Twilio REST API
+                 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+                 @account = @client.account
+                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>mobilenum, :body => balance+": "+mobilenum +send_time})
+                 @message
+		#end twilio sms
+    
+    
+    
+    
+    
+    
     
   	 puts "done NO FESTIVAL SMS"
   	 	

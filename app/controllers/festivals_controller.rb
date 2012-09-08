@@ -174,7 +174,7 @@ class FestivalsController < ApplicationController
               tryslice=""
              tryslice=mobilenum.slice(3..6)
              #tryslice
-               puts "tryslice"
+               
               
                       
                  
@@ -195,9 +195,10 @@ class FestivalsController < ApplicationController
                
                #balance=reminder_msg+balance+send_time
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
-               puts "WATCH"
-               puts "enter tryslice #{tryslice}"
+           
+               
                if tryslice=="9899" or tryslice=="9999" or tryslice=="9811" #these are Vodafone
+                 puts "enter tryslice #{tryslice}"
                  @try_done="SLICE WORKING WITH TWILIO"
                  puts "tryslice="            
                  @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
