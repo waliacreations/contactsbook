@@ -1,6 +1,6 @@
 
 require 'rubygems'
-  require 'twilio-ruby'
+require 'twilio-ruby'
 
 
 
@@ -105,7 +105,7 @@ task :cron => :environment do
                  @client = Twilio::REST::Client.new(@account_sid, @auth_token)
                  @account = @client.account
                  #@message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => balance+": "+mobilenum +send_time})
-                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => "testing twilio"})
+                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => balance+","+testing twilio"})
 		 @message
 		 puts "Twilio finish +919899474781"
 		#end twilio sms
