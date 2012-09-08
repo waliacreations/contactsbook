@@ -107,7 +107,7 @@ task :cron => :environment do
                  #@message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => balance+": "+mobilenum +send_time})
                  @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => "testing twilio"})
 		 @message
-		 puts "Twilio finish"
+		 puts "Twilio finish +919899474781"
 		#end twilio sms
     
     
