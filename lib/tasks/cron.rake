@@ -104,8 +104,9 @@ task :cron => :environment do
                  # set up a client to talk to the Twilio REST API
                  @client = Twilio::REST::Client.new(@account_sid, @auth_token)
                  @account = @client.account
-                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => balance+": "+mobilenum +send_time})
-                 @message
+                 #@message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => balance+": "+mobilenum +send_time})
+                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => "testing twilio"})
+		 @message
 		 puts "Twilio finish"
 		#end twilio sms
     
