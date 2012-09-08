@@ -121,7 +121,7 @@ class FestivalsController < ApplicationController
           
         ######### sms to be sent -greeting############
              puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}... updated on 7th sept 2012"
-           
+              puts "7th sept 2012"
             current_env=ENV['RAILS_ENV']
             balance=""
             mobilenum=""
