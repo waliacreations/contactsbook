@@ -1,0 +1,52 @@
+
+<h5> Update on 8th Sept 2012</h5>
+
+
+Sending Greeting.............
+
+MISSION STATUS:<%=@status%><br/>
+RECIPIENT_EXIST:<%=@recipient_exist%><br/>
+
+MemberId:<%=@member_id%><br/>
+FestivalId:<%=@festival_id%><br/>
+RECIPIENT TYPE:<%=@people%><br/>
+
+
+<br/><br/>
+<h5><%= link_to 'Back',{ :controller=>"festivals",:action=>"index", :uid=>@user_id }%></h5>
+
+
+<br/>##############################################<br/><br/>
+
+
+ <%##current_env=ENV['RAILS_ENV']%>
+ <%##if current_env=="production" %><% #used only in production%>
+<%##require 'rubygems'%>
+<%##require 'twilio-ruby'%>
+
+<%##@account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'%>
+<%##@auth_token ='f20006d448513a3639931e286025f25e'%>
+<%##send_time=Time.now.strftime('%d-%m-%Y  ,%H:%M:%S') %>
+
+<h3>TiME:<%##=send_time%></h3>
+
+
+
+<%## set up a client to talk to the Twilio REST API%>
+<%##@client = Twilio::REST::Client.new(@account_sid, @auth_token)%>
+
+
+
+<%##@account = @client.account%>
+<%##@message = @account.sms.messages.create({:from => '+13058098840', :to => '+919899474781', :body => 'HONEY!!!  I love you :' +send_time})%>
+<%##= @message%>
+<%##end%> <%#if current_env=="production" %>
+<br/>
+
+<%### only get the 4 nos. to decide which carrier%>
+<%##@trynum=""%><%tryslice=""%>
+<%##@trynum="+919899474781"%>
+<%##tryslice=@trynum.slice(3..6)%>
+<%##=tryslice%>
+
+TRY STATUS OF SLICE: <%=@try_done%>

@@ -1,5 +1,7 @@
 class FestivalsController < ApplicationController
 #before_filter :authorize 
+  require 'rubygems'
+  require 'twilio-ruby'
   
   def index  
     @user_id=params[:uid]||params[:id]
@@ -105,7 +107,7 @@ class FestivalsController < ApplicationController
       @user_id=params[:uid]
       @recipient_exist="false"
       _status=""
-          
+      @try_done="NO"
       greetings_array=params[:greetings]
         @member_id=greetings_array["1"]
         @festival_id=greetings_array["2"]
@@ -118,8 +120,8 @@ class FestivalsController < ApplicationController
           _status="PASS"
           
         ######### sms to be sent -greeting############
-             puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}..."
-           
+             puts "Running cron at #{Time.now.strftime('%Y/%m/%d %H:%M:%S')}... updated on 7th sept 2012"
+              puts "7th sept 2012"
             current_env=ENV['RAILS_ENV']
             balance=""
             mobilenum=""
@@ -135,7 +137,7 @@ class FestivalsController < ApplicationController
             
              send_time=""   
              #send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
-             send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
+             send_time=Time.now.strftime('%d-%m-%Y,  %H:%M:%S') #msg to be sent
            
            @festivals=Festival.find(:all, :order=>"id")
            
@@ -167,20 +169,25 @@ class FestivalsController < ApplicationController
                    @recipient_exist="true"  
                mobilenum="+91"+con.labeldetails
                
-               puts "starting sms creation"
-               balance=reminder_msg
                
+               balance=reminder_msg
+              tryslice=""
+             tryslice=mobilenum.slice(3..6)
+             #tryslice
+               puts "tryslice"
+              
+                      
+                 
               if mobilenum=="+919899474781"
-                
-                 if current_env=="production"  #used only in production
+                if current_env=="production"  #used only in production
                  balanceh=Moonshado::Sms.get_credit #Moonshado::Sms.get_credit
                  balance=balanceh.collect { |k, v| "[balance='#{k}'#{v}]" }.join  #get balance credit in moonshado
                    else
                    balance=current_env
                   end # if current_env=="production"
-                   
                  balance=reminder_msg+"-"+balance+send_time
                end #if mobilenum=="+919899474781"
+               
                
                 if mobilenum=="+919999652062"
                balance=reminder_msg+"-"+"HONEY I LUV U"
@@ -188,20 +195,42 @@ class FestivalsController < ApplicationController
                
                #balance=reminder_msg+balance+send_time
                #sms=Moonshado::Sms.new("+919999652062","#{balance}") #use this to send reminder to another
+               puts "WATCH"
+               puts "enter tryslice #{tryslice}"
+               if tryslice=="9899" or tryslice=="9999" or tryslice=="9811" #these are Vodafone
+                 @try_done="SLICE WORKING WITH TWILIO"
+                 puts "tryslice="            
+                 @account_sid ='AC0f223cb77a410b35429ca9c3ea11d6b6'
+                 @auth_token ='f20006d448513a3639931e286025f25e'
+                 # set up a client to talk to the Twilio REST API
+                 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+                 @account = @client.account
+                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>mobilenum, :body => balance+": "+mobilenum +send_time})
+                 @message
+                 
+                 
+               else
                sms=Moonshado::Sms.new("#{mobilenum}","#{balance}") #use this to send reminder to another
-               puts "starting sms delivery" 
+               
                 sms.deliver_sms  ####this is main one used to send the sms 
-                puts "done"
-             
+                puts "#{mobilenum} done"
+               end # if tryslice in ("9899","9811","9999")  #these are Vodafone
+                
+                
                  end #  if @recipient_record.nil? or @recipient_record.blank?
                  end #@contacts.each do |con|
                
               else
-               sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
-              puts "starting sms delivery" 
-             sms.deliver_sms  ####this is main one used to send the sms 
-             puts "done"
+                
+              # sms=Moonshado::Sms.new("+919899474781","#{balance}") #this for daily testing
+             # puts "starting sms delivery" 
+            # sms.deliver_sms  ####this is main one used to send the sms 
+             #puts "done"
               
+                
+                
+                
+                
               
               end  #if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1    
                   
