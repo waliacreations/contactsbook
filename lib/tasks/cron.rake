@@ -121,7 +121,7 @@ task :cron => :environment do
     
   	 puts "done NO FESTIVAL SMS"
   	 	
-  	end   ##festival_statusif festival_status=="NO FESTIVAL"
+  	end   ##festival_status if festival_status=="NO FESTIVAL"
   		
 end  #task :cron => :environment do
 
