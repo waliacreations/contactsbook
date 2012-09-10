@@ -92,6 +92,7 @@ task :cron => :environment do
    	  sms.deliver_sms  ####this is main one used to send the sms 
   	   puts "sms delivery WALIA" 
   	   
+  	   
         balance="Hi HONEY I LUV U :)!!!"
         sms=Moonshado::Sms.new("+919999652062","#{balance}") #this for daily testing
    		 sms.deliver_sms  ####this for Tina used to send the sms
@@ -107,9 +108,13 @@ task :cron => :environment do
                  mobilenum="+919999652062"
                  @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919999652062", :body => balance+":HONEY I LUV U!!! "+mobilenum +send_time})
                  @message	
+                 
+                 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+                 @account = @client.account
                  mobilenum="+919899474781"
                  @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => balance+","+"testing twilio"+send_time+mobilenum})
-		 @message
+				 @message
+				 
 		 puts "Twilio finish +919899474781"
 		#end twilio sms
     
