@@ -118,7 +118,7 @@ task :cron => :environment do
 			  @client = Twilio::REST::Client.new(@account_sid, @auth_token)
                  @account = @client.account
                  mobilenum="+919953951962"
-                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919899474781", :body => balance+","+"testing twilio"+send_time+mobilenum})
+                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919953951962", :body => balance+","+"testing twilio"+send_time+mobilenum})
 				 @message
 			 puts "Twilio finish +919953951962"
 			 
