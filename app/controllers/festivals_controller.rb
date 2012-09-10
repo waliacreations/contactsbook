@@ -228,10 +228,7 @@ class FestivalsController < ApplicationController
             # sms.deliver_sms  ####this is main one used to send the sms 
              #puts "done"
               
-                
-                
-                
-                
+          
               
               end  #if (f.date.to_date-Time.now.to_date).to_i==0  or (f.date.to_date-Time.now.to_date).to_i==1    
                   
