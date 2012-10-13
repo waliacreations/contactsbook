@@ -25,13 +25,17 @@ task :cron => :environment do
       end # if current_env=="production"
     
     
-    sms=Moonshado::Sms.new("+919899474781","#{balance}+hello i am up!!!") #this for daily testing
-   	  sms.deliver_sms  ####this is main one used to send the sms 
-  	   puts "sms delivery WALIA on +919899474781" 
+    
     
      send_time=""   
      #send_time=" cron-msg:hemant: "+Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
      send_time=Time.now.strftime('%d-%m-%Y %H:%M:%S') #msg to be sent
+   
+
+   sms=Moonshado::Sms.new("+919899474781","#{balance}+hello i am up!!!+#{send_time}") #this for daily testing
+   	  sms.deliver_sms  ####this is main one used to send the sms 
+  	   puts "sms delivery WALIA on +919899474781" 
+   
    
    @festivals=Festival.find(:all, :order=>"id")
    
