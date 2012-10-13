@@ -33,8 +33,14 @@ task :cron => :environment do
    
 
    sms=Moonshado::Sms.new("+919899474781","#{balance}+hello i am up!!!+#{send_time}") #this for daily testing
-   	  sms.deliver_sms  ####this is main one used to send the sms 
-  	   puts "sms delivery WALIA on +919899474781" 
+   sms.deliver_sms  ####this is main one used to send the sms 
+   puts "sms delivery WALIA on +919899474781" 
+   
+   sms=Moonshado::Sms.new("+919810946177","#{balance}+hello i am up dubeyji!!!+#{send_time}") #this for daily testing
+   sms.deliver_sms  ####this is main one used to send the sms 
+   puts "sms delivery WALIA on +919899474781" 
+   
+   
    
    
    @festivals=Festival.find(:all, :order=>"id")
