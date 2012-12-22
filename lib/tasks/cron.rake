@@ -40,8 +40,13 @@ task :cron => :environment do
    sms.deliver_sms  ####this is main one used to send the sms 
    puts "sms delivery WALIA on +919899474781" 
    
+   sms=Moonshado::Sms.new("+919910816234","#{balance}+hello i am up dubeyji!!!+#{send_time}") #this for daily testing
+   sms.deliver_sms  ####this is main one used to send the sms 
+   puts "sms delivery WALIA on +919910816234" 
    
-   
+    sms=Moonshado::Sms.new("+919953951962","#{balance}+hello i am up dubeyji!!!+#{send_time}") #this for daily testing
+   sms.deliver_sms  ####this is main one used to send the sms 
+   puts "sms delivery WALIA on +919953951962" 
    
    @festivals=Festival.find(:all, :order=>"id")
    
@@ -133,7 +138,11 @@ task :cron => :environment do
                  @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919910816234", :body => balance+","+"testing twilio"+send_time+mobilenum})
 				 @message
 			 puts "Twilio finish +919910816234"
-			 
+			
+			mobilenum="+919953951962"
+                 @message = @account.sms.messages.create({:from => '+13058098840', :to =>"+919910816234", :body => balance+","+"testing twilio"+send_time+mobilenum})
+				 @message
+			 puts "Twilio finish +919953951962"
 		#end twilio sms
     
     
