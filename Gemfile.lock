@@ -8,7 +8,6 @@ GIT
 
 GEM
   remote: http://rubygems.org/
-  remote: http://rubygems.org/
   specs:
     actionmailer (2.3.5)
       actionpack (= 2.3.5)
@@ -21,7 +20,7 @@ GEM
       activesupport (= 2.3.5)
     activesupport (2.3.5)
     builder (3.0.0)
-    json (1.6.1)
+    json (2.3.1)
     jwt (0.1.5)
       multi_json (>= 1.0)
     mime-types (1.16)
